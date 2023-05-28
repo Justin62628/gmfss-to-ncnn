@@ -55,10 +55,10 @@ def local_correlation_softmax(feature0, feature1, local_radius,
     sample_coords_softmax = sample_coords
 
     # exclude coords that are out of image space
-    valid_x = (sample_coords[:, :, :, 0] >= 0) & (sample_coords[:, :, :, 0] < w)  # [B, H*W, (2R+1)^2]
-    valid_y = (sample_coords[:, :, :, 1] >= 0) & (sample_coords[:, :, :, 1] < h)  # [B, H*W, (2R+1)^2]
+    # valid_x = (sample_coords[:, :, :, 0] >= 0) & (sample_coords[:, :, :, 0] < w)  # [B, H*W, (2R+1)^2]
+    # valid_y = (sample_coords[:, :, :, 1] >= 0) & (sample_coords[:, :, :, 1] < h)  # [B, H*W, (2R+1)^2]
 
-    valid = valid_x & valid_y  # [B, H*W, (2R+1)^2], used to mask out invalid values when softmax
+    # valid = valid_x & valid_y  # [B, H*W, (2R+1)^2], used to mask out invalid values when softmax
 
     # normalize coordinates to [-1, 1]
     sample_coords_norm = normalize_coords(sample_coords, h, w)  # [-1, 1]
@@ -70,7 +70,7 @@ def local_correlation_softmax(feature0, feature1, local_radius,
     corr = torch.matmul(feature0_view, window_feature).view(b, h * w, -1) / (c ** 0.5)  # [B, H*W, (2R+1)^2]
 
     # mask invalid locations
-    corr[~valid] = -1e9
+    # corr[~valid] = -1e9
 
     prob = F.softmax(corr, -1)  # [B, H*W, (2R+1)^2]
 

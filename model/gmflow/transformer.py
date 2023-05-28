@@ -18,29 +18,31 @@ def single_head_full_attention(q, k, v):
 
 def generate_shift_window_attn_mask(input_resolution, window_size_h, window_size_w,
                                     shift_size_h, shift_size_w, device=torch.device('cuda')):
-    # Ref: https://github.com/microsoft/Swin-Transformer/blob/main/models/swin_transformer.py
-    # calculate attention mask for SW-MSA
     h, w = input_resolution
-    img_mask = torch.zeros((1, h, w, 1)).to(device)  # 1 H W 1
-    h_slices = (slice(0, -window_size_h),
-                slice(-window_size_h, -shift_size_h),
-                slice(-shift_size_h, None))
-    w_slices = (slice(0, -window_size_w),
-                slice(-window_size_w, -shift_size_w),
-                slice(-shift_size_w, None))
-    cnt = 0
-    for h in h_slices:
-        for w in w_slices:
-            img_mask[:, h, w, :] = cnt
-            cnt += 1
+    # Create masks for each block
+    mask1 = torch.ones((h - window_size_h, w - window_size_w)).to(device)   # mask for block 1
+    mask2 = torch.ones((h - window_size_h, window_size_w - shift_size_w)).to(device) * 2   # mask for block 2
+    mask3 = torch.ones((h - window_size_h, shift_size_w)).to(device) * 3   # mask for block 3
+    mask4 = torch.ones((window_size_h - shift_size_h, w - window_size_w)).to(device) * 4   # mask for block 4
+    mask5 = torch.ones((window_size_h - shift_size_h, window_size_w - shift_size_w)).to(device) * 5   # mask for block 5
+    mask6 = torch.ones((window_size_h - shift_size_h, shift_size_w)).to(device) * 6   # mask for block 6
+    mask7 = torch.ones((shift_size_h, w - window_size_w)).to(device) * 7   # mask for block 7
+    mask8 = torch.ones((shift_size_h, window_size_w - shift_size_w)).to(device) * 8   # mask for block 8
+    mask9 = torch.ones((shift_size_h, shift_size_w)).to(device) * 9   # mask for block 9
 
-    mask_windows = split_feature(img_mask, num_splits=input_resolution[-1] // window_size_w, channel_last=True)
+    # Concatenate the masks to create the full mask
+    upper_mask = torch.cat([mask1, mask2, mask3], dim=1)
+    middle_mask = torch.cat([mask4, mask5, mask6], dim=1)
+    lower_mask = torch.cat([mask7, mask8, mask9], dim=1)
+    full_mask = torch.cat([upper_mask, middle_mask, lower_mask], dim=0).unsqueeze(0).unsqueeze(-1)  # Add extra dimensions for batch size and channels
 
+    mask_windows = split_feature(full_mask, num_splits=input_resolution[-1] // window_size_w, channel_last=True)
     mask_windows = mask_windows.view(-1, window_size_h * window_size_w)
     attn_mask = mask_windows.unsqueeze(1) - mask_windows.unsqueeze(2)
     attn_mask = attn_mask.masked_fill(attn_mask != 0, float(-100.0)).masked_fill(attn_mask == 0, float(0.0))
 
     return attn_mask
+
 
 
 def single_head_split_window_attention(q, k, v,
