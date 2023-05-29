@@ -14,52 +14,52 @@ class Model(nn.Module):
         super(Model, self).__init__()
 
         self.backbone_conv1 = nn.Conv2d(bias=False, dilation=(1,1), groups=1, in_channels=3, kernel_size=(7,7), out_channels=64, padding=(3,3), padding_mode='zeros', stride=(2,2))
-        self.backbone_norm1 = nn.InstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
+        self.backbone_norm1 = nn.LazyInstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
         self.backbone_relu1 = nn.ReLU()
         self.backbone_layer1_0_conv1 = nn.Conv2d(bias=False, dilation=(1,1), groups=1, in_channels=64, kernel_size=(3,3), out_channels=64, padding=(1,1), padding_mode='zeros', stride=(1,1))
-        self.backbone_layer1_0_norm1 = nn.InstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
+        self.backbone_layer1_0_norm1 = nn.LazyInstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
         self.backbone_layer1_0_relu = nn.ReLU()
         self.backbone_layer1_0_conv2 = nn.Conv2d(bias=False, dilation=(1,1), groups=1, in_channels=64, kernel_size=(3,3), out_channels=64, padding=(1,1), padding_mode='zeros', stride=(1,1))
-        self.backbone_layer1_0_norm2 = nn.InstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
+        self.backbone_layer1_0_norm2 = nn.LazyInstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
         self.pnnx_unique_0 = nn.ReLU()
         self.pnnx_unique_1 = nn.ReLU()
         self.backbone_layer1_1_conv1 = nn.Conv2d(bias=False, dilation=(1,1), groups=1, in_channels=64, kernel_size=(3,3), out_channels=64, padding=(1,1), padding_mode='zeros', stride=(1,1))
-        self.backbone_layer1_1_norm1 = nn.InstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
+        self.backbone_layer1_1_norm1 = nn.LazyInstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
         self.backbone_layer1_1_relu = nn.ReLU()
         self.backbone_layer1_1_conv2 = nn.Conv2d(bias=False, dilation=(1,1), groups=1, in_channels=64, kernel_size=(3,3), out_channels=64, padding=(1,1), padding_mode='zeros', stride=(1,1))
-        self.backbone_layer1_1_norm2 = nn.InstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
+        self.backbone_layer1_1_norm2 = nn.LazyInstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
         self.pnnx_unique_2 = nn.ReLU()
         self.pnnx_unique_3 = nn.ReLU()
         self.backbone_layer2_0_conv1 = nn.Conv2d(bias=False, dilation=(1,1), groups=1, in_channels=64, kernel_size=(3,3), out_channels=96, padding=(1,1), padding_mode='zeros', stride=(2,2))
-        self.backbone_layer2_0_norm1 = nn.InstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
+        self.backbone_layer2_0_norm1 = nn.LazyInstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
         self.backbone_layer2_0_relu = nn.ReLU()
         self.backbone_layer2_0_conv2 = nn.Conv2d(bias=False, dilation=(1,1), groups=1, in_channels=96, kernel_size=(3,3), out_channels=96, padding=(1,1), padding_mode='zeros', stride=(1,1))
-        self.backbone_layer2_0_norm2 = nn.InstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
+        self.backbone_layer2_0_norm2 = nn.LazyInstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
         self.pnnx_unique_4 = nn.ReLU()
         self.backbone_layer2_0_downsample_0 = nn.Conv2d(bias=True, dilation=(1,1), groups=1, in_channels=64, kernel_size=(1,1), out_channels=96, padding=(0,0), padding_mode='zeros', stride=(2,2))
-        self.backbone_layer2_0_downsample_1 = nn.InstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
+        self.backbone_layer2_0_downsample_1 = nn.LazyInstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
         self.pnnx_unique_5 = nn.ReLU()
         self.backbone_layer2_1_conv1 = nn.Conv2d(bias=False, dilation=(1,1), groups=1, in_channels=96, kernel_size=(3,3), out_channels=96, padding=(1,1), padding_mode='zeros', stride=(1,1))
-        self.backbone_layer2_1_norm1 = nn.InstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
+        self.backbone_layer2_1_norm1 = nn.LazyInstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
         self.backbone_layer2_1_relu = nn.ReLU()
         self.backbone_layer2_1_conv2 = nn.Conv2d(bias=False, dilation=(1,1), groups=1, in_channels=96, kernel_size=(3,3), out_channels=96, padding=(1,1), padding_mode='zeros', stride=(1,1))
-        self.backbone_layer2_1_norm2 = nn.InstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
+        self.backbone_layer2_1_norm2 = nn.LazyInstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
         self.pnnx_unique_6 = nn.ReLU()
         self.pnnx_unique_7 = nn.ReLU()
         self.backbone_layer3_0_conv1 = nn.Conv2d(bias=False, dilation=(1,1), groups=1, in_channels=96, kernel_size=(3,3), out_channels=128, padding=(1,1), padding_mode='zeros', stride=(1,1))
-        self.backbone_layer3_0_norm1 = nn.InstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
+        self.backbone_layer3_0_norm1 = nn.LazyInstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
         self.backbone_layer3_0_relu = nn.ReLU()
         self.backbone_layer3_0_conv2 = nn.Conv2d(bias=False, dilation=(1,1), groups=1, in_channels=128, kernel_size=(3,3), out_channels=128, padding=(1,1), padding_mode='zeros', stride=(1,1))
-        self.backbone_layer3_0_norm2 = nn.InstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
+        self.backbone_layer3_0_norm2 = nn.LazyInstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
         self.pnnx_unique_8 = nn.ReLU()
         self.backbone_layer3_0_downsample_0 = nn.Conv2d(bias=True, dilation=(1,1), groups=1, in_channels=96, kernel_size=(1,1), out_channels=128, padding=(0,0), padding_mode='zeros', stride=(1,1))
-        self.backbone_layer3_0_downsample_1 = nn.InstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
+        self.backbone_layer3_0_downsample_1 = nn.LazyInstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
         self.pnnx_unique_9 = nn.ReLU()
         self.backbone_layer3_1_conv1 = nn.Conv2d(bias=False, dilation=(1,1), groups=1, in_channels=128, kernel_size=(3,3), out_channels=128, padding=(1,1), padding_mode='zeros', stride=(1,1))
-        self.backbone_layer3_1_norm1 = nn.InstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
+        self.backbone_layer3_1_norm1 = nn.LazyInstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
         self.backbone_layer3_1_relu = nn.ReLU()
         self.backbone_layer3_1_conv2 = nn.Conv2d(bias=False, dilation=(1,1), groups=1, in_channels=128, kernel_size=(3,3), out_channels=128, padding=(1,1), padding_mode='zeros', stride=(1,1))
-        self.backbone_layer3_1_norm2 = nn.InstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
+        self.backbone_layer3_1_norm2 = nn.LazyInstanceNorm2d(affine=False, eps=0.000010, track_running_stats=False)
         self.pnnx_unique_10 = nn.ReLU()
         self.pnnx_unique_11 = nn.ReLU()
         self.backbone_conv2 = nn.Conv2d(bias=True, dilation=(1,1), groups=1, in_channels=128, kernel_size=(1,1), out_channels=128, padding=(0,0), padding_mode='zeros', stride=(1,1))
@@ -467,8 +467,7 @@ class Model(nn.Module):
         self.upsampler_0.weight = self.load_pnnx_bin_as_parameter(archive, 'upsampler.0.weight', (256,130,3,3), 'float32')
         self.upsampler_2.bias = self.load_pnnx_bin_as_parameter(archive, 'upsampler.2.bias', (144), 'float32')
         self.upsampler_2.weight = self.load_pnnx_bin_as_parameter(archive, 'upsampler.2.weight', (144,256,1,1), 'float32')
-        self.pnnx_1_pnnx_1 = self.load_pnnx_bin_as_parameter(archive, 'pnnx_1.pnnx_1', (2), 'float32')
-        self.pnnx_10_pnnx_10 = self.load_pnnx_bin_as_parameter(archive, 'pnnx_10.pnnx_10', (3), 'float32')
+        self.pnnx_9_pnnx_9 = self.load_pnnx_bin_as_parameter(archive, 'pnnx_9.pnnx_9', (3), 'float32')
         self.pnnx_14_pnnx_14 = self.load_pnnx_bin_as_parameter(archive, 'pnnx_14.pnnx_14', (3), 'float32')
         archive.close()
 
@@ -482,1470 +481,1404 @@ class Model(nn.Module):
             tmpf.write(keyfile.read())
         tmpf.close()
         m = np.memmap(tmppath, dtype=dtype, mode='r', shape=shape).copy()
-        os.remove(tmppath)
+        # os.remove(tmppath)
         return torch.from_numpy(m)
 
     def forward(self, v_0, v_1):
-        v_2 = self.pnnx_1_pnnx_1
-        v_3 = self.pnnx_10_pnnx_10
-        v_4 = self.pnnx_14_pnnx_14
-        v_5 = [int(v_0.size(0)), int(v_0.size(1)), int(v_0.size(2)), int(v_0.size(3))]
-        v_6 = v_4.view(1, -1, 1, 1)
-        v_7 = v_6.expand(*v_5)
-        v_8 = v_3.view(1, -1, 1, 1)
-        v_9 = v_8.expand(*v_5)
-        v_10 = ((v_0 - v_7) / v_9)
-        v_11 = ((v_1 - v_7) / v_9)
-        v_12 = torch.cat((v_10, v_11), dim=0)
-        v_13 = self.backbone_conv1(v_12)
-        v_14 = self.backbone_norm1(v_13)
-        v_15 = self.backbone_relu1(v_14)
-        v_16 = self.backbone_layer1_0_conv1(v_15)
-        v_17 = self.backbone_layer1_0_norm1(v_16)
-        v_18 = self.backbone_layer1_0_relu(v_17)
-        v_19 = self.backbone_layer1_0_conv2(v_18)
-        v_20 = self.backbone_layer1_0_norm2(v_19)
-        v_21 = self.pnnx_unique_0(v_20)
-        v_22 = (v_15 + v_21)
-        v_23 = self.pnnx_unique_1(v_22)
-        v_24 = self.backbone_layer1_1_conv1(v_23)
-        v_25 = self.backbone_layer1_1_norm1(v_24)
-        v_26 = self.backbone_layer1_1_relu(v_25)
-        v_27 = self.backbone_layer1_1_conv2(v_26)
-        v_28 = self.backbone_layer1_1_norm2(v_27)
-        v_29 = self.pnnx_unique_2(v_28)
-        v_30 = (v_23 + v_29)
-        v_31 = self.pnnx_unique_3(v_30)
-        v_32 = self.backbone_layer2_0_conv1(v_31)
-        v_33 = self.backbone_layer2_0_norm1(v_32)
-        v_34 = self.backbone_layer2_0_relu(v_33)
-        v_35 = self.backbone_layer2_0_conv2(v_34)
-        v_36 = self.backbone_layer2_0_norm2(v_35)
-        v_37 = self.pnnx_unique_4(v_36)
-        v_38 = self.backbone_layer2_0_downsample_0(v_31)
-        v_39 = self.backbone_layer2_0_downsample_1(v_38)
-        v_40 = (v_39 + v_37)
-        v_41 = self.pnnx_unique_5(v_40)
-        v_42 = self.backbone_layer2_1_conv1(v_41)
-        v_43 = self.backbone_layer2_1_norm1(v_42)
-        v_44 = self.backbone_layer2_1_relu(v_43)
-        v_45 = self.backbone_layer2_1_conv2(v_44)
-        v_46 = self.backbone_layer2_1_norm2(v_45)
-        v_47 = self.pnnx_unique_6(v_46)
-        v_48 = (v_41 + v_47)
-        v_49 = self.pnnx_unique_7(v_48)
-        v_50 = self.backbone_layer3_0_conv1(v_49)
-        v_51 = self.backbone_layer3_0_norm1(v_50)
-        v_52 = self.backbone_layer3_0_relu(v_51)
-        v_53 = self.backbone_layer3_0_conv2(v_52)
-        v_54 = self.backbone_layer3_0_norm2(v_53)
-        v_55 = self.pnnx_unique_8(v_54)
-        v_56 = self.backbone_layer3_0_downsample_0(v_49)
-        v_57 = self.backbone_layer3_0_downsample_1(v_56)
-        v_58 = (v_57 + v_55)
-        v_59 = self.pnnx_unique_9(v_58)
-        v_60 = self.backbone_layer3_1_conv1(v_59)
-        v_61 = self.backbone_layer3_1_norm1(v_60)
-        v_62 = self.backbone_layer3_1_relu(v_61)
-        v_63 = self.backbone_layer3_1_conv2(v_62)
-        v_64 = self.backbone_layer3_1_norm2(v_63)
-        v_65 = self.pnnx_unique_10(v_64)
-        v_66 = (v_59 + v_65)
-        v_67 = self.pnnx_unique_11(v_66)
-        v_68 = self.backbone_conv2(v_67)
-        v_69 = self.conv2d_0(v_68)
-        v_70, v_71 = torch.chunk(input=v_69, chunks=2, dim=0)
-        v_72 = self.conv2d_1(v_68)
-        v_73, v_74 = torch.chunk(input=v_72, chunks=2, dim=0)
-        v_75 = [int(v_70.size(0)), int(v_70.size(1)), 2, int((v_70.size(2) // 2)), 2, int((v_70.size(3) // 2))]
-        v_76 = v_70.view(*v_75)
-        v_77 = [int(((v_70.size(0) * 2) * 2)), int(v_70.size(1)), int((v_70.size(2) // 2)), int((v_70.size(3) // 2))]
-        v_78 = [int(v_71.size(0)), int(v_71.size(1)), 2, int((v_71.size(2) // 2)), 2, int((v_71.size(3) // 2))]
-        v_79 = v_71.view(*v_78)
-        v_80 = [int(((v_71.size(0) * 2) * 2)), int(v_71.size(1)), int((v_71.size(2) // 2)), int((v_71.size(3) // 2))]
-        v_81 = torch.permute(input=v_76, dims=(0,2,4,1,3,5))
-        v_82 = v_81.reshape(*v_77)
-        v_83 = [int(v_82.size(0)), int(v_82.size(2)), int(v_82.size(3))]
-        v_84 = torch.ones(size=v_83)
-        v_85 = torch.cumsum(input=v_84, dim=1)
-        v_86 = v_85[:,-1:]
-        v_87 = ((v_85 / (v_86 + 1.000000e-06)) * 6.283185e+00)
-        v_88 = torch.cumsum(input=v_84, dim=2)
-        v_89 = v_88[:,:,-1:]
-        v_90 = ((v_88 / (v_89 + 1.000000e-06)) * 6.283185e+00)
-        v_91 = torch.arange(end=64)
-        v_92 = torch.pow(1.000000e+04, (((v_91 // 2) * 2) / 64))
-        v_93 = torch.unsqueeze(input=v_90, dim=3)
-        v_94 = (v_93 / v_92)
-        v_95 = torch.unsqueeze(input=v_87, dim=3)
-        v_96 = (v_95 / v_92)
-        v_97 = v_94[:,:,:,::2]
-        v_98 = torch.sin(v_97)
-        v_99 = v_94[:,:,:,1::2]
-        v_100 = torch.cos(v_99)
-        v_101 = torch.stack((v_98, v_100), dim=4)
-        v_102 = v_96[:,:,:,::2]
-        v_103 = torch.sin(v_102)
-        v_104 = v_96[:,:,:,1::2]
-        v_105 = torch.cos(v_104)
-        v_106 = torch.stack((v_103, v_105), dim=4)
-        v_107 = torch.flatten(input=v_106, end_dim=-1, start_dim=3)
-        v_108 = torch.flatten(input=v_101, end_dim=-1, start_dim=3)
-        v_109 = torch.cat((v_107, v_108), dim=3)
-        v_110 = torch.permute(input=v_109, dims=(0,3,1,2))
-        v_111 = (v_82 + v_110)
-        v_112 = torch.permute(input=v_79, dims=(0,2,4,1,3,5))
-        v_113 = v_112.reshape(*v_80)
-        v_114 = (v_113 + v_110)
-        v_115 = [int(((v_111.size(0) // 2) // 2)), 2, 2, int(v_111.size(1)), int(v_111.size(2)), int(v_111.size(3))]
-        v_116 = v_111.view(*v_115)
-        v_117 = [int(((v_111.size(0) // 2) // 2)), int(v_111.size(1)), int((v_111.size(2) * 2)), int((v_111.size(3) * 2))]
-        v_118 = torch.permute(input=v_116, dims=(0,3,1,4,2,5))
-        v_119 = [int(((v_114.size(0) // 2) // 2)), 2, 2, int(v_114.size(1)), int(v_114.size(2)), int(v_114.size(3))]
-        v_120 = v_114.view(*v_119)
-        v_121 = [int(((v_114.size(0) // 2) // 2)), int(v_114.size(1)), int((v_114.size(2) * 2)), int((v_114.size(3) * 2))]
-        v_122 = torch.permute(input=v_120, dims=(0,3,1,4,2,5))
-        v_123 = v_118.reshape(*v_117)
-        v_124 = torch.flatten(input=v_123, end_dim=-1, start_dim=-2)
-        v_125 = v_122.reshape(*v_121)
-        v_126 = torch.flatten(input=v_125, end_dim=-1, start_dim=-2)
-        v_127 = [int((v_123.size(2) - (v_123.size(2) // 2))), int((v_123.size(3) - (v_123.size(3) // 2)))]
-        v_128 = torch.ones(size=v_127)
-        v_129 = [int((v_123.size(2) - (v_123.size(2) // 2))), int(((v_123.size(3) // 2) - ((v_123.size(3) // 2) // 2)))]
-        v_130 = torch.ones(size=v_129)
-        v_131 = (v_130 * 2)
-        v_132 = [int((v_123.size(2) - (v_123.size(2) // 2))), int(((v_123.size(3) // 2) // 2))]
-        v_133 = torch.ones(size=v_132)
-        v_134 = (v_133 * 3)
-        v_135 = [int(((v_123.size(2) // 2) - ((v_123.size(2) // 2) // 2))), int((v_123.size(3) - (v_123.size(3) // 2)))]
-        v_136 = torch.ones(size=v_135)
-        v_137 = (v_136 * 4)
-        v_138 = [int(((v_123.size(2) // 2) - ((v_123.size(2) // 2) // 2))), int(((v_123.size(3) // 2) - ((v_123.size(3) // 2) // 2)))]
-        v_139 = torch.ones(size=v_138)
-        v_140 = (v_139 * 5)
-        v_141 = [int(((v_123.size(2) // 2) - ((v_123.size(2) // 2) // 2))), int(((v_123.size(3) // 2) // 2))]
-        v_142 = torch.ones(size=v_141)
-        v_143 = (v_142 * 6)
-        v_144 = [int(((v_123.size(2) // 2) // 2)), int((v_123.size(3) - (v_123.size(3) // 2)))]
-        v_145 = torch.ones(size=v_144)
-        v_146 = (v_145 * 7)
-        v_147 = [int(((v_123.size(2) // 2) // 2)), int(((v_123.size(3) // 2) - ((v_123.size(3) // 2) // 2)))]
-        v_148 = torch.ones(size=v_147)
-        v_149 = (v_148 * 8)
-        v_150 = [int(((v_123.size(2) // 2) // 2)), int(((v_123.size(3) // 2) // 2))]
-        v_151 = torch.ones(size=v_150)
-        v_152 = (v_151 * 9)
-        v_153 = torch.cat((v_146, v_149, v_152), dim=1)
-        v_154 = torch.cat((v_137, v_140, v_143), dim=1)
-        v_155 = torch.cat((v_128, v_131, v_134), dim=1)
-        v_156 = torch.cat((v_155, v_154, v_153), dim=0)
-        v_157 = torch.unsqueeze(input=v_156, dim=0)
-        v_158 = torch.unsqueeze(input=v_157, dim=-1)
-        v_159 = [int(v_158.size(0)), int((v_123.size(3) // (v_123.size(3) // 2))), int((v_158.size(1) // (v_123.size(3) // (v_123.size(3) // 2)))), int((v_123.size(3) // (v_123.size(3) // 2))), int((v_158.size(2) // (v_123.size(3) // (v_123.size(3) // 2)))), int(v_158.size(3))]
-        v_160 = v_158.view(*v_159)
-        v_161 = [-1, int(((v_123.size(2) // 2) * (v_123.size(3) // 2)))]
-        v_162 = torch.permute(input=v_160, dims=(0,1,3,2,4,5))
-        v_163 = v_162.reshape(*v_161)
-        v_164 = torch.unsqueeze(input=v_163, dim=2)
-        v_165 = torch.unsqueeze(input=v_163, dim=1)
-        v_166 = (v_165 - v_164)
-        v_167 = torch.permute(input=v_126, dims=(0,2,1))
-        v_168 = torch.permute(input=v_124, dims=(0,2,1))
-        v_169 = torch.cat((v_168, v_167), dim=0)
-        v_170 = self.transformer_layers_0_self_attn_q_proj(v_169)
-        v_171 = self.transformer_layers_0_self_attn_k_proj(v_169)
-        v_172 = self.transformer_layers_0_self_attn_v_proj(v_169)
-        v_173 = [int(v_170.size(0)), int(v_123.size(2)), int(v_123.size(3)), int(v_170.size(2))]
-        v_174 = v_170.view(*v_173)
-        v_175 = [int(v_174.size(0)), 2, int((v_174.size(1) // 2)), 2, int((v_174.size(2) // 2)), int(v_174.size(3))]
-        v_176 = v_174.view(*v_175)
-        v_177 = v_171.view(*v_173)
-        v_178 = [int(v_177.size(0)), 2, int((v_177.size(1) // 2)), 2, int((v_177.size(2) // 2)), int(v_177.size(3))]
-        v_179 = v_177.view(*v_178)
-        v_180 = v_172.view(*v_173)
-        v_181 = [int(v_180.size(0)), 2, int((v_180.size(1) // 2)), 2, int((v_180.size(2) // 2)), int(v_180.size(3))]
-        v_182 = v_180.view(*v_181)
-        v_183 = [int(((v_170.size(0) * 2) * 2)), -1, int(v_170.size(2))]
-        v_184 = torch.permute(input=v_176, dims=(0,1,3,2,4,5))
-        v_185 = torch.permute(input=v_179, dims=(0,1,3,2,4,5))
-        v_186 = v_185.reshape(*v_183)
-        v_187 = v_184.reshape(*v_183)
-        v_188 = torch.permute(input=v_186, dims=(0,2,1))
-        v_189 = torch.matmul(input=v_187, other=v_188)
-        v_190 = (v_189 / torch.pow(v_170.size(2), 5.000000e-01))
-        v_191 = torch.permute(input=v_182, dims=(0,1,3,2,4,5))
-        v_192 = F.softmax(input=v_190, dim=-1)
-        v_193 = v_191.reshape(*v_183)
-        v_194 = [int(((v_170.size(0) * 2) * 2)), int((v_123.size(2) // 2)), int((v_123.size(3) // 2)), int(v_170.size(2))]
-        v_195 = torch.matmul(input=v_192, other=v_193)
-        v_196 = v_195.view(*v_194)
-        v_197 = [int(((v_196.size(0) // 2) // 2)), 2, 2, int(v_196.size(1)), int(v_196.size(2)), int(v_196.size(3))]
-        v_198 = v_196.view(*v_197)
-        v_199 = torch.permute(input=v_198, dims=(0,1,3,2,4,5))
-        v_200 = [int(v_170.size(0)), -1, int(v_170.size(2))]
-        v_201 = v_199.reshape(*v_200)
-        v_202 = self.transformer_layers_0_self_attn_merge(v_201)
-        v_203 = self.transformer_layers_0_self_attn_norm1(v_202)
-        v_204 = (v_169 + v_203)
-        v_205 = self.transformer_layers_0_cross_attn_ffn_q_proj(v_204)
-        v_206 = torch.cat((v_167, v_168), dim=0)
-        v_207 = self.transformer_layers_0_cross_attn_ffn_k_proj(v_206)
-        v_208 = self.transformer_layers_0_cross_attn_ffn_v_proj(v_206)
-        v_209 = [int(v_205.size(0)), int(v_123.size(2)), int(v_123.size(3)), int(v_205.size(2))]
-        v_210 = v_205.view(*v_209)
-        v_211 = [int(v_210.size(0)), 2, int((v_210.size(1) // 2)), 2, int((v_210.size(2) // 2)), int(v_210.size(3))]
-        v_212 = v_210.view(*v_211)
-        v_213 = v_207.view(*v_209)
-        v_214 = [int(v_213.size(0)), 2, int((v_213.size(1) // 2)), 2, int((v_213.size(2) // 2)), int(v_213.size(3))]
-        v_215 = v_213.view(*v_214)
-        v_216 = v_208.view(*v_209)
-        v_217 = [int(v_216.size(0)), 2, int((v_216.size(1) // 2)), 2, int((v_216.size(2) // 2)), int(v_216.size(3))]
-        v_218 = v_216.view(*v_217)
-        v_219 = [int(((v_205.size(0) * 2) * 2)), -1, int(v_205.size(2))]
-        v_220 = torch.permute(input=v_212, dims=(0,1,3,2,4,5))
-        v_221 = torch.permute(input=v_215, dims=(0,1,3,2,4,5))
-        v_222 = v_221.reshape(*v_219)
-        v_223 = v_220.reshape(*v_219)
-        v_224 = torch.permute(input=v_222, dims=(0,2,1))
-        v_225 = torch.matmul(input=v_223, other=v_224)
-        v_226 = (v_225 / torch.pow(v_205.size(2), 5.000000e-01))
-        v_227 = torch.permute(input=v_218, dims=(0,1,3,2,4,5))
-        v_228 = F.softmax(input=v_226, dim=-1)
-        v_229 = v_227.reshape(*v_219)
-        v_230 = [int(((v_205.size(0) * 2) * 2)), int((v_123.size(2) // 2)), int((v_123.size(3) // 2)), int(v_205.size(2))]
-        v_231 = torch.matmul(input=v_228, other=v_229)
-        v_232 = v_231.view(*v_230)
-        v_233 = [int(((v_232.size(0) // 2) // 2)), 2, 2, int(v_232.size(1)), int(v_232.size(2)), int(v_232.size(3))]
-        v_234 = v_232.view(*v_233)
-        v_235 = torch.permute(input=v_234, dims=(0,1,3,2,4,5))
-        v_236 = [int(v_205.size(0)), -1, int(v_205.size(2))]
-        v_237 = v_235.reshape(*v_236)
-        v_238 = self.transformer_layers_0_cross_attn_ffn_merge(v_237)
-        v_239 = self.transformer_layers_0_cross_attn_ffn_norm1(v_238)
-        v_240 = torch.cat((v_204, v_239), dim=-1)
-        v_241 = self.transformer_layers_0_cross_attn_ffn_mlp_0(v_240)
-        v_242 = self.transformer_layers_0_cross_attn_ffn_mlp_1(v_241)
-        v_243 = self.transformer_layers_0_cross_attn_ffn_mlp_2(v_242)
-        v_244 = self.transformer_layers_0_cross_attn_ffn_norm2(v_243)
-        v_245 = (v_204 + v_244)
-        v_246, v_247 = torch.chunk(input=v_245, chunks=2, dim=0)
-        v_248 = self.transformer_layers_1_self_attn_q_proj(v_245)
-        v_249 = self.transformer_layers_1_self_attn_k_proj(v_245)
-        v_250 = self.transformer_layers_1_self_attn_v_proj(v_245)
-        v_251 = [int(v_248.size(0)), int(v_123.size(2)), int(v_123.size(3)), int(v_248.size(2))]
-        v_252 = [int(torch.neg(((v_123.size(2) // 2) // 2))), int(torch.neg(((v_123.size(3) // 2) // 2)))]
-        v_253 = v_248.view(*v_251)
-        v_254 = torch.roll(input=v_253, shifts=v_252, dims=(1,2))
-        v_255 = [int(v_254.size(0)), 2, int((v_254.size(1) // 2)), 2, int((v_254.size(2) // 2)), int(v_254.size(3))]
-        v_256 = v_254.view(*v_255)
-        v_257 = v_249.view(*v_251)
-        v_258 = torch.roll(input=v_257, shifts=v_252, dims=(1,2))
-        v_259 = [int(v_258.size(0)), 2, int((v_258.size(1) // 2)), 2, int((v_258.size(2) // 2)), int(v_258.size(3))]
-        v_260 = v_258.view(*v_259)
-        v_261 = v_250.view(*v_251)
-        v_262 = torch.roll(input=v_261, shifts=v_252, dims=(1,2))
-        v_263 = [int(v_262.size(0)), 2, int((v_262.size(1) // 2)), 2, int((v_262.size(2) // 2)), int(v_262.size(3))]
-        v_264 = v_262.view(*v_263)
-        v_265 = [int(((v_248.size(0) * 2) * 2)), -1, int(v_248.size(2))]
-        v_266 = torch.permute(input=v_256, dims=(0,1,3,2,4,5))
-        v_267 = torch.permute(input=v_260, dims=(0,1,3,2,4,5))
-        v_268 = v_267.reshape(*v_265)
-        v_269 = v_266.reshape(*v_265)
-        v_270 = torch.permute(input=v_268, dims=(0,2,1))
-        v_271 = torch.matmul(input=v_269, other=v_270)
-        v_272 = [int(v_248.size(0)), 1, 1]
-        v_273 = torch.ne(input=v_166, other=0)
-        v_274 = v_166.masked_fill(v_273, value=-100.000000)
-        v_275 = torch.eq(input=v_166, other=0)
-        v_276 = v_274.masked_fill(v_275, value=0.000000)
-        v_277 = v_276.repeat(*v_272)
-        v_278 = ((v_271 / torch.pow(v_248.size(2), 5.000000e-01)) + v_277)
-        v_279 = torch.permute(input=v_264, dims=(0,1,3,2,4,5))
-        v_280 = F.softmax(input=v_278, dim=-1)
-        v_281 = v_279.reshape(*v_265)
-        v_282 = [int(((v_248.size(0) * 2) * 2)), int((v_123.size(2) // 2)), int((v_123.size(3) // 2)), int(v_248.size(2))]
-        v_283 = torch.matmul(input=v_280, other=v_281)
-        v_284 = v_283.view(*v_282)
-        v_285 = [int(((v_284.size(0) // 2) // 2)), 2, 2, int(v_284.size(1)), int(v_284.size(2)), int(v_284.size(3))]
-        v_286 = v_284.view(*v_285)
-        v_287 = [int(((v_284.size(0) // 2) // 2)), int((v_284.size(1) * 2)), int((v_284.size(2) * 2)), int(v_284.size(3))]
-        v_288 = torch.permute(input=v_286, dims=(0,1,3,2,4,5))
-        v_289 = [int(v_248.size(0)), -1, int(v_248.size(2))]
-        v_290 = v_288.reshape(*v_287)
-        v_291 = torch.roll(input=v_290, shifts=v_150, dims=(1,2))
-        v_292 = v_291.view(*v_289)
-        v_293 = self.transformer_layers_1_self_attn_merge(v_292)
-        v_294 = self.transformer_layers_1_self_attn_norm1(v_293)
-        v_295 = (v_245 + v_294)
-        v_296 = self.transformer_layers_1_cross_attn_ffn_q_proj(v_295)
-        v_297 = torch.cat((v_247, v_246), dim=0)
-        v_298 = self.transformer_layers_1_cross_attn_ffn_k_proj(v_297)
-        v_299 = self.transformer_layers_1_cross_attn_ffn_v_proj(v_297)
-        v_300 = [int(v_296.size(0)), int(v_123.size(2)), int(v_123.size(3)), int(v_296.size(2))]
-        v_301 = v_296.view(*v_300)
-        v_302 = torch.roll(input=v_301, shifts=v_252, dims=(1,2))
-        v_303 = [int(v_302.size(0)), 2, int((v_302.size(1) // 2)), 2, int((v_302.size(2) // 2)), int(v_302.size(3))]
-        v_304 = v_302.view(*v_303)
-        v_305 = v_298.view(*v_300)
-        v_306 = torch.roll(input=v_305, shifts=v_252, dims=(1,2))
-        v_307 = [int(v_306.size(0)), 2, int((v_306.size(1) // 2)), 2, int((v_306.size(2) // 2)), int(v_306.size(3))]
-        v_308 = v_306.view(*v_307)
-        v_309 = v_299.view(*v_300)
-        v_310 = torch.roll(input=v_309, shifts=v_252, dims=(1,2))
-        v_311 = [int(v_310.size(0)), 2, int((v_310.size(1) // 2)), 2, int((v_310.size(2) // 2)), int(v_310.size(3))]
-        v_312 = v_310.view(*v_311)
-        v_313 = [int(((v_296.size(0) * 2) * 2)), -1, int(v_296.size(2))]
-        v_314 = torch.permute(input=v_304, dims=(0,1,3,2,4,5))
-        v_315 = torch.permute(input=v_308, dims=(0,1,3,2,4,5))
-        v_316 = v_315.reshape(*v_313)
-        v_317 = v_314.reshape(*v_313)
-        v_318 = torch.permute(input=v_316, dims=(0,2,1))
-        v_319 = torch.matmul(input=v_317, other=v_318)
-        v_320 = [int(v_296.size(0)), 1, 1]
-        v_321 = v_276.repeat(*v_320)
-        v_322 = ((v_319 / torch.pow(v_296.size(2), 5.000000e-01)) + v_321)
-        v_323 = torch.permute(input=v_312, dims=(0,1,3,2,4,5))
-        v_324 = F.softmax(input=v_322, dim=-1)
-        v_325 = v_323.reshape(*v_313)
-        v_326 = [int(((v_296.size(0) * 2) * 2)), int((v_123.size(2) // 2)), int((v_123.size(3) // 2)), int(v_296.size(2))]
-        v_327 = torch.matmul(input=v_324, other=v_325)
-        v_328 = v_327.view(*v_326)
-        v_329 = [int(((v_328.size(0) // 2) // 2)), 2, 2, int(v_328.size(1)), int(v_328.size(2)), int(v_328.size(3))]
-        v_330 = v_328.view(*v_329)
-        v_331 = [int(((v_328.size(0) // 2) // 2)), int((v_328.size(1) * 2)), int((v_328.size(2) * 2)), int(v_328.size(3))]
-        v_332 = torch.permute(input=v_330, dims=(0,1,3,2,4,5))
-        v_333 = [int(v_296.size(0)), -1, int(v_296.size(2))]
-        v_334 = v_332.reshape(*v_331)
-        v_335 = torch.roll(input=v_334, shifts=v_150, dims=(1,2))
-        v_336 = v_335.view(*v_333)
-        v_337 = self.transformer_layers_1_cross_attn_ffn_merge(v_336)
-        v_338 = self.transformer_layers_1_cross_attn_ffn_norm1(v_337)
-        v_339 = torch.cat((v_295, v_338), dim=-1)
-        v_340 = self.transformer_layers_1_cross_attn_ffn_mlp_0(v_339)
-        v_341 = self.transformer_layers_1_cross_attn_ffn_mlp_1(v_340)
-        v_342 = self.transformer_layers_1_cross_attn_ffn_mlp_2(v_341)
-        v_343 = self.transformer_layers_1_cross_attn_ffn_norm2(v_342)
-        v_344 = (v_295 + v_343)
-        v_345, v_346 = torch.chunk(input=v_344, chunks=2, dim=0)
-        v_347 = self.transformer_layers_2_self_attn_q_proj(v_344)
-        v_348 = self.transformer_layers_2_self_attn_k_proj(v_344)
-        v_349 = self.transformer_layers_2_self_attn_v_proj(v_344)
-        v_350 = [int(v_347.size(0)), int(v_123.size(2)), int(v_123.size(3)), int(v_347.size(2))]
-        v_351 = v_347.view(*v_350)
-        v_352 = [int(v_351.size(0)), 2, int((v_351.size(1) // 2)), 2, int((v_351.size(2) // 2)), int(v_351.size(3))]
-        v_353 = v_351.view(*v_352)
-        v_354 = v_348.view(*v_350)
-        v_355 = [int(v_354.size(0)), 2, int((v_354.size(1) // 2)), 2, int((v_354.size(2) // 2)), int(v_354.size(3))]
-        v_356 = v_354.view(*v_355)
-        v_357 = v_349.view(*v_350)
-        v_358 = [int(v_357.size(0)), 2, int((v_357.size(1) // 2)), 2, int((v_357.size(2) // 2)), int(v_357.size(3))]
-        v_359 = v_357.view(*v_358)
-        v_360 = [int(((v_347.size(0) * 2) * 2)), -1, int(v_347.size(2))]
-        v_361 = torch.permute(input=v_353, dims=(0,1,3,2,4,5))
-        v_362 = torch.permute(input=v_356, dims=(0,1,3,2,4,5))
-        v_363 = v_362.reshape(*v_360)
-        v_364 = v_361.reshape(*v_360)
-        v_365 = torch.permute(input=v_363, dims=(0,2,1))
-        v_366 = torch.matmul(input=v_364, other=v_365)
-        v_367 = (v_366 / torch.pow(v_347.size(2), 5.000000e-01))
-        v_368 = torch.permute(input=v_359, dims=(0,1,3,2,4,5))
-        v_369 = F.softmax(input=v_367, dim=-1)
-        v_370 = v_368.reshape(*v_360)
-        v_371 = [int(((v_347.size(0) * 2) * 2)), int((v_123.size(2) // 2)), int((v_123.size(3) // 2)), int(v_347.size(2))]
-        v_372 = torch.matmul(input=v_369, other=v_370)
-        v_373 = v_372.view(*v_371)
-        v_374 = [int(((v_373.size(0) // 2) // 2)), 2, 2, int(v_373.size(1)), int(v_373.size(2)), int(v_373.size(3))]
-        v_375 = v_373.view(*v_374)
-        v_376 = torch.permute(input=v_375, dims=(0,1,3,2,4,5))
-        v_377 = [int(v_347.size(0)), -1, int(v_347.size(2))]
-        v_378 = v_376.reshape(*v_377)
-        v_379 = self.transformer_layers_2_self_attn_merge(v_378)
-        v_380 = self.transformer_layers_2_self_attn_norm1(v_379)
-        v_381 = (v_344 + v_380)
-        v_382 = self.transformer_layers_2_cross_attn_ffn_q_proj(v_381)
-        v_383 = torch.cat((v_346, v_345), dim=0)
-        v_384 = self.transformer_layers_2_cross_attn_ffn_k_proj(v_383)
-        v_385 = self.transformer_layers_2_cross_attn_ffn_v_proj(v_383)
-        v_386 = [int(v_382.size(0)), int(v_123.size(2)), int(v_123.size(3)), int(v_382.size(2))]
-        v_387 = v_382.view(*v_386)
-        v_388 = [int(v_387.size(0)), 2, int((v_387.size(1) // 2)), 2, int((v_387.size(2) // 2)), int(v_387.size(3))]
-        v_389 = v_387.view(*v_388)
-        v_390 = v_384.view(*v_386)
-        v_391 = [int(v_390.size(0)), 2, int((v_390.size(1) // 2)), 2, int((v_390.size(2) // 2)), int(v_390.size(3))]
-        v_392 = v_390.view(*v_391)
-        v_393 = v_385.view(*v_386)
-        v_394 = [int(v_393.size(0)), 2, int((v_393.size(1) // 2)), 2, int((v_393.size(2) // 2)), int(v_393.size(3))]
-        v_395 = v_393.view(*v_394)
-        v_396 = [int(((v_382.size(0) * 2) * 2)), -1, int(v_382.size(2))]
-        v_397 = torch.permute(input=v_389, dims=(0,1,3,2,4,5))
-        v_398 = torch.permute(input=v_392, dims=(0,1,3,2,4,5))
-        v_399 = v_398.reshape(*v_396)
-        v_400 = v_397.reshape(*v_396)
-        v_401 = torch.permute(input=v_399, dims=(0,2,1))
-        v_402 = torch.matmul(input=v_400, other=v_401)
-        v_403 = (v_402 / torch.pow(v_382.size(2), 5.000000e-01))
-        v_404 = torch.permute(input=v_395, dims=(0,1,3,2,4,5))
-        v_405 = F.softmax(input=v_403, dim=-1)
-        v_406 = v_404.reshape(*v_396)
-        v_407 = [int(((v_382.size(0) * 2) * 2)), int((v_123.size(2) // 2)), int((v_123.size(3) // 2)), int(v_382.size(2))]
-        v_408 = torch.matmul(input=v_405, other=v_406)
-        v_409 = v_408.view(*v_407)
-        v_410 = [int(((v_409.size(0) // 2) // 2)), 2, 2, int(v_409.size(1)), int(v_409.size(2)), int(v_409.size(3))]
-        v_411 = v_409.view(*v_410)
-        v_412 = torch.permute(input=v_411, dims=(0,1,3,2,4,5))
-        v_413 = [int(v_382.size(0)), -1, int(v_382.size(2))]
-        v_414 = v_412.reshape(*v_413)
-        v_415 = self.transformer_layers_2_cross_attn_ffn_merge(v_414)
-        v_416 = self.transformer_layers_2_cross_attn_ffn_norm1(v_415)
-        v_417 = torch.cat((v_381, v_416), dim=-1)
-        v_418 = self.transformer_layers_2_cross_attn_ffn_mlp_0(v_417)
-        v_419 = self.transformer_layers_2_cross_attn_ffn_mlp_1(v_418)
-        v_420 = self.transformer_layers_2_cross_attn_ffn_mlp_2(v_419)
-        v_421 = self.transformer_layers_2_cross_attn_ffn_norm2(v_420)
-        v_422 = (v_381 + v_421)
-        v_423, v_424 = torch.chunk(input=v_422, chunks=2, dim=0)
-        v_425 = self.transformer_layers_3_self_attn_q_proj(v_422)
-        v_426 = self.transformer_layers_3_self_attn_k_proj(v_422)
-        v_427 = self.transformer_layers_3_self_attn_v_proj(v_422)
-        v_428 = [int(v_425.size(0)), int(v_123.size(2)), int(v_123.size(3)), int(v_425.size(2))]
-        v_429 = v_425.view(*v_428)
-        v_430 = torch.roll(input=v_429, shifts=v_252, dims=(1,2))
-        v_431 = [int(v_430.size(0)), 2, int((v_430.size(1) // 2)), 2, int((v_430.size(2) // 2)), int(v_430.size(3))]
-        v_432 = v_430.view(*v_431)
-        v_433 = v_426.view(*v_428)
-        v_434 = torch.roll(input=v_433, shifts=v_252, dims=(1,2))
-        v_435 = [int(v_434.size(0)), 2, int((v_434.size(1) // 2)), 2, int((v_434.size(2) // 2)), int(v_434.size(3))]
-        v_436 = v_434.view(*v_435)
-        v_437 = v_427.view(*v_428)
-        v_438 = torch.roll(input=v_437, shifts=v_252, dims=(1,2))
-        v_439 = [int(v_438.size(0)), 2, int((v_438.size(1) // 2)), 2, int((v_438.size(2) // 2)), int(v_438.size(3))]
-        v_440 = v_438.view(*v_439)
-        v_441 = [int(((v_425.size(0) * 2) * 2)), -1, int(v_425.size(2))]
-        v_442 = torch.permute(input=v_432, dims=(0,1,3,2,4,5))
-        v_443 = torch.permute(input=v_436, dims=(0,1,3,2,4,5))
-        v_444 = v_443.reshape(*v_441)
-        v_445 = v_442.reshape(*v_441)
-        v_446 = torch.permute(input=v_444, dims=(0,2,1))
-        v_447 = torch.matmul(input=v_445, other=v_446)
-        v_448 = [int(v_425.size(0)), 1, 1]
-        v_449 = v_276.repeat(*v_448)
-        v_450 = ((v_447 / torch.pow(v_425.size(2), 5.000000e-01)) + v_449)
-        v_451 = torch.permute(input=v_440, dims=(0,1,3,2,4,5))
-        v_452 = F.softmax(input=v_450, dim=-1)
-        v_453 = v_451.reshape(*v_441)
-        v_454 = [int(((v_425.size(0) * 2) * 2)), int((v_123.size(2) // 2)), int((v_123.size(3) // 2)), int(v_425.size(2))]
-        v_455 = torch.matmul(input=v_452, other=v_453)
-        v_456 = v_455.view(*v_454)
-        v_457 = [int(((v_456.size(0) // 2) // 2)), 2, 2, int(v_456.size(1)), int(v_456.size(2)), int(v_456.size(3))]
-        v_458 = v_456.view(*v_457)
-        v_459 = [int(((v_456.size(0) // 2) // 2)), int((v_456.size(1) * 2)), int((v_456.size(2) * 2)), int(v_456.size(3))]
-        v_460 = torch.permute(input=v_458, dims=(0,1,3,2,4,5))
-        v_461 = [int(v_425.size(0)), -1, int(v_425.size(2))]
-        v_462 = v_460.reshape(*v_459)
-        v_463 = torch.roll(input=v_462, shifts=v_150, dims=(1,2))
-        v_464 = v_463.view(*v_461)
-        v_465 = self.transformer_layers_3_self_attn_merge(v_464)
-        v_466 = self.transformer_layers_3_self_attn_norm1(v_465)
-        v_467 = (v_422 + v_466)
-        v_468 = self.transformer_layers_3_cross_attn_ffn_q_proj(v_467)
-        v_469 = torch.cat((v_424, v_423), dim=0)
-        v_470 = self.transformer_layers_3_cross_attn_ffn_k_proj(v_469)
-        v_471 = self.transformer_layers_3_cross_attn_ffn_v_proj(v_469)
-        v_472 = [int(v_468.size(0)), int(v_123.size(2)), int(v_123.size(3)), int(v_468.size(2))]
-        v_473 = v_468.view(*v_472)
-        v_474 = torch.roll(input=v_473, shifts=v_252, dims=(1,2))
-        v_475 = [int(v_474.size(0)), 2, int((v_474.size(1) // 2)), 2, int((v_474.size(2) // 2)), int(v_474.size(3))]
-        v_476 = v_474.view(*v_475)
-        v_477 = v_470.view(*v_472)
-        v_478 = torch.roll(input=v_477, shifts=v_252, dims=(1,2))
-        v_479 = [int(v_478.size(0)), 2, int((v_478.size(1) // 2)), 2, int((v_478.size(2) // 2)), int(v_478.size(3))]
-        v_480 = v_478.view(*v_479)
-        v_481 = v_471.view(*v_472)
-        v_482 = torch.roll(input=v_481, shifts=v_252, dims=(1,2))
-        v_483 = [int(v_482.size(0)), 2, int((v_482.size(1) // 2)), 2, int((v_482.size(2) // 2)), int(v_482.size(3))]
-        v_484 = v_482.view(*v_483)
-        v_485 = [int(((v_468.size(0) * 2) * 2)), -1, int(v_468.size(2))]
-        v_486 = torch.permute(input=v_476, dims=(0,1,3,2,4,5))
-        v_487 = torch.permute(input=v_480, dims=(0,1,3,2,4,5))
-        v_488 = v_487.reshape(*v_485)
-        v_489 = v_486.reshape(*v_485)
-        v_490 = torch.permute(input=v_488, dims=(0,2,1))
-        v_491 = torch.matmul(input=v_489, other=v_490)
-        v_492 = [int(v_468.size(0)), 1, 1]
-        v_493 = v_276.repeat(*v_492)
-        v_494 = ((v_491 / torch.pow(v_468.size(2), 5.000000e-01)) + v_493)
-        v_495 = torch.permute(input=v_484, dims=(0,1,3,2,4,5))
-        v_496 = F.softmax(input=v_494, dim=-1)
-        v_497 = v_495.reshape(*v_485)
-        v_498 = [int(((v_468.size(0) * 2) * 2)), int((v_123.size(2) // 2)), int((v_123.size(3) // 2)), int(v_468.size(2))]
-        v_499 = torch.matmul(input=v_496, other=v_497)
-        v_500 = v_499.view(*v_498)
-        v_501 = [int(((v_500.size(0) // 2) // 2)), 2, 2, int(v_500.size(1)), int(v_500.size(2)), int(v_500.size(3))]
-        v_502 = v_500.view(*v_501)
-        v_503 = [int(((v_500.size(0) // 2) // 2)), int((v_500.size(1) * 2)), int((v_500.size(2) * 2)), int(v_500.size(3))]
-        v_504 = torch.permute(input=v_502, dims=(0,1,3,2,4,5))
-        v_505 = [int(v_468.size(0)), -1, int(v_468.size(2))]
-        v_506 = v_504.reshape(*v_503)
-        v_507 = torch.roll(input=v_506, shifts=v_150, dims=(1,2))
-        v_508 = v_507.view(*v_505)
-        v_509 = self.transformer_layers_3_cross_attn_ffn_merge(v_508)
-        v_510 = self.transformer_layers_3_cross_attn_ffn_norm1(v_509)
-        v_511 = torch.cat((v_467, v_510), dim=-1)
-        v_512 = self.transformer_layers_3_cross_attn_ffn_mlp_0(v_511)
-        v_513 = self.transformer_layers_3_cross_attn_ffn_mlp_1(v_512)
-        v_514 = self.transformer_layers_3_cross_attn_ffn_mlp_2(v_513)
-        v_515 = self.transformer_layers_3_cross_attn_ffn_norm2(v_514)
-        v_516 = (v_467 + v_515)
-        v_517, v_518 = torch.chunk(input=v_516, chunks=2, dim=0)
-        v_519 = self.transformer_layers_4_self_attn_q_proj(v_516)
-        v_520 = self.transformer_layers_4_self_attn_k_proj(v_516)
-        v_521 = self.transformer_layers_4_self_attn_v_proj(v_516)
-        v_522 = [int(v_519.size(0)), int(v_123.size(2)), int(v_123.size(3)), int(v_519.size(2))]
-        v_523 = v_519.view(*v_522)
-        v_524 = [int(v_523.size(0)), 2, int((v_523.size(1) // 2)), 2, int((v_523.size(2) // 2)), int(v_523.size(3))]
-        v_525 = v_523.view(*v_524)
-        v_526 = v_520.view(*v_522)
-        v_527 = [int(v_526.size(0)), 2, int((v_526.size(1) // 2)), 2, int((v_526.size(2) // 2)), int(v_526.size(3))]
-        v_528 = v_526.view(*v_527)
-        v_529 = v_521.view(*v_522)
-        v_530 = [int(v_529.size(0)), 2, int((v_529.size(1) // 2)), 2, int((v_529.size(2) // 2)), int(v_529.size(3))]
-        v_531 = v_529.view(*v_530)
-        v_532 = [int(((v_519.size(0) * 2) * 2)), -1, int(v_519.size(2))]
-        v_533 = torch.permute(input=v_525, dims=(0,1,3,2,4,5))
-        v_534 = torch.permute(input=v_528, dims=(0,1,3,2,4,5))
-        v_535 = v_534.reshape(*v_532)
-        v_536 = v_533.reshape(*v_532)
-        v_537 = torch.permute(input=v_535, dims=(0,2,1))
-        v_538 = torch.matmul(input=v_536, other=v_537)
-        v_539 = (v_538 / torch.pow(v_519.size(2), 5.000000e-01))
-        v_540 = torch.permute(input=v_531, dims=(0,1,3,2,4,5))
-        v_541 = F.softmax(input=v_539, dim=-1)
-        v_542 = v_540.reshape(*v_532)
-        v_543 = [int(((v_519.size(0) * 2) * 2)), int((v_123.size(2) // 2)), int((v_123.size(3) // 2)), int(v_519.size(2))]
-        v_544 = torch.matmul(input=v_541, other=v_542)
-        v_545 = v_544.view(*v_543)
-        v_546 = [int(((v_545.size(0) // 2) // 2)), 2, 2, int(v_545.size(1)), int(v_545.size(2)), int(v_545.size(3))]
-        v_547 = v_545.view(*v_546)
-        v_548 = torch.permute(input=v_547, dims=(0,1,3,2,4,5))
-        v_549 = [int(v_519.size(0)), -1, int(v_519.size(2))]
-        v_550 = v_548.reshape(*v_549)
-        v_551 = self.transformer_layers_4_self_attn_merge(v_550)
-        v_552 = self.transformer_layers_4_self_attn_norm1(v_551)
-        v_553 = (v_516 + v_552)
-        v_554 = self.transformer_layers_4_cross_attn_ffn_q_proj(v_553)
-        v_555 = torch.cat((v_518, v_517), dim=0)
-        v_556 = self.transformer_layers_4_cross_attn_ffn_k_proj(v_555)
-        v_557 = self.transformer_layers_4_cross_attn_ffn_v_proj(v_555)
-        v_558 = [int(v_554.size(0)), int(v_123.size(2)), int(v_123.size(3)), int(v_554.size(2))]
-        v_559 = v_554.view(*v_558)
-        v_560 = [int(v_559.size(0)), 2, int((v_559.size(1) // 2)), 2, int((v_559.size(2) // 2)), int(v_559.size(3))]
-        v_561 = v_559.view(*v_560)
-        v_562 = v_556.view(*v_558)
-        v_563 = [int(v_562.size(0)), 2, int((v_562.size(1) // 2)), 2, int((v_562.size(2) // 2)), int(v_562.size(3))]
-        v_564 = v_562.view(*v_563)
-        v_565 = v_557.view(*v_558)
-        v_566 = [int(v_565.size(0)), 2, int((v_565.size(1) // 2)), 2, int((v_565.size(2) // 2)), int(v_565.size(3))]
-        v_567 = v_565.view(*v_566)
-        v_568 = [int(((v_554.size(0) * 2) * 2)), -1, int(v_554.size(2))]
-        v_569 = torch.permute(input=v_561, dims=(0,1,3,2,4,5))
-        v_570 = torch.permute(input=v_564, dims=(0,1,3,2,4,5))
-        v_571 = v_570.reshape(*v_568)
-        v_572 = v_569.reshape(*v_568)
-        v_573 = torch.permute(input=v_571, dims=(0,2,1))
-        v_574 = torch.matmul(input=v_572, other=v_573)
-        v_575 = (v_574 / torch.pow(v_554.size(2), 5.000000e-01))
-        v_576 = torch.permute(input=v_567, dims=(0,1,3,2,4,5))
-        v_577 = F.softmax(input=v_575, dim=-1)
-        v_578 = v_576.reshape(*v_568)
-        v_579 = [int(((v_554.size(0) * 2) * 2)), int((v_123.size(2) // 2)), int((v_123.size(3) // 2)), int(v_554.size(2))]
-        v_580 = torch.matmul(input=v_577, other=v_578)
-        v_581 = v_580.view(*v_579)
-        v_582 = [int(((v_581.size(0) // 2) // 2)), 2, 2, int(v_581.size(1)), int(v_581.size(2)), int(v_581.size(3))]
-        v_583 = v_581.view(*v_582)
-        v_584 = torch.permute(input=v_583, dims=(0,1,3,2,4,5))
-        v_585 = [int(v_554.size(0)), -1, int(v_554.size(2))]
-        v_586 = v_584.reshape(*v_585)
-        v_587 = self.transformer_layers_4_cross_attn_ffn_merge(v_586)
-        v_588 = self.transformer_layers_4_cross_attn_ffn_norm1(v_587)
-        v_589 = torch.cat((v_553, v_588), dim=-1)
-        v_590 = self.transformer_layers_4_cross_attn_ffn_mlp_0(v_589)
-        v_591 = self.transformer_layers_4_cross_attn_ffn_mlp_1(v_590)
-        v_592 = self.transformer_layers_4_cross_attn_ffn_mlp_2(v_591)
-        v_593 = self.transformer_layers_4_cross_attn_ffn_norm2(v_592)
-        v_594 = (v_553 + v_593)
-        v_595, v_596 = torch.chunk(input=v_594, chunks=2, dim=0)
-        v_597 = self.transformer_layers_5_self_attn_q_proj(v_594)
-        v_598 = self.transformer_layers_5_self_attn_k_proj(v_594)
-        v_599 = self.transformer_layers_5_self_attn_v_proj(v_594)
-        v_600 = [int(v_597.size(0)), int(v_123.size(2)), int(v_123.size(3)), int(v_597.size(2))]
-        v_601 = v_597.view(*v_600)
-        v_602 = torch.roll(input=v_601, shifts=v_252, dims=(1,2))
-        v_603 = [int(v_602.size(0)), 2, int((v_602.size(1) // 2)), 2, int((v_602.size(2) // 2)), int(v_602.size(3))]
-        v_604 = v_602.view(*v_603)
-        v_605 = v_598.view(*v_600)
-        v_606 = torch.roll(input=v_605, shifts=v_252, dims=(1,2))
-        v_607 = [int(v_606.size(0)), 2, int((v_606.size(1) // 2)), 2, int((v_606.size(2) // 2)), int(v_606.size(3))]
-        v_608 = v_606.view(*v_607)
-        v_609 = v_599.view(*v_600)
-        v_610 = torch.roll(input=v_609, shifts=v_252, dims=(1,2))
-        v_611 = [int(v_610.size(0)), 2, int((v_610.size(1) // 2)), 2, int((v_610.size(2) // 2)), int(v_610.size(3))]
-        v_612 = v_610.view(*v_611)
-        v_613 = [int(((v_597.size(0) * 2) * 2)), -1, int(v_597.size(2))]
-        v_614 = torch.permute(input=v_604, dims=(0,1,3,2,4,5))
-        v_615 = torch.permute(input=v_608, dims=(0,1,3,2,4,5))
-        v_616 = v_615.reshape(*v_613)
-        v_617 = v_614.reshape(*v_613)
-        v_618 = torch.permute(input=v_616, dims=(0,2,1))
-        v_619 = torch.matmul(input=v_617, other=v_618)
-        v_620 = [int(v_597.size(0)), 1, 1]
-        v_621 = v_276.repeat(*v_620)
-        v_622 = ((v_619 / torch.pow(v_597.size(2), 5.000000e-01)) + v_621)
-        v_623 = torch.permute(input=v_612, dims=(0,1,3,2,4,5))
-        v_624 = F.softmax(input=v_622, dim=-1)
-        v_625 = v_623.reshape(*v_613)
-        v_626 = [int(((v_597.size(0) * 2) * 2)), int((v_123.size(2) // 2)), int((v_123.size(3) // 2)), int(v_597.size(2))]
-        v_627 = torch.matmul(input=v_624, other=v_625)
-        v_628 = v_627.view(*v_626)
-        v_629 = [int(((v_628.size(0) // 2) // 2)), 2, 2, int(v_628.size(1)), int(v_628.size(2)), int(v_628.size(3))]
-        v_630 = v_628.view(*v_629)
-        v_631 = [int(((v_628.size(0) // 2) // 2)), int((v_628.size(1) * 2)), int((v_628.size(2) * 2)), int(v_628.size(3))]
-        v_632 = torch.permute(input=v_630, dims=(0,1,3,2,4,5))
-        v_633 = [int(v_597.size(0)), -1, int(v_597.size(2))]
-        v_634 = v_632.reshape(*v_631)
-        v_635 = torch.roll(input=v_634, shifts=v_150, dims=(1,2))
-        v_636 = v_635.view(*v_633)
-        v_637 = self.transformer_layers_5_self_attn_merge(v_636)
-        v_638 = self.transformer_layers_5_self_attn_norm1(v_637)
-        v_639 = (v_594 + v_638)
-        v_640 = self.transformer_layers_5_cross_attn_ffn_q_proj(v_639)
-        v_641 = torch.cat((v_596, v_595), dim=0)
-        v_642 = self.transformer_layers_5_cross_attn_ffn_k_proj(v_641)
-        v_643 = self.transformer_layers_5_cross_attn_ffn_v_proj(v_641)
-        v_644 = [int(v_640.size(0)), int(v_123.size(2)), int(v_123.size(3)), int(v_640.size(2))]
-        v_645 = v_640.view(*v_644)
-        v_646 = torch.roll(input=v_645, shifts=v_252, dims=(1,2))
-        v_647 = [int(v_646.size(0)), 2, int((v_646.size(1) // 2)), 2, int((v_646.size(2) // 2)), int(v_646.size(3))]
-        v_648 = v_646.view(*v_647)
-        v_649 = v_642.view(*v_644)
-        v_650 = torch.roll(input=v_649, shifts=v_252, dims=(1,2))
-        v_651 = [int(v_650.size(0)), 2, int((v_650.size(1) // 2)), 2, int((v_650.size(2) // 2)), int(v_650.size(3))]
-        v_652 = v_650.view(*v_651)
-        v_653 = v_643.view(*v_644)
-        v_654 = torch.roll(input=v_653, shifts=v_252, dims=(1,2))
-        v_655 = [int(v_654.size(0)), 2, int((v_654.size(1) // 2)), 2, int((v_654.size(2) // 2)), int(v_654.size(3))]
-        v_656 = v_654.view(*v_655)
-        v_657 = [int(((v_640.size(0) * 2) * 2)), -1, int(v_640.size(2))]
-        v_658 = torch.permute(input=v_648, dims=(0,1,3,2,4,5))
-        v_659 = torch.permute(input=v_652, dims=(0,1,3,2,4,5))
-        v_660 = v_659.reshape(*v_657)
-        v_661 = v_658.reshape(*v_657)
-        v_662 = torch.permute(input=v_660, dims=(0,2,1))
-        v_663 = torch.matmul(input=v_661, other=v_662)
-        v_664 = [int(v_640.size(0)), 1, 1]
-        v_665 = v_276.repeat(*v_664)
-        v_666 = ((v_663 / torch.pow(v_640.size(2), 5.000000e-01)) + v_665)
-        v_667 = torch.permute(input=v_656, dims=(0,1,3,2,4,5))
-        v_668 = F.softmax(input=v_666, dim=-1)
-        v_669 = v_667.reshape(*v_657)
-        v_670 = [int(((v_640.size(0) * 2) * 2)), int((v_123.size(2) // 2)), int((v_123.size(3) // 2)), int(v_640.size(2))]
-        v_671 = torch.matmul(input=v_668, other=v_669)
-        v_672 = v_671.view(*v_670)
-        v_673 = [int(((v_672.size(0) // 2) // 2)), 2, 2, int(v_672.size(1)), int(v_672.size(2)), int(v_672.size(3))]
-        v_674 = v_672.view(*v_673)
-        v_675 = [int(((v_672.size(0) // 2) // 2)), int((v_672.size(1) * 2)), int((v_672.size(2) * 2)), int(v_672.size(3))]
-        v_676 = torch.permute(input=v_674, dims=(0,1,3,2,4,5))
-        v_677 = [int(v_640.size(0)), -1, int(v_640.size(2))]
-        v_678 = v_676.reshape(*v_675)
-        v_679 = torch.roll(input=v_678, shifts=v_150, dims=(1,2))
-        v_680 = v_679.view(*v_677)
-        v_681 = self.transformer_layers_5_cross_attn_ffn_merge(v_680)
-        v_682 = self.transformer_layers_5_cross_attn_ffn_norm1(v_681)
-        v_683 = torch.cat((v_639, v_682), dim=-1)
-        v_684 = self.transformer_layers_5_cross_attn_ffn_mlp_0(v_683)
-        v_685 = self.transformer_layers_5_cross_attn_ffn_mlp_1(v_684)
-        v_686 = self.transformer_layers_5_cross_attn_ffn_mlp_2(v_685)
-        v_687 = self.transformer_layers_5_cross_attn_ffn_norm2(v_686)
-        v_688 = (v_639 + v_687)
-        v_689, v_690 = torch.chunk(input=v_688, chunks=2, dim=0)
-        v_691 = [int(v_123.size(0)), int(v_123.size(2)), int(v_123.size(3)), int(v_123.size(1))]
-        v_692 = v_689.view(*v_691)
-        v_693 = v_690.view(*v_691)
-        v_694 = torch.permute(input=v_693, dims=(0,3,1,2))
-        v_695 = torch.permute(input=v_692, dims=(0,3,1,2))
+        v_2 = self.pnnx_9_pnnx_9
+        v_3 = self.pnnx_14_pnnx_14
+        v_4 = [int(v_0.size(0)), int(v_0.size(1)), int(v_0.size(2)), int(v_0.size(3))]
+        v_5 = v_3.view(1, -1, 1, 1)
+        v_6 = v_5.expand(*v_4)
+        v_7 = v_2.view(1, -1, 1, 1)
+        v_8 = v_7.expand(*v_4)
+        v_9 = ((v_0 - v_6) / v_8)
+        v_10 = ((v_1 - v_6) / v_8)
+        v_11 = torch.cat((v_9, v_10), dim=0)
+        v_12 = self.backbone_conv1(v_11)
+        v_13 = self.backbone_norm1(v_12)
+        v_14 = self.backbone_relu1(v_13)
+        v_15 = self.backbone_layer1_0_conv1(v_14)
+        v_16 = self.backbone_layer1_0_norm1(v_15)
+        v_17 = self.backbone_layer1_0_relu(v_16)
+        v_18 = self.backbone_layer1_0_conv2(v_17)
+        v_19 = self.backbone_layer1_0_norm2(v_18)
+        v_20 = self.pnnx_unique_0(v_19)
+        v_21 = (v_14 + v_20)
+        v_22 = self.pnnx_unique_1(v_21)
+        v_23 = self.backbone_layer1_1_conv1(v_22)
+        v_24 = self.backbone_layer1_1_norm1(v_23)
+        v_25 = self.backbone_layer1_1_relu(v_24)
+        v_26 = self.backbone_layer1_1_conv2(v_25)
+        v_27 = self.backbone_layer1_1_norm2(v_26)
+        v_28 = self.pnnx_unique_2(v_27)
+        v_29 = (v_22 + v_28)
+        v_30 = self.pnnx_unique_3(v_29)
+        v_31 = self.backbone_layer2_0_conv1(v_30)
+        v_32 = self.backbone_layer2_0_norm1(v_31)
+        v_33 = self.backbone_layer2_0_relu(v_32)
+        v_34 = self.backbone_layer2_0_conv2(v_33)
+        v_35 = self.backbone_layer2_0_norm2(v_34)
+        v_36 = self.pnnx_unique_4(v_35)
+        v_37 = self.backbone_layer2_0_downsample_0(v_30)
+        v_38 = self.backbone_layer2_0_downsample_1(v_37)
+        v_39 = (v_38 + v_36)
+        v_40 = self.pnnx_unique_5(v_39)
+        v_41 = self.backbone_layer2_1_conv1(v_40)
+        v_42 = self.backbone_layer2_1_norm1(v_41)
+        v_43 = self.backbone_layer2_1_relu(v_42)
+        v_44 = self.backbone_layer2_1_conv2(v_43)
+        v_45 = self.backbone_layer2_1_norm2(v_44)
+        v_46 = self.pnnx_unique_6(v_45)
+        v_47 = (v_40 + v_46)
+        v_48 = self.pnnx_unique_7(v_47)
+        v_49 = self.backbone_layer3_0_conv1(v_48)
+        v_50 = self.backbone_layer3_0_norm1(v_49)
+        v_51 = self.backbone_layer3_0_relu(v_50)
+        v_52 = self.backbone_layer3_0_conv2(v_51)
+        v_53 = self.backbone_layer3_0_norm2(v_52)
+        v_54 = self.pnnx_unique_8(v_53)
+        v_55 = self.backbone_layer3_0_downsample_0(v_48)
+        v_56 = self.backbone_layer3_0_downsample_1(v_55)
+        v_57 = (v_56 + v_54)
+        v_58 = self.pnnx_unique_9(v_57)
+        v_59 = self.backbone_layer3_1_conv1(v_58)
+        v_60 = self.backbone_layer3_1_norm1(v_59)
+        v_61 = self.backbone_layer3_1_relu(v_60)
+        v_62 = self.backbone_layer3_1_conv2(v_61)
+        v_63 = self.backbone_layer3_1_norm2(v_62)
+        v_64 = self.pnnx_unique_10(v_63)
+        v_65 = (v_58 + v_64)
+        v_66 = self.pnnx_unique_11(v_65)
+        v_67 = self.backbone_conv2(v_66)
+        v_68 = self.conv2d_0(v_67)
+        v_69, v_70 = torch.chunk(input=v_68, chunks=2, dim=0)
+        v_71 = self.conv2d_1(v_67)
+        v_72, v_73 = torch.chunk(input=v_71, chunks=2, dim=0)
+        v_74 = [int(v_69.size(0)), int(v_69.size(1)), 2, int((v_69.size(2) // 2)), 2, int((v_69.size(3) // 2))]
+        v_75 = v_69.view(*v_74)
+        v_76 = [int(((v_69.size(0) * 2) * 2)), int(v_69.size(1)), int((v_69.size(2) // 2)), int((v_69.size(3) // 2))]
+        v_77 = [int(v_70.size(0)), int(v_70.size(1)), 2, int((v_70.size(2) // 2)), 2, int((v_70.size(3) // 2))]
+        v_78 = v_70.view(*v_77)
+        v_79 = [int(((v_70.size(0) * 2) * 2)), int(v_70.size(1)), int((v_70.size(2) // 2)), int((v_70.size(3) // 2))]
+        v_80 = torch.permute(input=v_75, dims=(0,2,4,1,3,5))
+        v_81 = v_80.reshape(*v_76)
+        v_82 = [int(v_81.size(0)), int(v_81.size(2)), int(v_81.size(3))]
+        v_83 = torch.ones(size=v_82)
+        v_84 = torch.cumsum(input=v_83, dim=1)
+        v_85 = v_84[:,-1:]
+        v_86 = ((v_84 / (v_85 + 1.000000e-06)) * 6.283185e+00)
+        v_87 = torch.cumsum(input=v_83, dim=2)
+        v_88 = v_87[:,:,-1:]
+        v_89 = ((v_87 / (v_88 + 1.000000e-06)) * 6.283185e+00)
+        v_90 = torch.arange(end=64)
+        v_91 = torch.pow(1.000000e+04, (((v_90 // 2) * 2) / 64))
+        v_92 = torch.unsqueeze(input=v_89, dim=3)
+        v_93 = (v_92 / v_91)
+        v_94 = torch.unsqueeze(input=v_86, dim=3)
+        v_95 = (v_94 / v_91)
+        v_96 = v_93[:,:,:,::2]
+        v_97 = torch.sin(v_96)
+        v_98 = v_93[:,:,:,1::2]
+        v_99 = torch.cos(v_98)
+        v_100 = torch.stack((v_97, v_99), dim=4)
+        v_101 = v_95[:,:,:,::2]
+        v_102 = torch.sin(v_101)
+        v_103 = v_95[:,:,:,1::2]
+        v_104 = torch.cos(v_103)
+        v_105 = torch.stack((v_102, v_104), dim=4)
+        v_106 = torch.flatten(input=v_105, end_dim=-1, start_dim=3)
+        v_107 = torch.flatten(input=v_100, end_dim=-1, start_dim=3)
+        v_108 = torch.cat((v_106, v_107), dim=3)
+        v_109 = torch.permute(input=v_108, dims=(0,3,1,2))
+        v_110 = (v_81 + v_109)
+        v_111 = torch.permute(input=v_78, dims=(0,2,4,1,3,5))
+        v_112 = v_111.reshape(*v_79)
+        v_113 = (v_112 + v_109)
+        v_114 = [int(((v_110.size(0) // 2) // 2)), 2, 2, int(v_110.size(1)), int(v_110.size(2)), int(v_110.size(3))]
+        v_115 = v_110.view(*v_114)
+        v_116 = [int(((v_110.size(0) // 2) // 2)), int(v_110.size(1)), int((v_110.size(2) * 2)), int((v_110.size(3) * 2))]
+        v_117 = torch.permute(input=v_115, dims=(0,3,1,4,2,5))
+        v_118 = [int(((v_113.size(0) // 2) // 2)), 2, 2, int(v_113.size(1)), int(v_113.size(2)), int(v_113.size(3))]
+        v_119 = v_113.view(*v_118)
+        v_120 = [int(((v_113.size(0) // 2) // 2)), int(v_113.size(1)), int((v_113.size(2) * 2)), int((v_113.size(3) * 2))]
+        v_121 = torch.permute(input=v_119, dims=(0,3,1,4,2,5))
+        v_122 = v_117.reshape(*v_116)
+        v_123 = torch.flatten(input=v_122, end_dim=-1, start_dim=-2)
+        v_124 = v_121.reshape(*v_120)
+        v_125 = torch.flatten(input=v_124, end_dim=-1, start_dim=-2)
+        v_126 = [int((v_122.size(2) - (v_122.size(2) // 2))), int((v_122.size(3) - (v_122.size(3) // 2)))]
+        v_127 = torch.ones(size=v_126)
+        v_128 = [int((v_122.size(2) - (v_122.size(2) // 2))), int(((v_122.size(3) // 2) - ((v_122.size(3) // 2) // 2)))]
+        v_129 = torch.ones(size=v_128)
+        v_130 = (v_129 * 2)
+        v_131 = [int((v_122.size(2) - (v_122.size(2) // 2))), int(((v_122.size(3) // 2) // 2))]
+        v_132 = torch.ones(size=v_131)
+        v_133 = (v_132 * 3)
+        v_134 = [int(((v_122.size(2) // 2) - ((v_122.size(2) // 2) // 2))), int((v_122.size(3) - (v_122.size(3) // 2)))]
+        v_135 = torch.ones(size=v_134)
+        v_136 = (v_135 * 4)
+        v_137 = [int(((v_122.size(2) // 2) - ((v_122.size(2) // 2) // 2))), int(((v_122.size(3) // 2) - ((v_122.size(3) // 2) // 2)))]
+        v_138 = torch.ones(size=v_137)
+        v_139 = (v_138 * 5)
+        v_140 = [int(((v_122.size(2) // 2) - ((v_122.size(2) // 2) // 2))), int(((v_122.size(3) // 2) // 2))]
+        v_141 = torch.ones(size=v_140)
+        v_142 = (v_141 * 6)
+        v_143 = [int(((v_122.size(2) // 2) // 2)), int((v_122.size(3) - (v_122.size(3) // 2)))]
+        v_144 = torch.ones(size=v_143)
+        v_145 = (v_144 * 7)
+        v_146 = [int(((v_122.size(2) // 2) // 2)), int(((v_122.size(3) // 2) - ((v_122.size(3) // 2) // 2)))]
+        v_147 = torch.ones(size=v_146)
+        v_148 = (v_147 * 8)
+        v_149 = [int(((v_122.size(2) // 2) // 2)), int(((v_122.size(3) // 2) // 2))]
+        v_150 = torch.ones(size=v_149)
+        v_151 = (v_150 * 9)
+        v_152 = torch.cat((v_145, v_148, v_151), dim=1)
+        v_153 = torch.cat((v_136, v_139, v_142), dim=1)
+        v_154 = torch.cat((v_127, v_130, v_133), dim=1)
+        v_155 = torch.cat((v_154, v_153, v_152), dim=0)
+        v_156 = torch.unsqueeze(input=v_155, dim=0)
+        v_157 = torch.unsqueeze(input=v_156, dim=-1)
+        v_158 = [int(v_157.size(0)), int((v_122.size(3) // (v_122.size(3) // 2))), int((v_157.size(1) // (v_122.size(3) // (v_122.size(3) // 2)))), int((v_122.size(3) // (v_122.size(3) // 2))), int((v_157.size(2) // (v_122.size(3) // (v_122.size(3) // 2)))), int(v_157.size(3))]
+        v_159 = v_157.view(*v_158)
+        v_160 = [-1, int(((v_122.size(2) // 2) * (v_122.size(3) // 2)))]
+        v_161 = torch.permute(input=v_159, dims=(0,1,3,2,4,5))
+        v_162 = v_161.reshape(*v_160)
+        v_163 = torch.unsqueeze(input=v_162, dim=2)
+        v_164 = torch.unsqueeze(input=v_162, dim=1)
+        v_165 = (v_164 - v_163)
+        v_166 = torch.permute(input=v_125, dims=(0,2,1))
+        v_167 = torch.permute(input=v_123, dims=(0,2,1))
+        v_168 = torch.cat((v_167, v_166), dim=0)
+        v_169 = self.transformer_layers_0_self_attn_q_proj(v_168)
+        v_170 = self.transformer_layers_0_self_attn_k_proj(v_168)
+        v_171 = self.transformer_layers_0_self_attn_v_proj(v_168)
+        v_172 = [int(v_169.size(0)), int(v_122.size(2)), int(v_122.size(3)), int(v_169.size(2))]
+        v_173 = v_169.view(*v_172)
+        v_174 = [int(v_173.size(0)), 2, int((v_173.size(1) // 2)), 2, int((v_173.size(2) // 2)), int(v_173.size(3))]
+        v_175 = v_173.view(*v_174)
+        v_176 = v_170.view(*v_172)
+        v_177 = [int(v_176.size(0)), 2, int((v_176.size(1) // 2)), 2, int((v_176.size(2) // 2)), int(v_176.size(3))]
+        v_178 = v_176.view(*v_177)
+        v_179 = v_171.view(*v_172)
+        v_180 = [int(v_179.size(0)), 2, int((v_179.size(1) // 2)), 2, int((v_179.size(2) // 2)), int(v_179.size(3))]
+        v_181 = v_179.view(*v_180)
+        v_182 = [int(((v_169.size(0) * 2) * 2)), -1, int(v_169.size(2))]
+        v_183 = torch.permute(input=v_175, dims=(0,1,3,2,4,5))
+        v_184 = torch.permute(input=v_178, dims=(0,1,3,2,4,5))
+        v_185 = v_184.reshape(*v_182)
+        v_186 = v_183.reshape(*v_182)
+        v_187 = torch.permute(input=v_185, dims=(0,2,1))
+        v_188 = torch.matmul(input=v_186, other=v_187)
+        v_189 = (v_188 / torch.pow(v_169.size(2), 5.000000e-01))
+        v_190 = torch.permute(input=v_181, dims=(0,1,3,2,4,5))
+        v_191 = F.softmax(input=v_189, dim=-1)
+        v_192 = v_190.reshape(*v_182)
+        v_193 = [int(((v_169.size(0) * 2) * 2)), int((v_122.size(2) // 2)), int((v_122.size(3) // 2)), int(v_169.size(2))]
+        v_194 = torch.matmul(input=v_191, other=v_192)
+        v_195 = v_194.view(*v_193)
+        v_196 = [int(((v_195.size(0) // 2) // 2)), 2, 2, int(v_195.size(1)), int(v_195.size(2)), int(v_195.size(3))]
+        v_197 = v_195.view(*v_196)
+        v_198 = torch.permute(input=v_197, dims=(0,1,3,2,4,5))
+        v_199 = [int(v_169.size(0)), -1, int(v_169.size(2))]
+        v_200 = v_198.reshape(*v_199)
+        v_201 = self.transformer_layers_0_self_attn_merge(v_200)
+        v_202 = self.transformer_layers_0_self_attn_norm1(v_201)
+        v_203 = (v_168 + v_202)
+        v_204 = self.transformer_layers_0_cross_attn_ffn_q_proj(v_203)
+        v_205 = torch.cat((v_166, v_167), dim=0)
+        v_206 = self.transformer_layers_0_cross_attn_ffn_k_proj(v_205)
+        v_207 = self.transformer_layers_0_cross_attn_ffn_v_proj(v_205)
+        v_208 = [int(v_204.size(0)), int(v_122.size(2)), int(v_122.size(3)), int(v_204.size(2))]
+        v_209 = v_204.view(*v_208)
+        v_210 = [int(v_209.size(0)), 2, int((v_209.size(1) // 2)), 2, int((v_209.size(2) // 2)), int(v_209.size(3))]
+        v_211 = v_209.view(*v_210)
+        v_212 = v_206.view(*v_208)
+        v_213 = [int(v_212.size(0)), 2, int((v_212.size(1) // 2)), 2, int((v_212.size(2) // 2)), int(v_212.size(3))]
+        v_214 = v_212.view(*v_213)
+        v_215 = v_207.view(*v_208)
+        v_216 = [int(v_215.size(0)), 2, int((v_215.size(1) // 2)), 2, int((v_215.size(2) // 2)), int(v_215.size(3))]
+        v_217 = v_215.view(*v_216)
+        v_218 = [int(((v_204.size(0) * 2) * 2)), -1, int(v_204.size(2))]
+        v_219 = torch.permute(input=v_211, dims=(0,1,3,2,4,5))
+        v_220 = torch.permute(input=v_214, dims=(0,1,3,2,4,5))
+        v_221 = v_220.reshape(*v_218)
+        v_222 = v_219.reshape(*v_218)
+        v_223 = torch.permute(input=v_221, dims=(0,2,1))
+        v_224 = torch.matmul(input=v_222, other=v_223)
+        v_225 = (v_224 / torch.pow(v_204.size(2), 5.000000e-01))
+        v_226 = torch.permute(input=v_217, dims=(0,1,3,2,4,5))
+        v_227 = F.softmax(input=v_225, dim=-1)
+        v_228 = v_226.reshape(*v_218)
+        v_229 = [int(((v_204.size(0) * 2) * 2)), int((v_122.size(2) // 2)), int((v_122.size(3) // 2)), int(v_204.size(2))]
+        v_230 = torch.matmul(input=v_227, other=v_228)
+        v_231 = v_230.view(*v_229)
+        v_232 = [int(((v_231.size(0) // 2) // 2)), 2, 2, int(v_231.size(1)), int(v_231.size(2)), int(v_231.size(3))]
+        v_233 = v_231.view(*v_232)
+        v_234 = torch.permute(input=v_233, dims=(0,1,3,2,4,5))
+        v_235 = [int(v_204.size(0)), -1, int(v_204.size(2))]
+        v_236 = v_234.reshape(*v_235)
+        v_237 = self.transformer_layers_0_cross_attn_ffn_merge(v_236)
+        v_238 = self.transformer_layers_0_cross_attn_ffn_norm1(v_237)
+        v_239 = torch.cat((v_203, v_238), dim=-1)
+        v_240 = self.transformer_layers_0_cross_attn_ffn_mlp_0(v_239)
+        v_241 = self.transformer_layers_0_cross_attn_ffn_mlp_1(v_240)
+        v_242 = self.transformer_layers_0_cross_attn_ffn_mlp_2(v_241)
+        v_243 = self.transformer_layers_0_cross_attn_ffn_norm2(v_242)
+        v_244 = (v_203 + v_243)
+        v_245, v_246 = torch.chunk(input=v_244, chunks=2, dim=0)
+        v_247 = self.transformer_layers_1_self_attn_q_proj(v_244)
+        v_248 = self.transformer_layers_1_self_attn_k_proj(v_244)
+        v_249 = self.transformer_layers_1_self_attn_v_proj(v_244)
+        v_250 = [int(v_247.size(0)), int(v_122.size(2)), int(v_122.size(3)), int(v_247.size(2))]
+        v_251 = [int(torch.neg(((v_122.size(2) // 2) // 2))), int(torch.neg(((v_122.size(3) // 2) // 2)))]
+        v_252 = v_247.view(*v_250)
+        v_253 = torch.roll(input=v_252, shifts=v_251, dims=(1,2))
+        v_254 = [int(v_253.size(0)), 2, int((v_253.size(1) // 2)), 2, int((v_253.size(2) // 2)), int(v_253.size(3))]
+        v_255 = v_253.view(*v_254)
+        v_256 = v_248.view(*v_250)
+        v_257 = torch.roll(input=v_256, shifts=v_251, dims=(1,2))
+        v_258 = [int(v_257.size(0)), 2, int((v_257.size(1) // 2)), 2, int((v_257.size(2) // 2)), int(v_257.size(3))]
+        v_259 = v_257.view(*v_258)
+        v_260 = v_249.view(*v_250)
+        v_261 = torch.roll(input=v_260, shifts=v_251, dims=(1,2))
+        v_262 = [int(v_261.size(0)), 2, int((v_261.size(1) // 2)), 2, int((v_261.size(2) // 2)), int(v_261.size(3))]
+        v_263 = v_261.view(*v_262)
+        v_264 = [int(((v_247.size(0) * 2) * 2)), -1, int(v_247.size(2))]
+        v_265 = torch.permute(input=v_255, dims=(0,1,3,2,4,5))
+        v_266 = torch.permute(input=v_259, dims=(0,1,3,2,4,5))
+        v_267 = v_266.reshape(*v_264)
+        v_268 = v_265.reshape(*v_264)
+        v_269 = torch.permute(input=v_267, dims=(0,2,1))
+        v_270 = torch.matmul(input=v_268, other=v_269)
+        v_271 = [int(v_247.size(0)), 1, 1]
+        v_272 = torch.ne(input=v_165, other=0)
+        v_273 = v_165.masked_fill(v_272, value=-100.000000)
+        v_274 = torch.eq(input=v_165, other=0)
+        v_275 = v_273.masked_fill(v_274, value=0.000000)
+        v_276 = v_275.repeat(*v_271)
+        v_277 = ((v_270 / torch.pow(v_247.size(2), 5.000000e-01)) + v_276)
+        v_278 = torch.permute(input=v_263, dims=(0,1,3,2,4,5))
+        v_279 = F.softmax(input=v_277, dim=-1)
+        v_280 = v_278.reshape(*v_264)
+        v_281 = [int(((v_247.size(0) * 2) * 2)), int((v_122.size(2) // 2)), int((v_122.size(3) // 2)), int(v_247.size(2))]
+        v_282 = torch.matmul(input=v_279, other=v_280)
+        v_283 = v_282.view(*v_281)
+        v_284 = [int(((v_283.size(0) // 2) // 2)), 2, 2, int(v_283.size(1)), int(v_283.size(2)), int(v_283.size(3))]
+        v_285 = v_283.view(*v_284)
+        v_286 = [int(((v_283.size(0) // 2) // 2)), int((v_283.size(1) * 2)), int((v_283.size(2) * 2)), int(v_283.size(3))]
+        v_287 = torch.permute(input=v_285, dims=(0,1,3,2,4,5))
+        v_288 = [int(v_247.size(0)), -1, int(v_247.size(2))]
+        v_289 = v_287.reshape(*v_286)
+        v_290 = torch.roll(input=v_289, shifts=v_149, dims=(1,2))
+        v_291 = v_290.view(*v_288)
+        v_292 = self.transformer_layers_1_self_attn_merge(v_291)
+        v_293 = self.transformer_layers_1_self_attn_norm1(v_292)
+        v_294 = (v_244 + v_293)
+        v_295 = self.transformer_layers_1_cross_attn_ffn_q_proj(v_294)
+        v_296 = torch.cat((v_246, v_245), dim=0)
+        v_297 = self.transformer_layers_1_cross_attn_ffn_k_proj(v_296)
+        v_298 = self.transformer_layers_1_cross_attn_ffn_v_proj(v_296)
+        v_299 = [int(v_295.size(0)), int(v_122.size(2)), int(v_122.size(3)), int(v_295.size(2))]
+        v_300 = v_295.view(*v_299)
+        v_301 = torch.roll(input=v_300, shifts=v_251, dims=(1,2))
+        v_302 = [int(v_301.size(0)), 2, int((v_301.size(1) // 2)), 2, int((v_301.size(2) // 2)), int(v_301.size(3))]
+        v_303 = v_301.view(*v_302)
+        v_304 = v_297.view(*v_299)
+        v_305 = torch.roll(input=v_304, shifts=v_251, dims=(1,2))
+        v_306 = [int(v_305.size(0)), 2, int((v_305.size(1) // 2)), 2, int((v_305.size(2) // 2)), int(v_305.size(3))]
+        v_307 = v_305.view(*v_306)
+        v_308 = v_298.view(*v_299)
+        v_309 = torch.roll(input=v_308, shifts=v_251, dims=(1,2))
+        v_310 = [int(v_309.size(0)), 2, int((v_309.size(1) // 2)), 2, int((v_309.size(2) // 2)), int(v_309.size(3))]
+        v_311 = v_309.view(*v_310)
+        v_312 = [int(((v_295.size(0) * 2) * 2)), -1, int(v_295.size(2))]
+        v_313 = torch.permute(input=v_303, dims=(0,1,3,2,4,5))
+        v_314 = torch.permute(input=v_307, dims=(0,1,3,2,4,5))
+        v_315 = v_314.reshape(*v_312)
+        v_316 = v_313.reshape(*v_312)
+        v_317 = torch.permute(input=v_315, dims=(0,2,1))
+        v_318 = torch.matmul(input=v_316, other=v_317)
+        v_319 = [int(v_295.size(0)), 1, 1]
+        v_320 = v_275.repeat(*v_319)
+        v_321 = ((v_318 / torch.pow(v_295.size(2), 5.000000e-01)) + v_320)
+        v_322 = torch.permute(input=v_311, dims=(0,1,3,2,4,5))
+        v_323 = F.softmax(input=v_321, dim=-1)
+        v_324 = v_322.reshape(*v_312)
+        v_325 = [int(((v_295.size(0) * 2) * 2)), int((v_122.size(2) // 2)), int((v_122.size(3) // 2)), int(v_295.size(2))]
+        v_326 = torch.matmul(input=v_323, other=v_324)
+        v_327 = v_326.view(*v_325)
+        v_328 = [int(((v_327.size(0) // 2) // 2)), 2, 2, int(v_327.size(1)), int(v_327.size(2)), int(v_327.size(3))]
+        v_329 = v_327.view(*v_328)
+        v_330 = [int(((v_327.size(0) // 2) // 2)), int((v_327.size(1) * 2)), int((v_327.size(2) * 2)), int(v_327.size(3))]
+        v_331 = torch.permute(input=v_329, dims=(0,1,3,2,4,5))
+        v_332 = [int(v_295.size(0)), -1, int(v_295.size(2))]
+        v_333 = v_331.reshape(*v_330)
+        v_334 = torch.roll(input=v_333, shifts=v_149, dims=(1,2))
+        v_335 = v_334.view(*v_332)
+        v_336 = self.transformer_layers_1_cross_attn_ffn_merge(v_335)
+        v_337 = self.transformer_layers_1_cross_attn_ffn_norm1(v_336)
+        v_338 = torch.cat((v_294, v_337), dim=-1)
+        v_339 = self.transformer_layers_1_cross_attn_ffn_mlp_0(v_338)
+        v_340 = self.transformer_layers_1_cross_attn_ffn_mlp_1(v_339)
+        v_341 = self.transformer_layers_1_cross_attn_ffn_mlp_2(v_340)
+        v_342 = self.transformer_layers_1_cross_attn_ffn_norm2(v_341)
+        v_343 = (v_294 + v_342)
+        v_344, v_345 = torch.chunk(input=v_343, chunks=2, dim=0)
+        v_346 = self.transformer_layers_2_self_attn_q_proj(v_343)
+        v_347 = self.transformer_layers_2_self_attn_k_proj(v_343)
+        v_348 = self.transformer_layers_2_self_attn_v_proj(v_343)
+        v_349 = [int(v_346.size(0)), int(v_122.size(2)), int(v_122.size(3)), int(v_346.size(2))]
+        v_350 = v_346.view(*v_349)
+        v_351 = [int(v_350.size(0)), 2, int((v_350.size(1) // 2)), 2, int((v_350.size(2) // 2)), int(v_350.size(3))]
+        v_352 = v_350.view(*v_351)
+        v_353 = v_347.view(*v_349)
+        v_354 = [int(v_353.size(0)), 2, int((v_353.size(1) // 2)), 2, int((v_353.size(2) // 2)), int(v_353.size(3))]
+        v_355 = v_353.view(*v_354)
+        v_356 = v_348.view(*v_349)
+        v_357 = [int(v_356.size(0)), 2, int((v_356.size(1) // 2)), 2, int((v_356.size(2) // 2)), int(v_356.size(3))]
+        v_358 = v_356.view(*v_357)
+        v_359 = [int(((v_346.size(0) * 2) * 2)), -1, int(v_346.size(2))]
+        v_360 = torch.permute(input=v_352, dims=(0,1,3,2,4,5))
+        v_361 = torch.permute(input=v_355, dims=(0,1,3,2,4,5))
+        v_362 = v_361.reshape(*v_359)
+        v_363 = v_360.reshape(*v_359)
+        v_364 = torch.permute(input=v_362, dims=(0,2,1))
+        v_365 = torch.matmul(input=v_363, other=v_364)
+        v_366 = (v_365 / torch.pow(v_346.size(2), 5.000000e-01))
+        v_367 = torch.permute(input=v_358, dims=(0,1,3,2,4,5))
+        v_368 = F.softmax(input=v_366, dim=-1)
+        v_369 = v_367.reshape(*v_359)
+        v_370 = [int(((v_346.size(0) * 2) * 2)), int((v_122.size(2) // 2)), int((v_122.size(3) // 2)), int(v_346.size(2))]
+        v_371 = torch.matmul(input=v_368, other=v_369)
+        v_372 = v_371.view(*v_370)
+        v_373 = [int(((v_372.size(0) // 2) // 2)), 2, 2, int(v_372.size(1)), int(v_372.size(2)), int(v_372.size(3))]
+        v_374 = v_372.view(*v_373)
+        v_375 = torch.permute(input=v_374, dims=(0,1,3,2,4,5))
+        v_376 = [int(v_346.size(0)), -1, int(v_346.size(2))]
+        v_377 = v_375.reshape(*v_376)
+        v_378 = self.transformer_layers_2_self_attn_merge(v_377)
+        v_379 = self.transformer_layers_2_self_attn_norm1(v_378)
+        v_380 = (v_343 + v_379)
+        v_381 = self.transformer_layers_2_cross_attn_ffn_q_proj(v_380)
+        v_382 = torch.cat((v_345, v_344), dim=0)
+        v_383 = self.transformer_layers_2_cross_attn_ffn_k_proj(v_382)
+        v_384 = self.transformer_layers_2_cross_attn_ffn_v_proj(v_382)
+        v_385 = [int(v_381.size(0)), int(v_122.size(2)), int(v_122.size(3)), int(v_381.size(2))]
+        v_386 = v_381.view(*v_385)
+        v_387 = [int(v_386.size(0)), 2, int((v_386.size(1) // 2)), 2, int((v_386.size(2) // 2)), int(v_386.size(3))]
+        v_388 = v_386.view(*v_387)
+        v_389 = v_383.view(*v_385)
+        v_390 = [int(v_389.size(0)), 2, int((v_389.size(1) // 2)), 2, int((v_389.size(2) // 2)), int(v_389.size(3))]
+        v_391 = v_389.view(*v_390)
+        v_392 = v_384.view(*v_385)
+        v_393 = [int(v_392.size(0)), 2, int((v_392.size(1) // 2)), 2, int((v_392.size(2) // 2)), int(v_392.size(3))]
+        v_394 = v_392.view(*v_393)
+        v_395 = [int(((v_381.size(0) * 2) * 2)), -1, int(v_381.size(2))]
+        v_396 = torch.permute(input=v_388, dims=(0,1,3,2,4,5))
+        v_397 = torch.permute(input=v_391, dims=(0,1,3,2,4,5))
+        v_398 = v_397.reshape(*v_395)
+        v_399 = v_396.reshape(*v_395)
+        v_400 = torch.permute(input=v_398, dims=(0,2,1))
+        v_401 = torch.matmul(input=v_399, other=v_400)
+        v_402 = (v_401 / torch.pow(v_381.size(2), 5.000000e-01))
+        v_403 = torch.permute(input=v_394, dims=(0,1,3,2,4,5))
+        v_404 = F.softmax(input=v_402, dim=-1)
+        v_405 = v_403.reshape(*v_395)
+        v_406 = [int(((v_381.size(0) * 2) * 2)), int((v_122.size(2) // 2)), int((v_122.size(3) // 2)), int(v_381.size(2))]
+        v_407 = torch.matmul(input=v_404, other=v_405)
+        v_408 = v_407.view(*v_406)
+        v_409 = [int(((v_408.size(0) // 2) // 2)), 2, 2, int(v_408.size(1)), int(v_408.size(2)), int(v_408.size(3))]
+        v_410 = v_408.view(*v_409)
+        v_411 = torch.permute(input=v_410, dims=(0,1,3,2,4,5))
+        v_412 = [int(v_381.size(0)), -1, int(v_381.size(2))]
+        v_413 = v_411.reshape(*v_412)
+        v_414 = self.transformer_layers_2_cross_attn_ffn_merge(v_413)
+        v_415 = self.transformer_layers_2_cross_attn_ffn_norm1(v_414)
+        v_416 = torch.cat((v_380, v_415), dim=-1)
+        v_417 = self.transformer_layers_2_cross_attn_ffn_mlp_0(v_416)
+        v_418 = self.transformer_layers_2_cross_attn_ffn_mlp_1(v_417)
+        v_419 = self.transformer_layers_2_cross_attn_ffn_mlp_2(v_418)
+        v_420 = self.transformer_layers_2_cross_attn_ffn_norm2(v_419)
+        v_421 = (v_380 + v_420)
+        v_422, v_423 = torch.chunk(input=v_421, chunks=2, dim=0)
+        v_424 = self.transformer_layers_3_self_attn_q_proj(v_421)
+        v_425 = self.transformer_layers_3_self_attn_k_proj(v_421)
+        v_426 = self.transformer_layers_3_self_attn_v_proj(v_421)
+        v_427 = [int(v_424.size(0)), int(v_122.size(2)), int(v_122.size(3)), int(v_424.size(2))]
+        v_428 = v_424.view(*v_427)
+        v_429 = torch.roll(input=v_428, shifts=v_251, dims=(1,2))
+        v_430 = [int(v_429.size(0)), 2, int((v_429.size(1) // 2)), 2, int((v_429.size(2) // 2)), int(v_429.size(3))]
+        v_431 = v_429.view(*v_430)
+        v_432 = v_425.view(*v_427)
+        v_433 = torch.roll(input=v_432, shifts=v_251, dims=(1,2))
+        v_434 = [int(v_433.size(0)), 2, int((v_433.size(1) // 2)), 2, int((v_433.size(2) // 2)), int(v_433.size(3))]
+        v_435 = v_433.view(*v_434)
+        v_436 = v_426.view(*v_427)
+        v_437 = torch.roll(input=v_436, shifts=v_251, dims=(1,2))
+        v_438 = [int(v_437.size(0)), 2, int((v_437.size(1) // 2)), 2, int((v_437.size(2) // 2)), int(v_437.size(3))]
+        v_439 = v_437.view(*v_438)
+        v_440 = [int(((v_424.size(0) * 2) * 2)), -1, int(v_424.size(2))]
+        v_441 = torch.permute(input=v_431, dims=(0,1,3,2,4,5))
+        v_442 = torch.permute(input=v_435, dims=(0,1,3,2,4,5))
+        v_443 = v_442.reshape(*v_440)
+        v_444 = v_441.reshape(*v_440)
+        v_445 = torch.permute(input=v_443, dims=(0,2,1))
+        v_446 = torch.matmul(input=v_444, other=v_445)
+        v_447 = [int(v_424.size(0)), 1, 1]
+        v_448 = v_275.repeat(*v_447)
+        v_449 = ((v_446 / torch.pow(v_424.size(2), 5.000000e-01)) + v_448)
+        v_450 = torch.permute(input=v_439, dims=(0,1,3,2,4,5))
+        v_451 = F.softmax(input=v_449, dim=-1)
+        v_452 = v_450.reshape(*v_440)
+        v_453 = [int(((v_424.size(0) * 2) * 2)), int((v_122.size(2) // 2)), int((v_122.size(3) // 2)), int(v_424.size(2))]
+        v_454 = torch.matmul(input=v_451, other=v_452)
+        v_455 = v_454.view(*v_453)
+        v_456 = [int(((v_455.size(0) // 2) // 2)), 2, 2, int(v_455.size(1)), int(v_455.size(2)), int(v_455.size(3))]
+        v_457 = v_455.view(*v_456)
+        v_458 = [int(((v_455.size(0) // 2) // 2)), int((v_455.size(1) * 2)), int((v_455.size(2) * 2)), int(v_455.size(3))]
+        v_459 = torch.permute(input=v_457, dims=(0,1,3,2,4,5))
+        v_460 = [int(v_424.size(0)), -1, int(v_424.size(2))]
+        v_461 = v_459.reshape(*v_458)
+        v_462 = torch.roll(input=v_461, shifts=v_149, dims=(1,2))
+        v_463 = v_462.view(*v_460)
+        v_464 = self.transformer_layers_3_self_attn_merge(v_463)
+        v_465 = self.transformer_layers_3_self_attn_norm1(v_464)
+        v_466 = (v_421 + v_465)
+        v_467 = self.transformer_layers_3_cross_attn_ffn_q_proj(v_466)
+        v_468 = torch.cat((v_423, v_422), dim=0)
+        v_469 = self.transformer_layers_3_cross_attn_ffn_k_proj(v_468)
+        v_470 = self.transformer_layers_3_cross_attn_ffn_v_proj(v_468)
+        v_471 = [int(v_467.size(0)), int(v_122.size(2)), int(v_122.size(3)), int(v_467.size(2))]
+        v_472 = v_467.view(*v_471)
+        v_473 = torch.roll(input=v_472, shifts=v_251, dims=(1,2))
+        v_474 = [int(v_473.size(0)), 2, int((v_473.size(1) // 2)), 2, int((v_473.size(2) // 2)), int(v_473.size(3))]
+        v_475 = v_473.view(*v_474)
+        v_476 = v_469.view(*v_471)
+        v_477 = torch.roll(input=v_476, shifts=v_251, dims=(1,2))
+        v_478 = [int(v_477.size(0)), 2, int((v_477.size(1) // 2)), 2, int((v_477.size(2) // 2)), int(v_477.size(3))]
+        v_479 = v_477.view(*v_478)
+        v_480 = v_470.view(*v_471)
+        v_481 = torch.roll(input=v_480, shifts=v_251, dims=(1,2))
+        v_482 = [int(v_481.size(0)), 2, int((v_481.size(1) // 2)), 2, int((v_481.size(2) // 2)), int(v_481.size(3))]
+        v_483 = v_481.view(*v_482)
+        v_484 = [int(((v_467.size(0) * 2) * 2)), -1, int(v_467.size(2))]
+        v_485 = torch.permute(input=v_475, dims=(0,1,3,2,4,5))
+        v_486 = torch.permute(input=v_479, dims=(0,1,3,2,4,5))
+        v_487 = v_486.reshape(*v_484)
+        v_488 = v_485.reshape(*v_484)
+        v_489 = torch.permute(input=v_487, dims=(0,2,1))
+        v_490 = torch.matmul(input=v_488, other=v_489)
+        v_491 = [int(v_467.size(0)), 1, 1]
+        v_492 = v_275.repeat(*v_491)
+        v_493 = ((v_490 / torch.pow(v_467.size(2), 5.000000e-01)) + v_492)
+        v_494 = torch.permute(input=v_483, dims=(0,1,3,2,4,5))
+        v_495 = F.softmax(input=v_493, dim=-1)
+        v_496 = v_494.reshape(*v_484)
+        v_497 = [int(((v_467.size(0) * 2) * 2)), int((v_122.size(2) // 2)), int((v_122.size(3) // 2)), int(v_467.size(2))]
+        v_498 = torch.matmul(input=v_495, other=v_496)
+        v_499 = v_498.view(*v_497)
+        v_500 = [int(((v_499.size(0) // 2) // 2)), 2, 2, int(v_499.size(1)), int(v_499.size(2)), int(v_499.size(3))]
+        v_501 = v_499.view(*v_500)
+        v_502 = [int(((v_499.size(0) // 2) // 2)), int((v_499.size(1) * 2)), int((v_499.size(2) * 2)), int(v_499.size(3))]
+        v_503 = torch.permute(input=v_501, dims=(0,1,3,2,4,5))
+        v_504 = [int(v_467.size(0)), -1, int(v_467.size(2))]
+        v_505 = v_503.reshape(*v_502)
+        v_506 = torch.roll(input=v_505, shifts=v_149, dims=(1,2))
+        v_507 = v_506.view(*v_504)
+        v_508 = self.transformer_layers_3_cross_attn_ffn_merge(v_507)
+        v_509 = self.transformer_layers_3_cross_attn_ffn_norm1(v_508)
+        v_510 = torch.cat((v_466, v_509), dim=-1)
+        v_511 = self.transformer_layers_3_cross_attn_ffn_mlp_0(v_510)
+        v_512 = self.transformer_layers_3_cross_attn_ffn_mlp_1(v_511)
+        v_513 = self.transformer_layers_3_cross_attn_ffn_mlp_2(v_512)
+        v_514 = self.transformer_layers_3_cross_attn_ffn_norm2(v_513)
+        v_515 = (v_466 + v_514)
+        v_516, v_517 = torch.chunk(input=v_515, chunks=2, dim=0)
+        v_518 = self.transformer_layers_4_self_attn_q_proj(v_515)
+        v_519 = self.transformer_layers_4_self_attn_k_proj(v_515)
+        v_520 = self.transformer_layers_4_self_attn_v_proj(v_515)
+        v_521 = [int(v_518.size(0)), int(v_122.size(2)), int(v_122.size(3)), int(v_518.size(2))]
+        v_522 = v_518.view(*v_521)
+        v_523 = [int(v_522.size(0)), 2, int((v_522.size(1) // 2)), 2, int((v_522.size(2) // 2)), int(v_522.size(3))]
+        v_524 = v_522.view(*v_523)
+        v_525 = v_519.view(*v_521)
+        v_526 = [int(v_525.size(0)), 2, int((v_525.size(1) // 2)), 2, int((v_525.size(2) // 2)), int(v_525.size(3))]
+        v_527 = v_525.view(*v_526)
+        v_528 = v_520.view(*v_521)
+        v_529 = [int(v_528.size(0)), 2, int((v_528.size(1) // 2)), 2, int((v_528.size(2) // 2)), int(v_528.size(3))]
+        v_530 = v_528.view(*v_529)
+        v_531 = [int(((v_518.size(0) * 2) * 2)), -1, int(v_518.size(2))]
+        v_532 = torch.permute(input=v_524, dims=(0,1,3,2,4,5))
+        v_533 = torch.permute(input=v_527, dims=(0,1,3,2,4,5))
+        v_534 = v_533.reshape(*v_531)
+        v_535 = v_532.reshape(*v_531)
+        v_536 = torch.permute(input=v_534, dims=(0,2,1))
+        v_537 = torch.matmul(input=v_535, other=v_536)
+        v_538 = (v_537 / torch.pow(v_518.size(2), 5.000000e-01))
+        v_539 = torch.permute(input=v_530, dims=(0,1,3,2,4,5))
+        v_540 = F.softmax(input=v_538, dim=-1)
+        v_541 = v_539.reshape(*v_531)
+        v_542 = [int(((v_518.size(0) * 2) * 2)), int((v_122.size(2) // 2)), int((v_122.size(3) // 2)), int(v_518.size(2))]
+        v_543 = torch.matmul(input=v_540, other=v_541)
+        v_544 = v_543.view(*v_542)
+        v_545 = [int(((v_544.size(0) // 2) // 2)), 2, 2, int(v_544.size(1)), int(v_544.size(2)), int(v_544.size(3))]
+        v_546 = v_544.view(*v_545)
+        v_547 = torch.permute(input=v_546, dims=(0,1,3,2,4,5))
+        v_548 = [int(v_518.size(0)), -1, int(v_518.size(2))]
+        v_549 = v_547.reshape(*v_548)
+        v_550 = self.transformer_layers_4_self_attn_merge(v_549)
+        v_551 = self.transformer_layers_4_self_attn_norm1(v_550)
+        v_552 = (v_515 + v_551)
+        v_553 = self.transformer_layers_4_cross_attn_ffn_q_proj(v_552)
+        v_554 = torch.cat((v_517, v_516), dim=0)
+        v_555 = self.transformer_layers_4_cross_attn_ffn_k_proj(v_554)
+        v_556 = self.transformer_layers_4_cross_attn_ffn_v_proj(v_554)
+        v_557 = [int(v_553.size(0)), int(v_122.size(2)), int(v_122.size(3)), int(v_553.size(2))]
+        v_558 = v_553.view(*v_557)
+        v_559 = [int(v_558.size(0)), 2, int((v_558.size(1) // 2)), 2, int((v_558.size(2) // 2)), int(v_558.size(3))]
+        v_560 = v_558.view(*v_559)
+        v_561 = v_555.view(*v_557)
+        v_562 = [int(v_561.size(0)), 2, int((v_561.size(1) // 2)), 2, int((v_561.size(2) // 2)), int(v_561.size(3))]
+        v_563 = v_561.view(*v_562)
+        v_564 = v_556.view(*v_557)
+        v_565 = [int(v_564.size(0)), 2, int((v_564.size(1) // 2)), 2, int((v_564.size(2) // 2)), int(v_564.size(3))]
+        v_566 = v_564.view(*v_565)
+        v_567 = [int(((v_553.size(0) * 2) * 2)), -1, int(v_553.size(2))]
+        v_568 = torch.permute(input=v_560, dims=(0,1,3,2,4,5))
+        v_569 = torch.permute(input=v_563, dims=(0,1,3,2,4,5))
+        v_570 = v_569.reshape(*v_567)
+        v_571 = v_568.reshape(*v_567)
+        v_572 = torch.permute(input=v_570, dims=(0,2,1))
+        v_573 = torch.matmul(input=v_571, other=v_572)
+        v_574 = (v_573 / torch.pow(v_553.size(2), 5.000000e-01))
+        v_575 = torch.permute(input=v_566, dims=(0,1,3,2,4,5))
+        v_576 = F.softmax(input=v_574, dim=-1)
+        v_577 = v_575.reshape(*v_567)
+        v_578 = [int(((v_553.size(0) * 2) * 2)), int((v_122.size(2) // 2)), int((v_122.size(3) // 2)), int(v_553.size(2))]
+        v_579 = torch.matmul(input=v_576, other=v_577)
+        v_580 = v_579.view(*v_578)
+        v_581 = [int(((v_580.size(0) // 2) // 2)), 2, 2, int(v_580.size(1)), int(v_580.size(2)), int(v_580.size(3))]
+        v_582 = v_580.view(*v_581)
+        v_583 = torch.permute(input=v_582, dims=(0,1,3,2,4,5))
+        v_584 = [int(v_553.size(0)), -1, int(v_553.size(2))]
+        v_585 = v_583.reshape(*v_584)
+        v_586 = self.transformer_layers_4_cross_attn_ffn_merge(v_585)
+        v_587 = self.transformer_layers_4_cross_attn_ffn_norm1(v_586)
+        v_588 = torch.cat((v_552, v_587), dim=-1)
+        v_589 = self.transformer_layers_4_cross_attn_ffn_mlp_0(v_588)
+        v_590 = self.transformer_layers_4_cross_attn_ffn_mlp_1(v_589)
+        v_591 = self.transformer_layers_4_cross_attn_ffn_mlp_2(v_590)
+        v_592 = self.transformer_layers_4_cross_attn_ffn_norm2(v_591)
+        v_593 = (v_552 + v_592)
+        v_594, v_595 = torch.chunk(input=v_593, chunks=2, dim=0)
+        v_596 = self.transformer_layers_5_self_attn_q_proj(v_593)
+        v_597 = self.transformer_layers_5_self_attn_k_proj(v_593)
+        v_598 = self.transformer_layers_5_self_attn_v_proj(v_593)
+        v_599 = [int(v_596.size(0)), int(v_122.size(2)), int(v_122.size(3)), int(v_596.size(2))]
+        v_600 = v_596.view(*v_599)
+        v_601 = torch.roll(input=v_600, shifts=v_251, dims=(1,2))
+        v_602 = [int(v_601.size(0)), 2, int((v_601.size(1) // 2)), 2, int((v_601.size(2) // 2)), int(v_601.size(3))]
+        v_603 = v_601.view(*v_602)
+        v_604 = v_597.view(*v_599)
+        v_605 = torch.roll(input=v_604, shifts=v_251, dims=(1,2))
+        v_606 = [int(v_605.size(0)), 2, int((v_605.size(1) // 2)), 2, int((v_605.size(2) // 2)), int(v_605.size(3))]
+        v_607 = v_605.view(*v_606)
+        v_608 = v_598.view(*v_599)
+        v_609 = torch.roll(input=v_608, shifts=v_251, dims=(1,2))
+        v_610 = [int(v_609.size(0)), 2, int((v_609.size(1) // 2)), 2, int((v_609.size(2) // 2)), int(v_609.size(3))]
+        v_611 = v_609.view(*v_610)
+        v_612 = [int(((v_596.size(0) * 2) * 2)), -1, int(v_596.size(2))]
+        v_613 = torch.permute(input=v_603, dims=(0,1,3,2,4,5))
+        v_614 = torch.permute(input=v_607, dims=(0,1,3,2,4,5))
+        v_615 = v_614.reshape(*v_612)
+        v_616 = v_613.reshape(*v_612)
+        v_617 = torch.permute(input=v_615, dims=(0,2,1))
+        v_618 = torch.matmul(input=v_616, other=v_617)
+        v_619 = [int(v_596.size(0)), 1, 1]
+        v_620 = v_275.repeat(*v_619)
+        v_621 = ((v_618 / torch.pow(v_596.size(2), 5.000000e-01)) + v_620)
+        v_622 = torch.permute(input=v_611, dims=(0,1,3,2,4,5))
+        v_623 = F.softmax(input=v_621, dim=-1)
+        v_624 = v_622.reshape(*v_612)
+        v_625 = [int(((v_596.size(0) * 2) * 2)), int((v_122.size(2) // 2)), int((v_122.size(3) // 2)), int(v_596.size(2))]
+        v_626 = torch.matmul(input=v_623, other=v_624)
+        v_627 = v_626.view(*v_625)
+        v_628 = [int(((v_627.size(0) // 2) // 2)), 2, 2, int(v_627.size(1)), int(v_627.size(2)), int(v_627.size(3))]
+        v_629 = v_627.view(*v_628)
+        v_630 = [int(((v_627.size(0) // 2) // 2)), int((v_627.size(1) * 2)), int((v_627.size(2) * 2)), int(v_627.size(3))]
+        v_631 = torch.permute(input=v_629, dims=(0,1,3,2,4,5))
+        v_632 = [int(v_596.size(0)), -1, int(v_596.size(2))]
+        v_633 = v_631.reshape(*v_630)
+        v_634 = torch.roll(input=v_633, shifts=v_149, dims=(1,2))
+        v_635 = v_634.view(*v_632)
+        v_636 = self.transformer_layers_5_self_attn_merge(v_635)
+        v_637 = self.transformer_layers_5_self_attn_norm1(v_636)
+        v_638 = (v_593 + v_637)
+        v_639 = self.transformer_layers_5_cross_attn_ffn_q_proj(v_638)
+        v_640 = torch.cat((v_595, v_594), dim=0)
+        v_641 = self.transformer_layers_5_cross_attn_ffn_k_proj(v_640)
+        v_642 = self.transformer_layers_5_cross_attn_ffn_v_proj(v_640)
+        v_643 = [int(v_639.size(0)), int(v_122.size(2)), int(v_122.size(3)), int(v_639.size(2))]
+        v_644 = v_639.view(*v_643)
+        v_645 = torch.roll(input=v_644, shifts=v_251, dims=(1,2))
+        v_646 = [int(v_645.size(0)), 2, int((v_645.size(1) // 2)), 2, int((v_645.size(2) // 2)), int(v_645.size(3))]
+        v_647 = v_645.view(*v_646)
+        v_648 = v_641.view(*v_643)
+        v_649 = torch.roll(input=v_648, shifts=v_251, dims=(1,2))
+        v_650 = [int(v_649.size(0)), 2, int((v_649.size(1) // 2)), 2, int((v_649.size(2) // 2)), int(v_649.size(3))]
+        v_651 = v_649.view(*v_650)
+        v_652 = v_642.view(*v_643)
+        v_653 = torch.roll(input=v_652, shifts=v_251, dims=(1,2))
+        v_654 = [int(v_653.size(0)), 2, int((v_653.size(1) // 2)), 2, int((v_653.size(2) // 2)), int(v_653.size(3))]
+        v_655 = v_653.view(*v_654)
+        v_656 = [int(((v_639.size(0) * 2) * 2)), -1, int(v_639.size(2))]
+        v_657 = torch.permute(input=v_647, dims=(0,1,3,2,4,5))
+        v_658 = torch.permute(input=v_651, dims=(0,1,3,2,4,5))
+        v_659 = v_658.reshape(*v_656)
+        v_660 = v_657.reshape(*v_656)
+        v_661 = torch.permute(input=v_659, dims=(0,2,1))
+        v_662 = torch.matmul(input=v_660, other=v_661)
+        v_663 = [int(v_639.size(0)), 1, 1]
+        v_664 = v_275.repeat(*v_663)
+        v_665 = ((v_662 / torch.pow(v_639.size(2), 5.000000e-01)) + v_664)
+        v_666 = torch.permute(input=v_655, dims=(0,1,3,2,4,5))
+        v_667 = F.softmax(input=v_665, dim=-1)
+        v_668 = v_666.reshape(*v_656)
+        v_669 = [int(((v_639.size(0) * 2) * 2)), int((v_122.size(2) // 2)), int((v_122.size(3) // 2)), int(v_639.size(2))]
+        v_670 = torch.matmul(input=v_667, other=v_668)
+        v_671 = v_670.view(*v_669)
+        v_672 = [int(((v_671.size(0) // 2) // 2)), 2, 2, int(v_671.size(1)), int(v_671.size(2)), int(v_671.size(3))]
+        v_673 = v_671.view(*v_672)
+        v_674 = [int(((v_671.size(0) // 2) // 2)), int((v_671.size(1) * 2)), int((v_671.size(2) * 2)), int(v_671.size(3))]
+        v_675 = torch.permute(input=v_673, dims=(0,1,3,2,4,5))
+        v_676 = [int(v_639.size(0)), -1, int(v_639.size(2))]
+        v_677 = v_675.reshape(*v_674)
+        v_678 = torch.roll(input=v_677, shifts=v_149, dims=(1,2))
+        v_679 = v_678.view(*v_676)
+        v_680 = self.transformer_layers_5_cross_attn_ffn_merge(v_679)
+        v_681 = self.transformer_layers_5_cross_attn_ffn_norm1(v_680)
+        v_682 = torch.cat((v_638, v_681), dim=-1)
+        v_683 = self.transformer_layers_5_cross_attn_ffn_mlp_0(v_682)
+        v_684 = self.transformer_layers_5_cross_attn_ffn_mlp_1(v_683)
+        v_685 = self.transformer_layers_5_cross_attn_ffn_mlp_2(v_684)
+        v_686 = self.transformer_layers_5_cross_attn_ffn_norm2(v_685)
+        v_687 = (v_638 + v_686)
+        v_688, v_689 = torch.chunk(input=v_687, chunks=2, dim=0)
+        v_690 = [int(v_122.size(0)), int(v_122.size(2)), int(v_122.size(3)), int(v_122.size(1))]
+        v_691 = v_688.view(*v_690)
+        v_692 = v_689.view(*v_690)
+        v_693 = torch.permute(input=v_692, dims=(0,3,1,2))
+        v_694 = v_693.contiguous(memory_format=torch.contiguous_format)
+        v_695 = torch.permute(input=v_691, dims=(0,3,1,2))
         v_696 = v_695.contiguous(memory_format=torch.contiguous_format)
-        v_697 = v_696.size(2)
-        v_698 = v_696.size(3)
-        v_699 = [int(v_696.size(0)), int(v_696.size(1)), -1]
-        v_700 = v_696.view(*v_699)
-        v_701 = [int(v_696.size(0)), int(v_696.size(2)), int(v_696.size(3)), int(v_696.size(2)), int(v_696.size(3))]
-        v_702 = torch.permute(input=v_700, dims=(0,2,1))
-        v_703 = v_694.reshape(*v_699)
-        v_704 = torch.matmul(input=v_702, other=v_703)
-        v_705 = v_704.view(*v_701)
-        v_706 = (v_705 / torch.pow(v_696.size(1), 5.000000e-01))
-        v_707 = torch.arange(end=v_698)
-        v_708 = torch.arange(end=v_697)
-        v_709 = [int(v_696.size(0)), 1, int(v_696.size(2)), int(v_696.size(3))]
-        v_710 = v_708.view(1, 1, -1, 1)
-        v_711 = v_710.expand(*v_709)
-        v_712 = v_707.view(1, 1, 1, -1)
-        v_713 = v_712.expand(*v_709)
-        v_714 = torch.cat((v_713, v_711), dim=1)
-        v_715 = [int(v_696.size(0)), 2, -1]
-        v_716 = v_714.view(*v_715)
-        v_717 = [int(v_696.size(0)), int((v_696.size(2) * v_696.size(3))), int((v_696.size(2) * v_696.size(3)))]
-        v_718 = v_706.view(*v_717)
-        v_719 = F.softmax(input=v_718, dim=-1)
-        v_720 = [int(v_696.size(0)), int(v_696.size(2)), int(v_696.size(3)), 2]
-        v_721 = torch.permute(input=v_716, dims=(0,2,1))
-        v_722 = torch.matmul(input=v_719, other=v_721)
-        v_723 = v_722.view(*v_720)
-        v_724 = torch.permute(input=v_723, dims=(0,3,1,2))
-        v_725 = (v_724 - v_714)
-        v_726 = [int(v_696.size(0)), int(v_696.size(1)), int((v_696.size(2) * v_696.size(3)))]
-        v_727 = v_696.view(*v_726)
-        v_728 = torch.permute(input=v_727, dims=(0,2,1))
-        v_729 = self.feature_flow_attn_q_proj(v_728)
-        v_730 = self.feature_flow_attn_k_proj(v_729)
-        v_731 = [int(v_696.size(0)), int(v_725.size(1)), int((v_696.size(2) * v_696.size(3)))]
-        v_732 = v_725.view(*v_731)
-        v_733 = torch.permute(input=v_730, dims=(0,2,1))
-        v_734 = torch.matmul(input=v_729, other=v_733)
-        v_735 = (v_734 / torch.pow(v_696.size(1), 5.000000e-01))
-        v_736 = F.softmax(input=v_735, dim=-1)
-        v_737 = torch.permute(input=v_732, dims=(0,2,1))
-        v_738 = [int(v_696.size(0)), int(v_696.size(2)), int(v_696.size(3)), int(v_737.size(-1))]
-        v_739 = torch.matmul(input=v_736, other=v_737)
-        v_740 = v_739.view(*v_738)
-        v_741 = torch.permute(input=v_740, dims=(0,3,1,2))
-        v_742 = F.upsample(input=v_741, align_corners=True, mode='bilinear', scale_factor=(2.000000,2.000000))
-        v_743 = (v_742 * 2)
-        v_744 = v_74.size(2)
-        v_745 = v_74.size(3)
-        v_746 = torch.arange(end=v_745)
-        v_747 = torch.arange(end=v_744)
-        v_748 = [int(v_74.size(0)), 1, int(v_74.size(2)), int(v_74.size(3))]
-        v_749 = v_747.view(1, 1, -1, 1)
-        v_750 = v_749.expand(*v_748)
-        v_751 = v_746.view(1, 1, 1, -1)
-        v_752 = v_751.expand(*v_748)
-        v_753 = torch.cat((v_752, v_750), dim=1)
-        v_754 = (v_753 + v_743)
-        v_755 = v_754.select(dim=1, index=0)
-        v_756 = (((v_755 * 2) / (v_754.size(3) - 1)) - 1)
-        v_757 = v_754.select(dim=1, index=1)
-        v_758 = (((v_757 * 2) / (v_754.size(2) - 1)) - 1)
-        v_759 = [int(v_73.size(0)), int(v_73.size(1)), 8, int((v_73.size(2) // 8)), 8, int((v_73.size(3) // 8))]
-        v_760 = v_73.view(*v_759)
-        v_761 = [int(((v_73.size(0) * 8) * 8)), int(v_73.size(1)), int((v_73.size(2) // 8)), int((v_73.size(3) // 8))]
-        v_762 = torch.stack((v_756, v_758), dim=-1)
-        v_763 = F.grid_sample(input=v_74, grid=v_762, align_corners=True, mode='bilinear', padding_mode='zeros')
-        v_764 = [int(v_763.size(0)), int(v_763.size(1)), 8, int((v_763.size(2) // 8)), 8, int((v_763.size(3) // 8))]
-        v_765 = v_763.view(*v_764)
-        v_766 = [int(((v_763.size(0) * 8) * 8)), int(v_763.size(1)), int((v_763.size(2) // 8)), int((v_763.size(3) // 8))]
-        v_767 = torch.permute(input=v_760, dims=(0,2,4,1,3,5))
-        v_768 = v_767.reshape(*v_761)
-        v_769 = [int(v_768.size(0)), int(v_768.size(2)), int(v_768.size(3))]
-        v_770 = torch.ones(size=v_769)
-        v_771 = torch.cumsum(input=v_770, dim=1)
-        v_772 = v_771[:,-1:]
-        v_773 = ((v_771 / (v_772 + 1.000000e-06)) * 6.283185e+00)
-        v_774 = torch.cumsum(input=v_770, dim=2)
-        v_775 = v_774[:,:,-1:]
-        v_776 = ((v_774 / (v_775 + 1.000000e-06)) * 6.283185e+00)
-        v_777 = torch.unsqueeze(input=v_776, dim=3)
-        v_778 = (v_777 / v_92)
-        v_779 = torch.unsqueeze(input=v_773, dim=3)
-        v_780 = (v_779 / v_92)
-        v_781 = v_778[:,:,:,::2]
-        v_782 = torch.sin(v_781)
-        v_783 = v_778[:,:,:,1::2]
-        v_784 = torch.cos(v_783)
-        v_785 = torch.stack((v_782, v_784), dim=4)
-        v_786 = v_780[:,:,:,::2]
-        v_787 = torch.sin(v_786)
-        v_788 = v_780[:,:,:,1::2]
-        v_789 = torch.cos(v_788)
-        v_790 = torch.stack((v_787, v_789), dim=4)
-        v_791 = torch.flatten(input=v_790, end_dim=-1, start_dim=3)
-        v_792 = torch.flatten(input=v_785, end_dim=-1, start_dim=3)
-        v_793 = torch.cat((v_791, v_792), dim=3)
-        v_794 = torch.permute(input=v_793, dims=(0,3,1,2))
-        v_795 = (v_768 + v_794)
-        v_796 = torch.permute(input=v_765, dims=(0,2,4,1,3,5))
-        v_797 = v_796.reshape(*v_766)
-        v_798 = (v_797 + v_794)
-        v_799 = [int(((v_795.size(0) // 8) // 8)), 8, 8, int(v_795.size(1)), int(v_795.size(2)), int(v_795.size(3))]
-        v_800 = v_795.view(*v_799)
-        v_801 = [int(((v_795.size(0) // 8) // 8)), int(v_795.size(1)), int((v_795.size(2) * 8)), int((v_795.size(3) * 8))]
-        v_802 = torch.permute(input=v_800, dims=(0,3,1,4,2,5))
-        v_803 = [int(((v_798.size(0) // 8) // 8)), 8, 8, int(v_798.size(1)), int(v_798.size(2)), int(v_798.size(3))]
-        v_804 = v_798.view(*v_803)
-        v_805 = [int(((v_798.size(0) // 8) // 8)), int(v_798.size(1)), int((v_798.size(2) * 8)), int((v_798.size(3) * 8))]
-        v_806 = torch.permute(input=v_804, dims=(0,3,1,4,2,5))
-        v_807 = v_802.reshape(*v_801)
-        v_808 = torch.flatten(input=v_807, end_dim=-1, start_dim=-2)
-        v_809 = v_806.reshape(*v_805)
-        v_810 = torch.flatten(input=v_809, end_dim=-1, start_dim=-2)
-        v_811 = [int((v_807.size(2) - (v_807.size(2) // 8))), int((v_807.size(3) - (v_807.size(3) // 8)))]
-        v_812 = torch.ones(size=v_811)
-        v_813 = [int((v_807.size(2) - (v_807.size(2) // 8))), int(((v_807.size(3) // 8) - ((v_807.size(3) // 8) // 2)))]
-        v_814 = torch.ones(size=v_813)
-        v_815 = (v_814 * 2)
-        v_816 = [int((v_807.size(2) - (v_807.size(2) // 8))), int(((v_807.size(3) // 8) // 2))]
-        v_817 = torch.ones(size=v_816)
-        v_818 = (v_817 * 3)
-        v_819 = [int(((v_807.size(2) // 8) - ((v_807.size(2) // 8) // 2))), int((v_807.size(3) - (v_807.size(3) // 8)))]
-        v_820 = torch.ones(size=v_819)
-        v_821 = (v_820 * 4)
-        v_822 = [int(((v_807.size(2) // 8) - ((v_807.size(2) // 8) // 2))), int(((v_807.size(3) // 8) - ((v_807.size(3) // 8) // 2)))]
-        v_823 = torch.ones(size=v_822)
-        v_824 = (v_823 * 5)
-        v_825 = [int(((v_807.size(2) // 8) - ((v_807.size(2) // 8) // 2))), int(((v_807.size(3) // 8) // 2))]
-        v_826 = torch.ones(size=v_825)
-        v_827 = (v_826 * 6)
-        v_828 = [int(((v_807.size(2) // 8) // 2)), int((v_807.size(3) - (v_807.size(3) // 8)))]
-        v_829 = torch.ones(size=v_828)
-        v_830 = (v_829 * 7)
-        v_831 = [int(((v_807.size(2) // 8) // 2)), int(((v_807.size(3) // 8) - ((v_807.size(3) // 8) // 2)))]
-        v_832 = torch.ones(size=v_831)
-        v_833 = (v_832 * 8)
-        v_834 = [int(((v_807.size(2) // 8) // 2)), int(((v_807.size(3) // 8) // 2))]
-        v_835 = torch.ones(size=v_834)
-        v_836 = (v_835 * 9)
-        v_837 = torch.cat((v_830, v_833, v_836), dim=1)
-        v_838 = torch.cat((v_821, v_824, v_827), dim=1)
-        v_839 = torch.cat((v_812, v_815, v_818), dim=1)
-        v_840 = torch.cat((v_839, v_838, v_837), dim=0)
-        v_841 = torch.unsqueeze(input=v_840, dim=0)
-        v_842 = torch.unsqueeze(input=v_841, dim=-1)
-        v_843 = [int(v_842.size(0)), int((v_807.size(3) // (v_807.size(3) // 8))), int((v_842.size(1) // (v_807.size(3) // (v_807.size(3) // 8)))), int((v_807.size(3) // (v_807.size(3) // 8))), int((v_842.size(2) // (v_807.size(3) // (v_807.size(3) // 8)))), int(v_842.size(3))]
-        v_844 = v_842.view(*v_843)
-        v_845 = [-1, int(((v_807.size(2) // 8) * (v_807.size(3) // 8)))]
-        v_846 = torch.permute(input=v_844, dims=(0,1,3,2,4,5))
-        v_847 = v_846.reshape(*v_845)
-        v_848 = torch.unsqueeze(input=v_847, dim=2)
-        v_849 = torch.unsqueeze(input=v_847, dim=1)
-        v_850 = (v_849 - v_848)
-        v_851 = torch.permute(input=v_810, dims=(0,2,1))
-        v_852 = torch.permute(input=v_808, dims=(0,2,1))
-        v_853 = torch.cat((v_852, v_851), dim=0)
-        v_854 = self.pnnx_unique_12(v_853)
-        v_855 = self.pnnx_unique_13(v_853)
-        v_856 = self.pnnx_unique_14(v_853)
-        v_857 = [int(v_854.size(0)), int(v_807.size(2)), int(v_807.size(3)), int(v_854.size(2))]
-        v_858 = v_854.view(*v_857)
-        v_859 = [int(v_858.size(0)), 8, int((v_858.size(1) // 8)), 8, int((v_858.size(2) // 8)), int(v_858.size(3))]
-        v_860 = v_858.view(*v_859)
-        v_861 = v_855.view(*v_857)
-        v_862 = [int(v_861.size(0)), 8, int((v_861.size(1) // 8)), 8, int((v_861.size(2) // 8)), int(v_861.size(3))]
-        v_863 = v_861.view(*v_862)
-        v_864 = v_856.view(*v_857)
-        v_865 = [int(v_864.size(0)), 8, int((v_864.size(1) // 8)), 8, int((v_864.size(2) // 8)), int(v_864.size(3))]
-        v_866 = v_864.view(*v_865)
-        v_867 = [int(((v_854.size(0) * 8) * 8)), -1, int(v_854.size(2))]
-        v_868 = torch.permute(input=v_860, dims=(0,1,3,2,4,5))
-        v_869 = torch.permute(input=v_863, dims=(0,1,3,2,4,5))
-        v_870 = v_869.reshape(*v_867)
-        v_871 = v_868.reshape(*v_867)
-        v_872 = torch.permute(input=v_870, dims=(0,2,1))
-        v_873 = torch.matmul(input=v_871, other=v_872)
-        v_874 = (v_873 / torch.pow(v_854.size(2), 5.000000e-01))
-        v_875 = torch.permute(input=v_866, dims=(0,1,3,2,4,5))
-        v_876 = F.softmax(input=v_874, dim=-1)
-        v_877 = v_875.reshape(*v_867)
-        v_878 = [int(((v_854.size(0) * 8) * 8)), int((v_807.size(2) // 8)), int((v_807.size(3) // 8)), int(v_854.size(2))]
-        v_879 = torch.matmul(input=v_876, other=v_877)
-        v_880 = v_879.view(*v_878)
-        v_881 = [int(((v_880.size(0) // 8) // 8)), 8, 8, int(v_880.size(1)), int(v_880.size(2)), int(v_880.size(3))]
-        v_882 = v_880.view(*v_881)
-        v_883 = torch.permute(input=v_882, dims=(0,1,3,2,4,5))
-        v_884 = [int(v_854.size(0)), -1, int(v_854.size(2))]
-        v_885 = v_883.reshape(*v_884)
-        v_886 = self.pnnx_unique_15(v_885)
-        v_887 = self.pnnx_unique_16(v_886)
-        v_888 = (v_853 + v_887)
-        v_889 = self.pnnx_unique_17(v_888)
-        v_890 = torch.cat((v_851, v_852), dim=0)
-        v_891 = self.pnnx_unique_18(v_890)
-        v_892 = self.pnnx_unique_19(v_890)
-        v_893 = [int(v_889.size(0)), int(v_807.size(2)), int(v_807.size(3)), int(v_889.size(2))]
-        v_894 = v_889.view(*v_893)
-        v_895 = [int(v_894.size(0)), 8, int((v_894.size(1) // 8)), 8, int((v_894.size(2) // 8)), int(v_894.size(3))]
-        v_896 = v_894.view(*v_895)
-        v_897 = v_891.view(*v_893)
-        v_898 = [int(v_897.size(0)), 8, int((v_897.size(1) // 8)), 8, int((v_897.size(2) // 8)), int(v_897.size(3))]
-        v_899 = v_897.view(*v_898)
-        v_900 = v_892.view(*v_893)
-        v_901 = [int(v_900.size(0)), 8, int((v_900.size(1) // 8)), 8, int((v_900.size(2) // 8)), int(v_900.size(3))]
-        v_902 = v_900.view(*v_901)
-        v_903 = [int(((v_889.size(0) * 8) * 8)), -1, int(v_889.size(2))]
-        v_904 = torch.permute(input=v_896, dims=(0,1,3,2,4,5))
-        v_905 = torch.permute(input=v_899, dims=(0,1,3,2,4,5))
-        v_906 = v_905.reshape(*v_903)
-        v_907 = v_904.reshape(*v_903)
-        v_908 = torch.permute(input=v_906, dims=(0,2,1))
-        v_909 = torch.matmul(input=v_907, other=v_908)
-        v_910 = (v_909 / torch.pow(v_889.size(2), 5.000000e-01))
-        v_911 = torch.permute(input=v_902, dims=(0,1,3,2,4,5))
-        v_912 = F.softmax(input=v_910, dim=-1)
-        v_913 = v_911.reshape(*v_903)
-        v_914 = [int(((v_889.size(0) * 8) * 8)), int((v_807.size(2) // 8)), int((v_807.size(3) // 8)), int(v_889.size(2))]
-        v_915 = torch.matmul(input=v_912, other=v_913)
-        v_916 = v_915.view(*v_914)
-        v_917 = [int(((v_916.size(0) // 8) // 8)), 8, 8, int(v_916.size(1)), int(v_916.size(2)), int(v_916.size(3))]
-        v_918 = v_916.view(*v_917)
-        v_919 = torch.permute(input=v_918, dims=(0,1,3,2,4,5))
-        v_920 = [int(v_889.size(0)), -1, int(v_889.size(2))]
-        v_921 = v_919.reshape(*v_920)
-        v_922 = self.pnnx_unique_20(v_921)
-        v_923 = self.pnnx_unique_21(v_922)
-        v_924 = torch.cat((v_888, v_923), dim=-1)
-        v_925 = self.pnnx_unique_22(v_924)
-        v_926 = self.pnnx_unique_23(v_925)
-        v_927 = self.pnnx_unique_24(v_926)
-        v_928 = self.pnnx_unique_25(v_927)
-        v_929 = (v_888 + v_928)
-        v_930, v_931 = torch.chunk(input=v_929, chunks=2, dim=0)
-        v_932 = self.pnnx_unique_26(v_929)
-        v_933 = self.pnnx_unique_27(v_929)
-        v_934 = self.pnnx_unique_28(v_929)
-        v_935 = [int(v_932.size(0)), int(v_807.size(2)), int(v_807.size(3)), int(v_932.size(2))]
-        v_936 = [int(torch.neg(((v_807.size(2) // 8) // 2))), int(torch.neg(((v_807.size(3) // 8) // 2)))]
-        v_937 = v_932.view(*v_935)
-        v_938 = torch.roll(input=v_937, shifts=v_936, dims=(1,2))
-        v_939 = [int(v_938.size(0)), 8, int((v_938.size(1) // 8)), 8, int((v_938.size(2) // 8)), int(v_938.size(3))]
-        v_940 = v_938.view(*v_939)
-        v_941 = v_933.view(*v_935)
-        v_942 = torch.roll(input=v_941, shifts=v_936, dims=(1,2))
-        v_943 = [int(v_942.size(0)), 8, int((v_942.size(1) // 8)), 8, int((v_942.size(2) // 8)), int(v_942.size(3))]
-        v_944 = v_942.view(*v_943)
-        v_945 = v_934.view(*v_935)
-        v_946 = torch.roll(input=v_945, shifts=v_936, dims=(1,2))
-        v_947 = [int(v_946.size(0)), 8, int((v_946.size(1) // 8)), 8, int((v_946.size(2) // 8)), int(v_946.size(3))]
-        v_948 = v_946.view(*v_947)
-        v_949 = [int(((v_932.size(0) * 8) * 8)), -1, int(v_932.size(2))]
-        v_950 = torch.permute(input=v_940, dims=(0,1,3,2,4,5))
-        v_951 = torch.permute(input=v_944, dims=(0,1,3,2,4,5))
-        v_952 = v_951.reshape(*v_949)
-        v_953 = v_950.reshape(*v_949)
-        v_954 = torch.permute(input=v_952, dims=(0,2,1))
-        v_955 = torch.matmul(input=v_953, other=v_954)
-        v_956 = [int(v_932.size(0)), 1, 1]
-        v_957 = torch.ne(input=v_850, other=0)
-        v_958 = v_850.masked_fill(v_957, value=-100.000000)
-        v_959 = torch.eq(input=v_850, other=0)
-        v_960 = v_958.masked_fill(v_959, value=0.000000)
-        v_961 = v_960.repeat(*v_956)
-        v_962 = ((v_955 / torch.pow(v_932.size(2), 5.000000e-01)) + v_961)
-        v_963 = torch.permute(input=v_948, dims=(0,1,3,2,4,5))
-        v_964 = F.softmax(input=v_962, dim=-1)
-        v_965 = v_963.reshape(*v_949)
-        v_966 = [int(((v_932.size(0) * 8) * 8)), int((v_807.size(2) // 8)), int((v_807.size(3) // 8)), int(v_932.size(2))]
-        v_967 = torch.matmul(input=v_964, other=v_965)
-        v_968 = v_967.view(*v_966)
-        v_969 = [int(((v_968.size(0) // 8) // 8)), 8, 8, int(v_968.size(1)), int(v_968.size(2)), int(v_968.size(3))]
-        v_970 = v_968.view(*v_969)
-        v_971 = [int(((v_968.size(0) // 8) // 8)), int((v_968.size(1) * 8)), int((v_968.size(2) * 8)), int(v_968.size(3))]
-        v_972 = torch.permute(input=v_970, dims=(0,1,3,2,4,5))
-        v_973 = [int(v_932.size(0)), -1, int(v_932.size(2))]
-        v_974 = v_972.reshape(*v_971)
-        v_975 = torch.roll(input=v_974, shifts=v_834, dims=(1,2))
-        v_976 = v_975.view(*v_973)
-        v_977 = self.pnnx_unique_29(v_976)
-        v_978 = self.pnnx_unique_30(v_977)
-        v_979 = (v_929 + v_978)
-        v_980 = self.pnnx_unique_31(v_979)
-        v_981 = torch.cat((v_931, v_930), dim=0)
-        v_982 = self.pnnx_unique_32(v_981)
-        v_983 = self.pnnx_unique_33(v_981)
-        v_984 = [int(v_980.size(0)), int(v_807.size(2)), int(v_807.size(3)), int(v_980.size(2))]
-        v_985 = v_980.view(*v_984)
-        v_986 = torch.roll(input=v_985, shifts=v_936, dims=(1,2))
-        v_987 = [int(v_986.size(0)), 8, int((v_986.size(1) // 8)), 8, int((v_986.size(2) // 8)), int(v_986.size(3))]
-        v_988 = v_986.view(*v_987)
-        v_989 = v_982.view(*v_984)
-        v_990 = torch.roll(input=v_989, shifts=v_936, dims=(1,2))
-        v_991 = [int(v_990.size(0)), 8, int((v_990.size(1) // 8)), 8, int((v_990.size(2) // 8)), int(v_990.size(3))]
-        v_992 = v_990.view(*v_991)
-        v_993 = v_983.view(*v_984)
-        v_994 = torch.roll(input=v_993, shifts=v_936, dims=(1,2))
-        v_995 = [int(v_994.size(0)), 8, int((v_994.size(1) // 8)), 8, int((v_994.size(2) // 8)), int(v_994.size(3))]
-        v_996 = v_994.view(*v_995)
-        v_997 = [int(((v_980.size(0) * 8) * 8)), -1, int(v_980.size(2))]
-        v_998 = torch.permute(input=v_988, dims=(0,1,3,2,4,5))
-        v_999 = torch.permute(input=v_992, dims=(0,1,3,2,4,5))
-        v_1000 = v_999.reshape(*v_997)
-        v_1001 = v_998.reshape(*v_997)
-        v_1002 = torch.permute(input=v_1000, dims=(0,2,1))
-        v_1003 = torch.matmul(input=v_1001, other=v_1002)
-        v_1004 = [int(v_980.size(0)), 1, 1]
-        v_1005 = v_960.repeat(*v_1004)
-        v_1006 = ((v_1003 / torch.pow(v_980.size(2), 5.000000e-01)) + v_1005)
-        v_1007 = torch.permute(input=v_996, dims=(0,1,3,2,4,5))
-        v_1008 = F.softmax(input=v_1006, dim=-1)
-        v_1009 = v_1007.reshape(*v_997)
-        v_1010 = [int(((v_980.size(0) * 8) * 8)), int((v_807.size(2) // 8)), int((v_807.size(3) // 8)), int(v_980.size(2))]
-        v_1011 = torch.matmul(input=v_1008, other=v_1009)
-        v_1012 = v_1011.view(*v_1010)
-        v_1013 = [int(((v_1012.size(0) // 8) // 8)), 8, 8, int(v_1012.size(1)), int(v_1012.size(2)), int(v_1012.size(3))]
-        v_1014 = v_1012.view(*v_1013)
-        v_1015 = [int(((v_1012.size(0) // 8) // 8)), int((v_1012.size(1) * 8)), int((v_1012.size(2) * 8)), int(v_1012.size(3))]
-        v_1016 = torch.permute(input=v_1014, dims=(0,1,3,2,4,5))
-        v_1017 = [int(v_980.size(0)), -1, int(v_980.size(2))]
-        v_1018 = v_1016.reshape(*v_1015)
-        v_1019 = torch.roll(input=v_1018, shifts=v_834, dims=(1,2))
-        v_1020 = v_1019.view(*v_1017)
-        v_1021 = self.pnnx_unique_34(v_1020)
-        v_1022 = self.pnnx_unique_35(v_1021)
-        v_1023 = torch.cat((v_979, v_1022), dim=-1)
-        v_1024 = self.pnnx_unique_36(v_1023)
-        v_1025 = self.pnnx_unique_37(v_1024)
-        v_1026 = self.pnnx_unique_38(v_1025)
-        v_1027 = self.pnnx_unique_39(v_1026)
-        v_1028 = (v_979 + v_1027)
-        v_1029, v_1030 = torch.chunk(input=v_1028, chunks=2, dim=0)
-        v_1031 = self.pnnx_unique_40(v_1028)
-        v_1032 = self.pnnx_unique_41(v_1028)
-        v_1033 = self.pnnx_unique_42(v_1028)
-        v_1034 = [int(v_1031.size(0)), int(v_807.size(2)), int(v_807.size(3)), int(v_1031.size(2))]
-        v_1035 = v_1031.view(*v_1034)
-        v_1036 = [int(v_1035.size(0)), 8, int((v_1035.size(1) // 8)), 8, int((v_1035.size(2) // 8)), int(v_1035.size(3))]
-        v_1037 = v_1035.view(*v_1036)
-        v_1038 = v_1032.view(*v_1034)
-        v_1039 = [int(v_1038.size(0)), 8, int((v_1038.size(1) // 8)), 8, int((v_1038.size(2) // 8)), int(v_1038.size(3))]
-        v_1040 = v_1038.view(*v_1039)
-        v_1041 = v_1033.view(*v_1034)
-        v_1042 = [int(v_1041.size(0)), 8, int((v_1041.size(1) // 8)), 8, int((v_1041.size(2) // 8)), int(v_1041.size(3))]
-        v_1043 = v_1041.view(*v_1042)
-        v_1044 = [int(((v_1031.size(0) * 8) * 8)), -1, int(v_1031.size(2))]
-        v_1045 = torch.permute(input=v_1037, dims=(0,1,3,2,4,5))
-        v_1046 = torch.permute(input=v_1040, dims=(0,1,3,2,4,5))
-        v_1047 = v_1046.reshape(*v_1044)
-        v_1048 = v_1045.reshape(*v_1044)
-        v_1049 = torch.permute(input=v_1047, dims=(0,2,1))
-        v_1050 = torch.matmul(input=v_1048, other=v_1049)
-        v_1051 = (v_1050 / torch.pow(v_1031.size(2), 5.000000e-01))
-        v_1052 = torch.permute(input=v_1043, dims=(0,1,3,2,4,5))
-        v_1053 = F.softmax(input=v_1051, dim=-1)
-        v_1054 = v_1052.reshape(*v_1044)
-        v_1055 = [int(((v_1031.size(0) * 8) * 8)), int((v_807.size(2) // 8)), int((v_807.size(3) // 8)), int(v_1031.size(2))]
-        v_1056 = torch.matmul(input=v_1053, other=v_1054)
-        v_1057 = v_1056.view(*v_1055)
-        v_1058 = [int(((v_1057.size(0) // 8) // 8)), 8, 8, int(v_1057.size(1)), int(v_1057.size(2)), int(v_1057.size(3))]
-        v_1059 = v_1057.view(*v_1058)
-        v_1060 = torch.permute(input=v_1059, dims=(0,1,3,2,4,5))
-        v_1061 = [int(v_1031.size(0)), -1, int(v_1031.size(2))]
-        v_1062 = v_1060.reshape(*v_1061)
-        v_1063 = self.pnnx_unique_43(v_1062)
-        v_1064 = self.pnnx_unique_44(v_1063)
-        v_1065 = (v_1028 + v_1064)
-        v_1066 = self.pnnx_unique_45(v_1065)
-        v_1067 = torch.cat((v_1030, v_1029), dim=0)
-        v_1068 = self.pnnx_unique_46(v_1067)
-        v_1069 = self.pnnx_unique_47(v_1067)
-        v_1070 = [int(v_1066.size(0)), int(v_807.size(2)), int(v_807.size(3)), int(v_1066.size(2))]
-        v_1071 = v_1066.view(*v_1070)
-        v_1072 = [int(v_1071.size(0)), 8, int((v_1071.size(1) // 8)), 8, int((v_1071.size(2) // 8)), int(v_1071.size(3))]
-        v_1073 = v_1071.view(*v_1072)
-        v_1074 = v_1068.view(*v_1070)
-        v_1075 = [int(v_1074.size(0)), 8, int((v_1074.size(1) // 8)), 8, int((v_1074.size(2) // 8)), int(v_1074.size(3))]
-        v_1076 = v_1074.view(*v_1075)
-        v_1077 = v_1069.view(*v_1070)
-        v_1078 = [int(v_1077.size(0)), 8, int((v_1077.size(1) // 8)), 8, int((v_1077.size(2) // 8)), int(v_1077.size(3))]
-        v_1079 = v_1077.view(*v_1078)
-        v_1080 = [int(((v_1066.size(0) * 8) * 8)), -1, int(v_1066.size(2))]
-        v_1081 = torch.permute(input=v_1073, dims=(0,1,3,2,4,5))
-        v_1082 = torch.permute(input=v_1076, dims=(0,1,3,2,4,5))
-        v_1083 = v_1082.reshape(*v_1080)
-        v_1084 = v_1081.reshape(*v_1080)
-        v_1085 = torch.permute(input=v_1083, dims=(0,2,1))
-        v_1086 = torch.matmul(input=v_1084, other=v_1085)
-        v_1087 = (v_1086 / torch.pow(v_1066.size(2), 5.000000e-01))
-        v_1088 = torch.permute(input=v_1079, dims=(0,1,3,2,4,5))
-        v_1089 = F.softmax(input=v_1087, dim=-1)
-        v_1090 = v_1088.reshape(*v_1080)
-        v_1091 = [int(((v_1066.size(0) * 8) * 8)), int((v_807.size(2) // 8)), int((v_807.size(3) // 8)), int(v_1066.size(2))]
-        v_1092 = torch.matmul(input=v_1089, other=v_1090)
-        v_1093 = v_1092.view(*v_1091)
-        v_1094 = [int(((v_1093.size(0) // 8) // 8)), 8, 8, int(v_1093.size(1)), int(v_1093.size(2)), int(v_1093.size(3))]
-        v_1095 = v_1093.view(*v_1094)
-        v_1096 = torch.permute(input=v_1095, dims=(0,1,3,2,4,5))
-        v_1097 = [int(v_1066.size(0)), -1, int(v_1066.size(2))]
-        v_1098 = v_1096.reshape(*v_1097)
-        v_1099 = self.pnnx_unique_48(v_1098)
-        v_1100 = self.pnnx_unique_49(v_1099)
-        v_1101 = torch.cat((v_1065, v_1100), dim=-1)
-        v_1102 = self.pnnx_unique_50(v_1101)
-        v_1103 = self.pnnx_unique_51(v_1102)
-        v_1104 = self.pnnx_unique_52(v_1103)
-        v_1105 = self.pnnx_unique_53(v_1104)
-        v_1106 = (v_1065 + v_1105)
-        v_1107, v_1108 = torch.chunk(input=v_1106, chunks=2, dim=0)
-        v_1109 = self.pnnx_unique_54(v_1106)
-        v_1110 = self.pnnx_unique_55(v_1106)
-        v_1111 = self.pnnx_unique_56(v_1106)
-        v_1112 = [int(v_1109.size(0)), int(v_807.size(2)), int(v_807.size(3)), int(v_1109.size(2))]
-        v_1113 = v_1109.view(*v_1112)
-        v_1114 = torch.roll(input=v_1113, shifts=v_936, dims=(1,2))
-        v_1115 = [int(v_1114.size(0)), 8, int((v_1114.size(1) // 8)), 8, int((v_1114.size(2) // 8)), int(v_1114.size(3))]
-        v_1116 = v_1114.view(*v_1115)
-        v_1117 = v_1110.view(*v_1112)
-        v_1118 = torch.roll(input=v_1117, shifts=v_936, dims=(1,2))
-        v_1119 = [int(v_1118.size(0)), 8, int((v_1118.size(1) // 8)), 8, int((v_1118.size(2) // 8)), int(v_1118.size(3))]
-        v_1120 = v_1118.view(*v_1119)
-        v_1121 = v_1111.view(*v_1112)
-        v_1122 = torch.roll(input=v_1121, shifts=v_936, dims=(1,2))
-        v_1123 = [int(v_1122.size(0)), 8, int((v_1122.size(1) // 8)), 8, int((v_1122.size(2) // 8)), int(v_1122.size(3))]
-        v_1124 = v_1122.view(*v_1123)
-        v_1125 = [int(((v_1109.size(0) * 8) * 8)), -1, int(v_1109.size(2))]
-        v_1126 = torch.permute(input=v_1116, dims=(0,1,3,2,4,5))
-        v_1127 = torch.permute(input=v_1120, dims=(0,1,3,2,4,5))
-        v_1128 = v_1127.reshape(*v_1125)
-        v_1129 = v_1126.reshape(*v_1125)
-        v_1130 = torch.permute(input=v_1128, dims=(0,2,1))
-        v_1131 = torch.matmul(input=v_1129, other=v_1130)
-        v_1132 = [int(v_1109.size(0)), 1, 1]
-        v_1133 = v_960.repeat(*v_1132)
-        v_1134 = ((v_1131 / torch.pow(v_1109.size(2), 5.000000e-01)) + v_1133)
-        v_1135 = torch.permute(input=v_1124, dims=(0,1,3,2,4,5))
-        v_1136 = F.softmax(input=v_1134, dim=-1)
-        v_1137 = v_1135.reshape(*v_1125)
-        v_1138 = [int(((v_1109.size(0) * 8) * 8)), int((v_807.size(2) // 8)), int((v_807.size(3) // 8)), int(v_1109.size(2))]
-        v_1139 = torch.matmul(input=v_1136, other=v_1137)
-        v_1140 = v_1139.view(*v_1138)
-        v_1141 = [int(((v_1140.size(0) // 8) // 8)), 8, 8, int(v_1140.size(1)), int(v_1140.size(2)), int(v_1140.size(3))]
-        v_1142 = v_1140.view(*v_1141)
-        v_1143 = [int(((v_1140.size(0) // 8) // 8)), int((v_1140.size(1) * 8)), int((v_1140.size(2) * 8)), int(v_1140.size(3))]
-        v_1144 = torch.permute(input=v_1142, dims=(0,1,3,2,4,5))
-        v_1145 = [int(v_1109.size(0)), -1, int(v_1109.size(2))]
-        v_1146 = v_1144.reshape(*v_1143)
-        v_1147 = torch.roll(input=v_1146, shifts=v_834, dims=(1,2))
-        v_1148 = v_1147.view(*v_1145)
-        v_1149 = self.pnnx_unique_57(v_1148)
-        v_1150 = self.pnnx_unique_58(v_1149)
-        v_1151 = (v_1106 + v_1150)
-        v_1152 = self.pnnx_unique_59(v_1151)
-        v_1153 = torch.cat((v_1108, v_1107), dim=0)
-        v_1154 = self.pnnx_unique_60(v_1153)
-        v_1155 = self.pnnx_unique_61(v_1153)
-        v_1156 = [int(v_1152.size(0)), int(v_807.size(2)), int(v_807.size(3)), int(v_1152.size(2))]
-        v_1157 = v_1152.view(*v_1156)
-        v_1158 = torch.roll(input=v_1157, shifts=v_936, dims=(1,2))
-        v_1159 = [int(v_1158.size(0)), 8, int((v_1158.size(1) // 8)), 8, int((v_1158.size(2) // 8)), int(v_1158.size(3))]
-        v_1160 = v_1158.view(*v_1159)
-        v_1161 = v_1154.view(*v_1156)
-        v_1162 = torch.roll(input=v_1161, shifts=v_936, dims=(1,2))
-        v_1163 = [int(v_1162.size(0)), 8, int((v_1162.size(1) // 8)), 8, int((v_1162.size(2) // 8)), int(v_1162.size(3))]
-        v_1164 = v_1162.view(*v_1163)
-        v_1165 = v_1155.view(*v_1156)
-        v_1166 = torch.roll(input=v_1165, shifts=v_936, dims=(1,2))
-        v_1167 = [int(v_1166.size(0)), 8, int((v_1166.size(1) // 8)), 8, int((v_1166.size(2) // 8)), int(v_1166.size(3))]
-        v_1168 = v_1166.view(*v_1167)
-        v_1169 = [int(((v_1152.size(0) * 8) * 8)), -1, int(v_1152.size(2))]
-        v_1170 = torch.permute(input=v_1160, dims=(0,1,3,2,4,5))
-        v_1171 = torch.permute(input=v_1164, dims=(0,1,3,2,4,5))
-        v_1172 = v_1171.reshape(*v_1169)
-        v_1173 = v_1170.reshape(*v_1169)
-        v_1174 = torch.permute(input=v_1172, dims=(0,2,1))
-        v_1175 = torch.matmul(input=v_1173, other=v_1174)
-        v_1176 = [int(v_1152.size(0)), 1, 1]
-        v_1177 = v_960.repeat(*v_1176)
-        v_1178 = ((v_1175 / torch.pow(v_1152.size(2), 5.000000e-01)) + v_1177)
-        v_1179 = torch.permute(input=v_1168, dims=(0,1,3,2,4,5))
-        v_1180 = F.softmax(input=v_1178, dim=-1)
-        v_1181 = v_1179.reshape(*v_1169)
-        v_1182 = [int(((v_1152.size(0) * 8) * 8)), int((v_807.size(2) // 8)), int((v_807.size(3) // 8)), int(v_1152.size(2))]
-        v_1183 = torch.matmul(input=v_1180, other=v_1181)
-        v_1184 = v_1183.view(*v_1182)
-        v_1185 = [int(((v_1184.size(0) // 8) // 8)), 8, 8, int(v_1184.size(1)), int(v_1184.size(2)), int(v_1184.size(3))]
-        v_1186 = v_1184.view(*v_1185)
-        v_1187 = [int(((v_1184.size(0) // 8) // 8)), int((v_1184.size(1) * 8)), int((v_1184.size(2) * 8)), int(v_1184.size(3))]
-        v_1188 = torch.permute(input=v_1186, dims=(0,1,3,2,4,5))
-        v_1189 = [int(v_1152.size(0)), -1, int(v_1152.size(2))]
-        v_1190 = v_1188.reshape(*v_1187)
-        v_1191 = torch.roll(input=v_1190, shifts=v_834, dims=(1,2))
-        v_1192 = v_1191.view(*v_1189)
-        v_1193 = self.pnnx_unique_62(v_1192)
-        v_1194 = self.pnnx_unique_63(v_1193)
-        v_1195 = torch.cat((v_1151, v_1194), dim=-1)
-        v_1196 = self.pnnx_unique_64(v_1195)
-        v_1197 = self.pnnx_unique_65(v_1196)
-        v_1198 = self.pnnx_unique_66(v_1197)
-        v_1199 = self.pnnx_unique_67(v_1198)
-        v_1200 = (v_1151 + v_1199)
-        v_1201, v_1202 = torch.chunk(input=v_1200, chunks=2, dim=0)
-        v_1203 = self.pnnx_unique_68(v_1200)
-        v_1204 = self.pnnx_unique_69(v_1200)
-        v_1205 = self.pnnx_unique_70(v_1200)
-        v_1206 = [int(v_1203.size(0)), int(v_807.size(2)), int(v_807.size(3)), int(v_1203.size(2))]
-        v_1207 = v_1203.view(*v_1206)
-        v_1208 = [int(v_1207.size(0)), 8, int((v_1207.size(1) // 8)), 8, int((v_1207.size(2) // 8)), int(v_1207.size(3))]
-        v_1209 = v_1207.view(*v_1208)
-        v_1210 = v_1204.view(*v_1206)
-        v_1211 = [int(v_1210.size(0)), 8, int((v_1210.size(1) // 8)), 8, int((v_1210.size(2) // 8)), int(v_1210.size(3))]
-        v_1212 = v_1210.view(*v_1211)
-        v_1213 = v_1205.view(*v_1206)
-        v_1214 = [int(v_1213.size(0)), 8, int((v_1213.size(1) // 8)), 8, int((v_1213.size(2) // 8)), int(v_1213.size(3))]
-        v_1215 = v_1213.view(*v_1214)
-        v_1216 = [int(((v_1203.size(0) * 8) * 8)), -1, int(v_1203.size(2))]
-        v_1217 = torch.permute(input=v_1209, dims=(0,1,3,2,4,5))
-        v_1218 = torch.permute(input=v_1212, dims=(0,1,3,2,4,5))
-        v_1219 = v_1218.reshape(*v_1216)
-        v_1220 = v_1217.reshape(*v_1216)
-        v_1221 = torch.permute(input=v_1219, dims=(0,2,1))
-        v_1222 = torch.matmul(input=v_1220, other=v_1221)
-        v_1223 = (v_1222 / torch.pow(v_1203.size(2), 5.000000e-01))
-        v_1224 = torch.permute(input=v_1215, dims=(0,1,3,2,4,5))
-        v_1225 = F.softmax(input=v_1223, dim=-1)
-        v_1226 = v_1224.reshape(*v_1216)
-        v_1227 = [int(((v_1203.size(0) * 8) * 8)), int((v_807.size(2) // 8)), int((v_807.size(3) // 8)), int(v_1203.size(2))]
-        v_1228 = torch.matmul(input=v_1225, other=v_1226)
-        v_1229 = v_1228.view(*v_1227)
-        v_1230 = [int(((v_1229.size(0) // 8) // 8)), 8, 8, int(v_1229.size(1)), int(v_1229.size(2)), int(v_1229.size(3))]
-        v_1231 = v_1229.view(*v_1230)
-        v_1232 = torch.permute(input=v_1231, dims=(0,1,3,2,4,5))
-        v_1233 = [int(v_1203.size(0)), -1, int(v_1203.size(2))]
-        v_1234 = v_1232.reshape(*v_1233)
-        v_1235 = self.pnnx_unique_71(v_1234)
-        v_1236 = self.pnnx_unique_72(v_1235)
-        v_1237 = (v_1200 + v_1236)
-        v_1238 = self.pnnx_unique_73(v_1237)
-        v_1239 = torch.cat((v_1202, v_1201), dim=0)
-        v_1240 = self.pnnx_unique_74(v_1239)
-        v_1241 = self.pnnx_unique_75(v_1239)
-        v_1242 = [int(v_1238.size(0)), int(v_807.size(2)), int(v_807.size(3)), int(v_1238.size(2))]
-        v_1243 = v_1238.view(*v_1242)
-        v_1244 = [int(v_1243.size(0)), 8, int((v_1243.size(1) // 8)), 8, int((v_1243.size(2) // 8)), int(v_1243.size(3))]
-        v_1245 = v_1243.view(*v_1244)
-        v_1246 = v_1240.view(*v_1242)
-        v_1247 = [int(v_1246.size(0)), 8, int((v_1246.size(1) // 8)), 8, int((v_1246.size(2) // 8)), int(v_1246.size(3))]
-        v_1248 = v_1246.view(*v_1247)
-        v_1249 = v_1241.view(*v_1242)
-        v_1250 = [int(v_1249.size(0)), 8, int((v_1249.size(1) // 8)), 8, int((v_1249.size(2) // 8)), int(v_1249.size(3))]
-        v_1251 = v_1249.view(*v_1250)
-        v_1252 = [int(((v_1238.size(0) * 8) * 8)), -1, int(v_1238.size(2))]
-        v_1253 = torch.permute(input=v_1245, dims=(0,1,3,2,4,5))
-        v_1254 = torch.permute(input=v_1248, dims=(0,1,3,2,4,5))
-        v_1255 = v_1254.reshape(*v_1252)
-        v_1256 = v_1253.reshape(*v_1252)
-        v_1257 = torch.permute(input=v_1255, dims=(0,2,1))
-        v_1258 = torch.matmul(input=v_1256, other=v_1257)
-        v_1259 = (v_1258 / torch.pow(v_1238.size(2), 5.000000e-01))
-        v_1260 = torch.permute(input=v_1251, dims=(0,1,3,2,4,5))
-        v_1261 = F.softmax(input=v_1259, dim=-1)
-        v_1262 = v_1260.reshape(*v_1252)
-        v_1263 = [int(((v_1238.size(0) * 8) * 8)), int((v_807.size(2) // 8)), int((v_807.size(3) // 8)), int(v_1238.size(2))]
-        v_1264 = torch.matmul(input=v_1261, other=v_1262)
-        v_1265 = v_1264.view(*v_1263)
-        v_1266 = [int(((v_1265.size(0) // 8) // 8)), 8, 8, int(v_1265.size(1)), int(v_1265.size(2)), int(v_1265.size(3))]
-        v_1267 = v_1265.view(*v_1266)
-        v_1268 = torch.permute(input=v_1267, dims=(0,1,3,2,4,5))
-        v_1269 = [int(v_1238.size(0)), -1, int(v_1238.size(2))]
-        v_1270 = v_1268.reshape(*v_1269)
-        v_1271 = self.pnnx_unique_76(v_1270)
-        v_1272 = self.pnnx_unique_77(v_1271)
-        v_1273 = torch.cat((v_1237, v_1272), dim=-1)
-        v_1274 = self.pnnx_unique_78(v_1273)
-        v_1275 = self.pnnx_unique_79(v_1274)
-        v_1276 = self.pnnx_unique_80(v_1275)
-        v_1277 = self.pnnx_unique_81(v_1276)
-        v_1278 = (v_1237 + v_1277)
-        v_1279, v_1280 = torch.chunk(input=v_1278, chunks=2, dim=0)
-        v_1281 = self.pnnx_unique_82(v_1278)
-        v_1282 = self.pnnx_unique_83(v_1278)
-        v_1283 = self.pnnx_unique_84(v_1278)
-        v_1284 = [int(v_1281.size(0)), int(v_807.size(2)), int(v_807.size(3)), int(v_1281.size(2))]
-        v_1285 = v_1281.view(*v_1284)
-        v_1286 = torch.roll(input=v_1285, shifts=v_936, dims=(1,2))
-        v_1287 = [int(v_1286.size(0)), 8, int((v_1286.size(1) // 8)), 8, int((v_1286.size(2) // 8)), int(v_1286.size(3))]
-        v_1288 = v_1286.view(*v_1287)
-        v_1289 = v_1282.view(*v_1284)
-        v_1290 = torch.roll(input=v_1289, shifts=v_936, dims=(1,2))
-        v_1291 = [int(v_1290.size(0)), 8, int((v_1290.size(1) // 8)), 8, int((v_1290.size(2) // 8)), int(v_1290.size(3))]
-        v_1292 = v_1290.view(*v_1291)
-        v_1293 = v_1283.view(*v_1284)
-        v_1294 = torch.roll(input=v_1293, shifts=v_936, dims=(1,2))
-        v_1295 = [int(v_1294.size(0)), 8, int((v_1294.size(1) // 8)), 8, int((v_1294.size(2) // 8)), int(v_1294.size(3))]
-        v_1296 = v_1294.view(*v_1295)
-        v_1297 = [int(((v_1281.size(0) * 8) * 8)), -1, int(v_1281.size(2))]
-        v_1298 = torch.permute(input=v_1288, dims=(0,1,3,2,4,5))
-        v_1299 = torch.permute(input=v_1292, dims=(0,1,3,2,4,5))
-        v_1300 = v_1299.reshape(*v_1297)
-        v_1301 = v_1298.reshape(*v_1297)
-        v_1302 = torch.permute(input=v_1300, dims=(0,2,1))
-        v_1303 = torch.matmul(input=v_1301, other=v_1302)
-        v_1304 = [int(v_1281.size(0)), 1, 1]
-        v_1305 = v_960.repeat(*v_1304)
-        v_1306 = ((v_1303 / torch.pow(v_1281.size(2), 5.000000e-01)) + v_1305)
-        v_1307 = torch.permute(input=v_1296, dims=(0,1,3,2,4,5))
-        v_1308 = F.softmax(input=v_1306, dim=-1)
-        v_1309 = v_1307.reshape(*v_1297)
-        v_1310 = [int(((v_1281.size(0) * 8) * 8)), int((v_807.size(2) // 8)), int((v_807.size(3) // 8)), int(v_1281.size(2))]
-        v_1311 = torch.matmul(input=v_1308, other=v_1309)
-        v_1312 = v_1311.view(*v_1310)
-        v_1313 = [int(((v_1312.size(0) // 8) // 8)), 8, 8, int(v_1312.size(1)), int(v_1312.size(2)), int(v_1312.size(3))]
-        v_1314 = v_1312.view(*v_1313)
-        v_1315 = [int(((v_1312.size(0) // 8) // 8)), int((v_1312.size(1) * 8)), int((v_1312.size(2) * 8)), int(v_1312.size(3))]
-        v_1316 = torch.permute(input=v_1314, dims=(0,1,3,2,4,5))
-        v_1317 = [int(v_1281.size(0)), -1, int(v_1281.size(2))]
-        v_1318 = v_1316.reshape(*v_1315)
-        v_1319 = torch.roll(input=v_1318, shifts=v_834, dims=(1,2))
-        v_1320 = v_1319.view(*v_1317)
-        v_1321 = self.pnnx_unique_85(v_1320)
-        v_1322 = self.pnnx_unique_86(v_1321)
-        v_1323 = (v_1278 + v_1322)
-        v_1324 = self.pnnx_unique_87(v_1323)
-        v_1325 = torch.cat((v_1280, v_1279), dim=0)
-        v_1326 = self.pnnx_unique_88(v_1325)
-        v_1327 = self.pnnx_unique_89(v_1325)
-        v_1328 = [int(v_1324.size(0)), int(v_807.size(2)), int(v_807.size(3)), int(v_1324.size(2))]
-        v_1329 = v_1324.view(*v_1328)
-        v_1330 = torch.roll(input=v_1329, shifts=v_936, dims=(1,2))
-        v_1331 = [int(v_1330.size(0)), 8, int((v_1330.size(1) // 8)), 8, int((v_1330.size(2) // 8)), int(v_1330.size(3))]
-        v_1332 = v_1330.view(*v_1331)
-        v_1333 = v_1326.view(*v_1328)
-        v_1334 = torch.roll(input=v_1333, shifts=v_936, dims=(1,2))
-        v_1335 = [int(v_1334.size(0)), 8, int((v_1334.size(1) // 8)), 8, int((v_1334.size(2) // 8)), int(v_1334.size(3))]
-        v_1336 = v_1334.view(*v_1335)
-        v_1337 = v_1327.view(*v_1328)
-        v_1338 = torch.roll(input=v_1337, shifts=v_936, dims=(1,2))
-        v_1339 = [int(v_1338.size(0)), 8, int((v_1338.size(1) // 8)), 8, int((v_1338.size(2) // 8)), int(v_1338.size(3))]
-        v_1340 = v_1338.view(*v_1339)
-        v_1341 = [int(((v_1324.size(0) * 8) * 8)), -1, int(v_1324.size(2))]
-        v_1342 = torch.permute(input=v_1332, dims=(0,1,3,2,4,5))
-        v_1343 = torch.permute(input=v_1336, dims=(0,1,3,2,4,5))
-        v_1344 = v_1343.reshape(*v_1341)
-        v_1345 = v_1342.reshape(*v_1341)
-        v_1346 = torch.permute(input=v_1344, dims=(0,2,1))
-        v_1347 = torch.matmul(input=v_1345, other=v_1346)
-        v_1348 = [int(v_1324.size(0)), 1, 1]
-        v_1349 = v_960.repeat(*v_1348)
-        v_1350 = ((v_1347 / torch.pow(v_1324.size(2), 5.000000e-01)) + v_1349)
-        v_1351 = torch.permute(input=v_1340, dims=(0,1,3,2,4,5))
-        v_1352 = F.softmax(input=v_1350, dim=-1)
-        v_1353 = v_1351.reshape(*v_1341)
-        v_1354 = [int(((v_1324.size(0) * 8) * 8)), int((v_807.size(2) // 8)), int((v_807.size(3) // 8)), int(v_1324.size(2))]
-        v_1355 = torch.matmul(input=v_1352, other=v_1353)
-        v_1356 = v_1355.view(*v_1354)
-        v_1357 = [int(((v_1356.size(0) // 8) // 8)), 8, 8, int(v_1356.size(1)), int(v_1356.size(2)), int(v_1356.size(3))]
-        v_1358 = v_1356.view(*v_1357)
-        v_1359 = [int(((v_1356.size(0) // 8) // 8)), int((v_1356.size(1) * 8)), int((v_1356.size(2) * 8)), int(v_1356.size(3))]
-        v_1360 = torch.permute(input=v_1358, dims=(0,1,3,2,4,5))
-        v_1361 = [int(v_1324.size(0)), -1, int(v_1324.size(2))]
-        v_1362 = v_1360.reshape(*v_1359)
-        v_1363 = torch.roll(input=v_1362, shifts=v_834, dims=(1,2))
-        v_1364 = v_1363.view(*v_1361)
-        v_1365 = self.pnnx_unique_90(v_1364)
-        v_1366 = self.pnnx_unique_91(v_1365)
-        v_1367 = torch.cat((v_1323, v_1366), dim=-1)
-        v_1368 = self.pnnx_unique_92(v_1367)
-        v_1369 = self.pnnx_unique_93(v_1368)
-        v_1370 = self.pnnx_unique_94(v_1369)
-        v_1371 = self.pnnx_unique_95(v_1370)
-        v_1372 = (v_1323 + v_1371)
-        v_1373, v_1374 = torch.chunk(input=v_1372, chunks=2, dim=0)
-        v_1375 = [int(v_807.size(0)), int(v_807.size(2)), int(v_807.size(3)), int(v_807.size(1))]
-        v_1376 = v_1373.view(*v_1375)
-        v_1377 = v_1374.view(*v_1375)
-        v_1378 = torch.permute(input=v_1377, dims=(0,3,1,2))
-        v_1379 = v_1378.contiguous(memory_format=torch.contiguous_format)
-        v_1380 = torch.permute(input=v_1376, dims=(0,3,1,2))
-        v_1381 = v_1380.contiguous(memory_format=torch.contiguous_format)
-        v_1382 = v_1381.size(2)
-        v_1383 = v_1381.size(3)
-        v_1384 = torch.arange(end=v_1383)
-        v_1385 = torch.arange(end=v_1382)
-        v_1386 = [int(v_1381.size(0)), 1, int(v_1381.size(2)), int(v_1381.size(3))]
-        v_1387 = v_1385.view(1, 1, -1, 1)
-        v_1388 = v_1387.expand(*v_1386)
-        v_1389 = v_1384.view(1, 1, 1, -1)
-        v_1390 = v_1389.expand(*v_1386)
-        v_1391 = torch.cat((v_1390, v_1388), dim=1)
-        v_1392 = [int(v_1381.size(0)), 2, -1]
-        v_1393 = v_1391.view(*v_1392)
-        v_1394 = torch.arange(end=5, start=-4)
-        v_1395 = v_1394.view(-1, 1)
-        v_1396 = v_1395.expand(-1, 9)
-        v_1397 = v_1394.view(1, -1)
-        v_1398 = v_1397.expand(9, -1)
-        v_1399 = torch.stack((v_1398, v_1396), dim=-1)
-        v_1400 = [int(v_1381.size(0)), 1, 1, 1]
-        v_1401 = torch.permute(input=v_1393, dims=(0,2,1))
-        v_1402 = v_1399.reshape(-1, 2)
-        v_1403 = v_1402.repeat(*v_1400)
-        v_1404 = torch.unsqueeze(input=v_1401, dim=-2)
-        v_1405 = (v_1404 + v_1403)
-        v_1406 = ((v_1405 - v_2) / v_2)
-        v_1407 = F.grid_sample(input=v_1379, grid=v_1406, align_corners=True, mode='bilinear', padding_mode='zeros')
-        v_1408 = [int(v_1381.size(0)), int((v_1381.size(2) * v_1381.size(3))), 1, int(v_1381.size(1))]
-        v_1409 = torch.permute(input=v_1381, dims=(0,2,3,1))
-        v_1410 = v_1409.view(*v_1408)
-        v_1411 = [int(v_1381.size(0)), int((v_1381.size(2) * v_1381.size(3))), -1]
-        v_1412 = torch.permute(input=v_1407, dims=(0,2,1,3))
-        v_1413 = torch.matmul(input=v_1410, other=v_1412)
-        v_1414 = v_1413.view(*v_1411)
-        v_1415 = (v_1414 / torch.pow(v_1381.size(1), 5.000000e-01))
-        v_1416 = F.softmax(input=v_1415, dim=-1)
-        v_1417 = torch.unsqueeze(input=v_1416, dim=-2)
-        v_1418 = torch.matmul(input=v_1417, other=v_1405)
-        v_1419 = [int(v_1381.size(0)), int(v_1381.size(2)), int(v_1381.size(3)), 2]
-        v_1420 = v_1418.reshape(*v_1419)
-        v_1421 = torch.permute(input=v_1420, dims=(0,3,1,2))
-        v_1422 = (v_743 + (v_1421 - v_1391))
-        v_1423 = [int(v_1381.size(0)), int(v_1381.size(1)), -1]
-        v_1424 = v_1381.view(*v_1423)
-        v_1425 = torch.permute(input=v_1424, dims=(0,2,1))
-        v_1426 = self.pnnx_unique_96(v_1425)
-        v_1427 = [int(((v_1381.size(0) * v_1381.size(2)) * v_1381.size(3))), 1, int(v_1381.size(1))]
-        v_1428 = self.pnnx_unique_97(v_1425)
-        v_1429 = [int(v_1381.size(0)), int(v_1381.size(1)), int(v_1381.size(2)), int(v_1381.size(3))]
-        v_1430 = [int(v_1381.size(0)), int(v_1381.size(1)), 9, int(v_1381.size(2)), int(v_1381.size(3))]
-        v_1431 = torch.permute(input=v_1428, dims=(0,2,1))
-        v_1432 = v_1431.reshape(*v_1429)
-        v_1433 = F.unfold(input=v_1432, dilation=(1,1), kernel_size=(3,3), padding=(1,1), stride=(1,1))
-        v_1434 = v_1433.view(*v_1430)
-        v_1435 = [int(((v_1381.size(0) * v_1381.size(2)) * v_1381.size(3))), int(v_1381.size(1)), 9]
-        v_1436 = [int(v_1381.size(0)), 2, 9, int(v_1381.size(2)), int(v_1381.size(3))]
-        v_1437 = F.unfold(input=v_1422, dilation=(1,1), kernel_size=(3,3), padding=(1,1), stride=(1,1))
-        v_1438 = v_1437.view(*v_1436)
-        v_1439 = torch.permute(input=v_1434, dims=(0,3,4,1,2))
-        v_1440 = v_1439.reshape(*v_1435)
-        v_1441 = v_1426.reshape(*v_1427)
-        v_1442 = torch.matmul(input=v_1441, other=v_1440)
-        v_1443 = (v_1442 / torch.pow(v_1381.size(1), 5.000000e-01))
-        v_1444 = F.softmax(input=v_1443, dim=-1)
-        v_1445 = torch.permute(input=v_1438, dims=(0,3,4,2,1))
-        v_1446 = v_1445.reshape(-1, 9, 2)
-        v_1447 = torch.matmul(input=v_1444, other=v_1446)
-        v_1448 = v_1447.view(*v_1419)
-        v_1449 = torch.permute(input=v_1448, dims=(0,3,1,2))
-        v_1450 = v_1449.contiguous(memory_format=torch.contiguous_format)
-        v_1451 = torch.cat((v_1450, v_1381), dim=1)
-        v_1452 = self.upsampler_0(v_1451)
-        v_1453 = self.upsampler_1(v_1452)
-        v_1454 = self.upsampler_2(v_1453)
-        v_1455 = [int(v_1450.size(0)), 1, 9, 4, 4, int(v_1450.size(2)), int(v_1450.size(3))]
-        v_1456 = (v_1450 * 4)
-        v_1457 = [int(v_1450.size(0)), int(v_1450.size(1)), 9, 1, 1, int(v_1450.size(2)), int(v_1450.size(3))]
-        v_1458 = F.unfold(input=v_1456, dilation=(1,1), kernel_size=(3,3), padding=(1,1), stride=(1,1))
-        v_1459 = v_1454.view(*v_1455)
-        v_1460 = F.softmax(input=v_1459, dim=2)
-        v_1461 = v_1458.view(*v_1457)
-        v_1462 = (v_1460 * v_1461)
-        v_1463 = torch.sum(input=v_1462, dim=(2,), keepdim=False)
-        v_1464 = [int(v_1450.size(0)), int(v_1450.size(1)), int((v_1450.size(2) * 4)), int((v_1450.size(3) * 4))]
-        v_1465 = torch.permute(input=v_1463, dims=(0,1,4,2,5,3))
-        v_1466 = v_1465.reshape(*v_1464)
-        return v_1466
+        v_697 = model.gmflow.matching.global_correlation_softmax(v_696, v_694)
+        v_698 = [int(v_696.size(0)), int(v_696.size(1)), int((v_696.size(2) * v_696.size(3)))]
+        v_699 = v_696.view(*v_698)
+        v_700 = torch.permute(input=v_699, dims=(0,2,1))
+        v_701 = self.feature_flow_attn_q_proj(v_700)
+        v_702 = self.feature_flow_attn_k_proj(v_701)
+        v_703 = [int(v_696.size(0)), int(v_697.size(1)), int((v_696.size(2) * v_696.size(3)))]
+        v_704 = v_697.view(*v_703)
+        v_705 = torch.permute(input=v_702, dims=(0,2,1))
+        v_706 = torch.matmul(input=v_701, other=v_705)
+        v_707 = (v_706 / torch.pow(v_696.size(1), 5.000000e-01))
+        v_708 = F.softmax(input=v_707, dim=-1)
+        v_709 = torch.permute(input=v_704, dims=(0,2,1))
+        v_710 = [int(v_696.size(0)), int(v_696.size(2)), int(v_696.size(3)), int(v_709.size(-1))]
+        v_711 = torch.matmul(input=v_708, other=v_709)
+        v_712 = v_711.view(*v_710)
+        v_713 = torch.permute(input=v_712, dims=(0,3,1,2))
+        v_714 = F.upsample(input=v_713, align_corners=True, mode='bilinear', scale_factor=(2.000000,2.000000))
+        v_715 = (v_714 * 2)
+        v_716 = v_73.size(2)
+        v_717 = v_73.size(3)
+        v_718 = torch.arange(end=v_717)
+        v_719 = torch.arange(end=v_716)
+        v_720 = [int(v_73.size(0)), 1, int(v_73.size(2)), int(v_73.size(3))]
+        v_721 = v_719.view(1, 1, -1, 1)
+        v_722 = v_721.expand(*v_720)
+        v_723 = v_718.view(1, 1, 1, -1)
+        v_724 = v_723.expand(*v_720)
+        v_725 = torch.cat((v_724, v_722), dim=1)
+        v_726 = (v_725 + v_715)
+        v_727 = v_726.select(dim=1, index=0)
+        v_728 = (((v_727 * 2) / (v_726.size(3) - 1)) - 1)
+        v_729 = v_726.select(dim=1, index=1)
+        v_730 = (((v_729 * 2) / (v_726.size(2) - 1)) - 1)
+        v_731 = [int(v_72.size(0)), int(v_72.size(1)), 8, int((v_72.size(2) // 8)), 8, int((v_72.size(3) // 8))]
+        v_732 = v_72.view(*v_731)
+        v_733 = [int(((v_72.size(0) * 8) * 8)), int(v_72.size(1)), int((v_72.size(2) // 8)), int((v_72.size(3) // 8))]
+        v_734 = torch.stack((v_728, v_730), dim=-1)
+        v_735 = F.grid_sample(input=v_73, grid=v_734, align_corners=True, mode='bilinear', padding_mode='zeros')
+        v_736 = [int(v_735.size(0)), int(v_735.size(1)), 8, int((v_735.size(2) // 8)), 8, int((v_735.size(3) // 8))]
+        v_737 = v_735.view(*v_736)
+        v_738 = [int(((v_735.size(0) * 8) * 8)), int(v_735.size(1)), int((v_735.size(2) // 8)), int((v_735.size(3) // 8))]
+        v_739 = torch.permute(input=v_732, dims=(0,2,4,1,3,5))
+        v_740 = v_739.reshape(*v_733)
+        v_741 = [int(v_740.size(0)), int(v_740.size(2)), int(v_740.size(3))]
+        v_742 = torch.ones(size=v_741)
+        v_743 = torch.cumsum(input=v_742, dim=1)
+        v_744 = v_743[:,-1:]
+        v_745 = ((v_743 / (v_744 + 1.000000e-06)) * 6.283185e+00)
+        v_746 = torch.cumsum(input=v_742, dim=2)
+        v_747 = v_746[:,:,-1:]
+        v_748 = ((v_746 / (v_747 + 1.000000e-06)) * 6.283185e+00)
+        v_749 = torch.unsqueeze(input=v_748, dim=3)
+        v_750 = (v_749 / v_91)
+        v_751 = torch.unsqueeze(input=v_745, dim=3)
+        v_752 = (v_751 / v_91)
+        v_753 = v_750[:,:,:,::2]
+        v_754 = torch.sin(v_753)
+        v_755 = v_750[:,:,:,1::2]
+        v_756 = torch.cos(v_755)
+        v_757 = torch.stack((v_754, v_756), dim=4)
+        v_758 = v_752[:,:,:,::2]
+        v_759 = torch.sin(v_758)
+        v_760 = v_752[:,:,:,1::2]
+        v_761 = torch.cos(v_760)
+        v_762 = torch.stack((v_759, v_761), dim=4)
+        v_763 = torch.flatten(input=v_762, end_dim=-1, start_dim=3)
+        v_764 = torch.flatten(input=v_757, end_dim=-1, start_dim=3)
+        v_765 = torch.cat((v_763, v_764), dim=3)
+        v_766 = torch.permute(input=v_765, dims=(0,3,1,2))
+        v_767 = (v_740 + v_766)
+        v_768 = torch.permute(input=v_737, dims=(0,2,4,1,3,5))
+        v_769 = v_768.reshape(*v_738)
+        v_770 = (v_769 + v_766)
+        v_771 = [int(((v_767.size(0) // 8) // 8)), 8, 8, int(v_767.size(1)), int(v_767.size(2)), int(v_767.size(3))]
+        v_772 = v_767.view(*v_771)
+        v_773 = [int(((v_767.size(0) // 8) // 8)), int(v_767.size(1)), int((v_767.size(2) * 8)), int((v_767.size(3) * 8))]
+        v_774 = torch.permute(input=v_772, dims=(0,3,1,4,2,5))
+        v_775 = [int(((v_770.size(0) // 8) // 8)), 8, 8, int(v_770.size(1)), int(v_770.size(2)), int(v_770.size(3))]
+        v_776 = v_770.view(*v_775)
+        v_777 = [int(((v_770.size(0) // 8) // 8)), int(v_770.size(1)), int((v_770.size(2) * 8)), int((v_770.size(3) * 8))]
+        v_778 = torch.permute(input=v_776, dims=(0,3,1,4,2,5))
+        v_779 = v_774.reshape(*v_773)
+        v_780 = torch.flatten(input=v_779, end_dim=-1, start_dim=-2)
+        v_781 = v_778.reshape(*v_777)
+        v_782 = torch.flatten(input=v_781, end_dim=-1, start_dim=-2)
+        v_783 = [int((v_779.size(2) - (v_779.size(2) // 8))), int((v_779.size(3) - (v_779.size(3) // 8)))]
+        v_784 = torch.ones(size=v_783)
+        v_785 = [int((v_779.size(2) - (v_779.size(2) // 8))), int(((v_779.size(3) // 8) - ((v_779.size(3) // 8) // 2)))]
+        v_786 = torch.ones(size=v_785)
+        v_787 = (v_786 * 2)
+        v_788 = [int((v_779.size(2) - (v_779.size(2) // 8))), int(((v_779.size(3) // 8) // 2))]
+        v_789 = torch.ones(size=v_788)
+        v_790 = (v_789 * 3)
+        v_791 = [int(((v_779.size(2) // 8) - ((v_779.size(2) // 8) // 2))), int((v_779.size(3) - (v_779.size(3) // 8)))]
+        v_792 = torch.ones(size=v_791)
+        v_793 = (v_792 * 4)
+        v_794 = [int(((v_779.size(2) // 8) - ((v_779.size(2) // 8) // 2))), int(((v_779.size(3) // 8) - ((v_779.size(3) // 8) // 2)))]
+        v_795 = torch.ones(size=v_794)
+        v_796 = (v_795 * 5)
+        v_797 = [int(((v_779.size(2) // 8) - ((v_779.size(2) // 8) // 2))), int(((v_779.size(3) // 8) // 2))]
+        v_798 = torch.ones(size=v_797)
+        v_799 = (v_798 * 6)
+        v_800 = [int(((v_779.size(2) // 8) // 2)), int((v_779.size(3) - (v_779.size(3) // 8)))]
+        v_801 = torch.ones(size=v_800)
+        v_802 = (v_801 * 7)
+        v_803 = [int(((v_779.size(2) // 8) // 2)), int(((v_779.size(3) // 8) - ((v_779.size(3) // 8) // 2)))]
+        v_804 = torch.ones(size=v_803)
+        v_805 = (v_804 * 8)
+        v_806 = [int(((v_779.size(2) // 8) // 2)), int(((v_779.size(3) // 8) // 2))]
+        v_807 = torch.ones(size=v_806)
+        v_808 = (v_807 * 9)
+        v_809 = torch.cat((v_802, v_805, v_808), dim=1)
+        v_810 = torch.cat((v_793, v_796, v_799), dim=1)
+        v_811 = torch.cat((v_784, v_787, v_790), dim=1)
+        v_812 = torch.cat((v_811, v_810, v_809), dim=0)
+        v_813 = torch.unsqueeze(input=v_812, dim=0)
+        v_814 = torch.unsqueeze(input=v_813, dim=-1)
+        v_815 = [int(v_814.size(0)), int((v_779.size(3) // (v_779.size(3) // 8))), int((v_814.size(1) // (v_779.size(3) // (v_779.size(3) // 8)))), int((v_779.size(3) // (v_779.size(3) // 8))), int((v_814.size(2) // (v_779.size(3) // (v_779.size(3) // 8)))), int(v_814.size(3))]
+        v_816 = v_814.view(*v_815)
+        v_817 = [-1, int(((v_779.size(2) // 8) * (v_779.size(3) // 8)))]
+        v_818 = torch.permute(input=v_816, dims=(0,1,3,2,4,5))
+        v_819 = v_818.reshape(*v_817)
+        v_820 = torch.unsqueeze(input=v_819, dim=2)
+        v_821 = torch.unsqueeze(input=v_819, dim=1)
+        v_822 = (v_821 - v_820)
+        v_823 = torch.permute(input=v_782, dims=(0,2,1))
+        v_824 = torch.permute(input=v_780, dims=(0,2,1))
+        v_825 = torch.cat((v_824, v_823), dim=0)
+        v_826 = self.pnnx_unique_12(v_825)
+        v_827 = self.pnnx_unique_13(v_825)
+        v_828 = self.pnnx_unique_14(v_825)
+        v_829 = [int(v_826.size(0)), int(v_779.size(2)), int(v_779.size(3)), int(v_826.size(2))]
+        v_830 = v_826.view(*v_829)
+        v_831 = [int(v_830.size(0)), 8, int((v_830.size(1) // 8)), 8, int((v_830.size(2) // 8)), int(v_830.size(3))]
+        v_832 = v_830.view(*v_831)
+        v_833 = v_827.view(*v_829)
+        v_834 = [int(v_833.size(0)), 8, int((v_833.size(1) // 8)), 8, int((v_833.size(2) // 8)), int(v_833.size(3))]
+        v_835 = v_833.view(*v_834)
+        v_836 = v_828.view(*v_829)
+        v_837 = [int(v_836.size(0)), 8, int((v_836.size(1) // 8)), 8, int((v_836.size(2) // 8)), int(v_836.size(3))]
+        v_838 = v_836.view(*v_837)
+        v_839 = [int(((v_826.size(0) * 8) * 8)), -1, int(v_826.size(2))]
+        v_840 = torch.permute(input=v_832, dims=(0,1,3,2,4,5))
+        v_841 = torch.permute(input=v_835, dims=(0,1,3,2,4,5))
+        v_842 = v_841.reshape(*v_839)
+        v_843 = v_840.reshape(*v_839)
+        v_844 = torch.permute(input=v_842, dims=(0,2,1))
+        v_845 = torch.matmul(input=v_843, other=v_844)
+        v_846 = (v_845 / torch.pow(v_826.size(2), 5.000000e-01))
+        v_847 = torch.permute(input=v_838, dims=(0,1,3,2,4,5))
+        v_848 = F.softmax(input=v_846, dim=-1)
+        v_849 = v_847.reshape(*v_839)
+        v_850 = [int(((v_826.size(0) * 8) * 8)), int((v_779.size(2) // 8)), int((v_779.size(3) // 8)), int(v_826.size(2))]
+        v_851 = torch.matmul(input=v_848, other=v_849)
+        v_852 = v_851.view(*v_850)
+        v_853 = [int(((v_852.size(0) // 8) // 8)), 8, 8, int(v_852.size(1)), int(v_852.size(2)), int(v_852.size(3))]
+        v_854 = v_852.view(*v_853)
+        v_855 = torch.permute(input=v_854, dims=(0,1,3,2,4,5))
+        v_856 = [int(v_826.size(0)), -1, int(v_826.size(2))]
+        v_857 = v_855.reshape(*v_856)
+        v_858 = self.pnnx_unique_15(v_857)
+        v_859 = self.pnnx_unique_16(v_858)
+        v_860 = (v_825 + v_859)
+        v_861 = self.pnnx_unique_17(v_860)
+        v_862 = torch.cat((v_823, v_824), dim=0)
+        v_863 = self.pnnx_unique_18(v_862)
+        v_864 = self.pnnx_unique_19(v_862)
+        v_865 = [int(v_861.size(0)), int(v_779.size(2)), int(v_779.size(3)), int(v_861.size(2))]
+        v_866 = v_861.view(*v_865)
+        v_867 = [int(v_866.size(0)), 8, int((v_866.size(1) // 8)), 8, int((v_866.size(2) // 8)), int(v_866.size(3))]
+        v_868 = v_866.view(*v_867)
+        v_869 = v_863.view(*v_865)
+        v_870 = [int(v_869.size(0)), 8, int((v_869.size(1) // 8)), 8, int((v_869.size(2) // 8)), int(v_869.size(3))]
+        v_871 = v_869.view(*v_870)
+        v_872 = v_864.view(*v_865)
+        v_873 = [int(v_872.size(0)), 8, int((v_872.size(1) // 8)), 8, int((v_872.size(2) // 8)), int(v_872.size(3))]
+        v_874 = v_872.view(*v_873)
+        v_875 = [int(((v_861.size(0) * 8) * 8)), -1, int(v_861.size(2))]
+        v_876 = torch.permute(input=v_868, dims=(0,1,3,2,4,5))
+        v_877 = torch.permute(input=v_871, dims=(0,1,3,2,4,5))
+        v_878 = v_877.reshape(*v_875)
+        v_879 = v_876.reshape(*v_875)
+        v_880 = torch.permute(input=v_878, dims=(0,2,1))
+        v_881 = torch.matmul(input=v_879, other=v_880)
+        v_882 = (v_881 / torch.pow(v_861.size(2), 5.000000e-01))
+        v_883 = torch.permute(input=v_874, dims=(0,1,3,2,4,5))
+        v_884 = F.softmax(input=v_882, dim=-1)
+        v_885 = v_883.reshape(*v_875)
+        v_886 = [int(((v_861.size(0) * 8) * 8)), int((v_779.size(2) // 8)), int((v_779.size(3) // 8)), int(v_861.size(2))]
+        v_887 = torch.matmul(input=v_884, other=v_885)
+        v_888 = v_887.view(*v_886)
+        v_889 = [int(((v_888.size(0) // 8) // 8)), 8, 8, int(v_888.size(1)), int(v_888.size(2)), int(v_888.size(3))]
+        v_890 = v_888.view(*v_889)
+        v_891 = torch.permute(input=v_890, dims=(0,1,3,2,4,5))
+        v_892 = [int(v_861.size(0)), -1, int(v_861.size(2))]
+        v_893 = v_891.reshape(*v_892)
+        v_894 = self.pnnx_unique_20(v_893)
+        v_895 = self.pnnx_unique_21(v_894)
+        v_896 = torch.cat((v_860, v_895), dim=-1)
+        v_897 = self.pnnx_unique_22(v_896)
+        v_898 = self.pnnx_unique_23(v_897)
+        v_899 = self.pnnx_unique_24(v_898)
+        v_900 = self.pnnx_unique_25(v_899)
+        v_901 = (v_860 + v_900)
+        v_902, v_903 = torch.chunk(input=v_901, chunks=2, dim=0)
+        v_904 = self.pnnx_unique_26(v_901)
+        v_905 = self.pnnx_unique_27(v_901)
+        v_906 = self.pnnx_unique_28(v_901)
+        v_907 = [int(v_904.size(0)), int(v_779.size(2)), int(v_779.size(3)), int(v_904.size(2))]
+        v_908 = [int(torch.neg(((v_779.size(2) // 8) // 2))), int(torch.neg(((v_779.size(3) // 8) // 2)))]
+        v_909 = v_904.view(*v_907)
+        v_910 = torch.roll(input=v_909, shifts=v_908, dims=(1,2))
+        v_911 = [int(v_910.size(0)), 8, int((v_910.size(1) // 8)), 8, int((v_910.size(2) // 8)), int(v_910.size(3))]
+        v_912 = v_910.view(*v_911)
+        v_913 = v_905.view(*v_907)
+        v_914 = torch.roll(input=v_913, shifts=v_908, dims=(1,2))
+        v_915 = [int(v_914.size(0)), 8, int((v_914.size(1) // 8)), 8, int((v_914.size(2) // 8)), int(v_914.size(3))]
+        v_916 = v_914.view(*v_915)
+        v_917 = v_906.view(*v_907)
+        v_918 = torch.roll(input=v_917, shifts=v_908, dims=(1,2))
+        v_919 = [int(v_918.size(0)), 8, int((v_918.size(1) // 8)), 8, int((v_918.size(2) // 8)), int(v_918.size(3))]
+        v_920 = v_918.view(*v_919)
+        v_921 = [int(((v_904.size(0) * 8) * 8)), -1, int(v_904.size(2))]
+        v_922 = torch.permute(input=v_912, dims=(0,1,3,2,4,5))
+        v_923 = torch.permute(input=v_916, dims=(0,1,3,2,4,5))
+        v_924 = v_923.reshape(*v_921)
+        v_925 = v_922.reshape(*v_921)
+        v_926 = torch.permute(input=v_924, dims=(0,2,1))
+        v_927 = torch.matmul(input=v_925, other=v_926)
+        v_928 = [int(v_904.size(0)), 1, 1]
+        v_929 = torch.ne(input=v_822, other=0)
+        v_930 = v_822.masked_fill(v_929, value=-100.000000)
+        v_931 = torch.eq(input=v_822, other=0)
+        v_932 = v_930.masked_fill(v_931, value=0.000000)
+        v_933 = v_932.repeat(*v_928)
+        v_934 = ((v_927 / torch.pow(v_904.size(2), 5.000000e-01)) + v_933)
+        v_935 = torch.permute(input=v_920, dims=(0,1,3,2,4,5))
+        v_936 = F.softmax(input=v_934, dim=-1)
+        v_937 = v_935.reshape(*v_921)
+        v_938 = [int(((v_904.size(0) * 8) * 8)), int((v_779.size(2) // 8)), int((v_779.size(3) // 8)), int(v_904.size(2))]
+        v_939 = torch.matmul(input=v_936, other=v_937)
+        v_940 = v_939.view(*v_938)
+        v_941 = [int(((v_940.size(0) // 8) // 8)), 8, 8, int(v_940.size(1)), int(v_940.size(2)), int(v_940.size(3))]
+        v_942 = v_940.view(*v_941)
+        v_943 = [int(((v_940.size(0) // 8) // 8)), int((v_940.size(1) * 8)), int((v_940.size(2) * 8)), int(v_940.size(3))]
+        v_944 = torch.permute(input=v_942, dims=(0,1,3,2,4,5))
+        v_945 = [int(v_904.size(0)), -1, int(v_904.size(2))]
+        v_946 = v_944.reshape(*v_943)
+        v_947 = torch.roll(input=v_946, shifts=v_806, dims=(1,2))
+        v_948 = v_947.view(*v_945)
+        v_949 = self.pnnx_unique_29(v_948)
+        v_950 = self.pnnx_unique_30(v_949)
+        v_951 = (v_901 + v_950)
+        v_952 = self.pnnx_unique_31(v_951)
+        v_953 = torch.cat((v_903, v_902), dim=0)
+        v_954 = self.pnnx_unique_32(v_953)
+        v_955 = self.pnnx_unique_33(v_953)
+        v_956 = [int(v_952.size(0)), int(v_779.size(2)), int(v_779.size(3)), int(v_952.size(2))]
+        v_957 = v_952.view(*v_956)
+        v_958 = torch.roll(input=v_957, shifts=v_908, dims=(1,2))
+        v_959 = [int(v_958.size(0)), 8, int((v_958.size(1) // 8)), 8, int((v_958.size(2) // 8)), int(v_958.size(3))]
+        v_960 = v_958.view(*v_959)
+        v_961 = v_954.view(*v_956)
+        v_962 = torch.roll(input=v_961, shifts=v_908, dims=(1,2))
+        v_963 = [int(v_962.size(0)), 8, int((v_962.size(1) // 8)), 8, int((v_962.size(2) // 8)), int(v_962.size(3))]
+        v_964 = v_962.view(*v_963)
+        v_965 = v_955.view(*v_956)
+        v_966 = torch.roll(input=v_965, shifts=v_908, dims=(1,2))
+        v_967 = [int(v_966.size(0)), 8, int((v_966.size(1) // 8)), 8, int((v_966.size(2) // 8)), int(v_966.size(3))]
+        v_968 = v_966.view(*v_967)
+        v_969 = [int(((v_952.size(0) * 8) * 8)), -1, int(v_952.size(2))]
+        v_970 = torch.permute(input=v_960, dims=(0,1,3,2,4,5))
+        v_971 = torch.permute(input=v_964, dims=(0,1,3,2,4,5))
+        v_972 = v_971.reshape(*v_969)
+        v_973 = v_970.reshape(*v_969)
+        v_974 = torch.permute(input=v_972, dims=(0,2,1))
+        v_975 = torch.matmul(input=v_973, other=v_974)
+        v_976 = [int(v_952.size(0)), 1, 1]
+        v_977 = v_932.repeat(*v_976)
+        v_978 = ((v_975 / torch.pow(v_952.size(2), 5.000000e-01)) + v_977)
+        v_979 = torch.permute(input=v_968, dims=(0,1,3,2,4,5))
+        v_980 = F.softmax(input=v_978, dim=-1)
+        v_981 = v_979.reshape(*v_969)
+        v_982 = [int(((v_952.size(0) * 8) * 8)), int((v_779.size(2) // 8)), int((v_779.size(3) // 8)), int(v_952.size(2))]
+        v_983 = torch.matmul(input=v_980, other=v_981)
+        v_984 = v_983.view(*v_982)
+        v_985 = [int(((v_984.size(0) // 8) // 8)), 8, 8, int(v_984.size(1)), int(v_984.size(2)), int(v_984.size(3))]
+        v_986 = v_984.view(*v_985)
+        v_987 = [int(((v_984.size(0) // 8) // 8)), int((v_984.size(1) * 8)), int((v_984.size(2) * 8)), int(v_984.size(3))]
+        v_988 = torch.permute(input=v_986, dims=(0,1,3,2,4,5))
+        v_989 = [int(v_952.size(0)), -1, int(v_952.size(2))]
+        v_990 = v_988.reshape(*v_987)
+        v_991 = torch.roll(input=v_990, shifts=v_806, dims=(1,2))
+        v_992 = v_991.view(*v_989)
+        v_993 = self.pnnx_unique_34(v_992)
+        v_994 = self.pnnx_unique_35(v_993)
+        v_995 = torch.cat((v_951, v_994), dim=-1)
+        v_996 = self.pnnx_unique_36(v_995)
+        v_997 = self.pnnx_unique_37(v_996)
+        v_998 = self.pnnx_unique_38(v_997)
+        v_999 = self.pnnx_unique_39(v_998)
+        v_1000 = (v_951 + v_999)
+        v_1001, v_1002 = torch.chunk(input=v_1000, chunks=2, dim=0)
+        v_1003 = self.pnnx_unique_40(v_1000)
+        v_1004 = self.pnnx_unique_41(v_1000)
+        v_1005 = self.pnnx_unique_42(v_1000)
+        v_1006 = [int(v_1003.size(0)), int(v_779.size(2)), int(v_779.size(3)), int(v_1003.size(2))]
+        v_1007 = v_1003.view(*v_1006)
+        v_1008 = [int(v_1007.size(0)), 8, int((v_1007.size(1) // 8)), 8, int((v_1007.size(2) // 8)), int(v_1007.size(3))]
+        v_1009 = v_1007.view(*v_1008)
+        v_1010 = v_1004.view(*v_1006)
+        v_1011 = [int(v_1010.size(0)), 8, int((v_1010.size(1) // 8)), 8, int((v_1010.size(2) // 8)), int(v_1010.size(3))]
+        v_1012 = v_1010.view(*v_1011)
+        v_1013 = v_1005.view(*v_1006)
+        v_1014 = [int(v_1013.size(0)), 8, int((v_1013.size(1) // 8)), 8, int((v_1013.size(2) // 8)), int(v_1013.size(3))]
+        v_1015 = v_1013.view(*v_1014)
+        v_1016 = [int(((v_1003.size(0) * 8) * 8)), -1, int(v_1003.size(2))]
+        v_1017 = torch.permute(input=v_1009, dims=(0,1,3,2,4,5))
+        v_1018 = torch.permute(input=v_1012, dims=(0,1,3,2,4,5))
+        v_1019 = v_1018.reshape(*v_1016)
+        v_1020 = v_1017.reshape(*v_1016)
+        v_1021 = torch.permute(input=v_1019, dims=(0,2,1))
+        v_1022 = torch.matmul(input=v_1020, other=v_1021)
+        v_1023 = (v_1022 / torch.pow(v_1003.size(2), 5.000000e-01))
+        v_1024 = torch.permute(input=v_1015, dims=(0,1,3,2,4,5))
+        v_1025 = F.softmax(input=v_1023, dim=-1)
+        v_1026 = v_1024.reshape(*v_1016)
+        v_1027 = [int(((v_1003.size(0) * 8) * 8)), int((v_779.size(2) // 8)), int((v_779.size(3) // 8)), int(v_1003.size(2))]
+        v_1028 = torch.matmul(input=v_1025, other=v_1026)
+        v_1029 = v_1028.view(*v_1027)
+        v_1030 = [int(((v_1029.size(0) // 8) // 8)), 8, 8, int(v_1029.size(1)), int(v_1029.size(2)), int(v_1029.size(3))]
+        v_1031 = v_1029.view(*v_1030)
+        v_1032 = torch.permute(input=v_1031, dims=(0,1,3,2,4,5))
+        v_1033 = [int(v_1003.size(0)), -1, int(v_1003.size(2))]
+        v_1034 = v_1032.reshape(*v_1033)
+        v_1035 = self.pnnx_unique_43(v_1034)
+        v_1036 = self.pnnx_unique_44(v_1035)
+        v_1037 = (v_1000 + v_1036)
+        v_1038 = self.pnnx_unique_45(v_1037)
+        v_1039 = torch.cat((v_1002, v_1001), dim=0)
+        v_1040 = self.pnnx_unique_46(v_1039)
+        v_1041 = self.pnnx_unique_47(v_1039)
+        v_1042 = [int(v_1038.size(0)), int(v_779.size(2)), int(v_779.size(3)), int(v_1038.size(2))]
+        v_1043 = v_1038.view(*v_1042)
+        v_1044 = [int(v_1043.size(0)), 8, int((v_1043.size(1) // 8)), 8, int((v_1043.size(2) // 8)), int(v_1043.size(3))]
+        v_1045 = v_1043.view(*v_1044)
+        v_1046 = v_1040.view(*v_1042)
+        v_1047 = [int(v_1046.size(0)), 8, int((v_1046.size(1) // 8)), 8, int((v_1046.size(2) // 8)), int(v_1046.size(3))]
+        v_1048 = v_1046.view(*v_1047)
+        v_1049 = v_1041.view(*v_1042)
+        v_1050 = [int(v_1049.size(0)), 8, int((v_1049.size(1) // 8)), 8, int((v_1049.size(2) // 8)), int(v_1049.size(3))]
+        v_1051 = v_1049.view(*v_1050)
+        v_1052 = [int(((v_1038.size(0) * 8) * 8)), -1, int(v_1038.size(2))]
+        v_1053 = torch.permute(input=v_1045, dims=(0,1,3,2,4,5))
+        v_1054 = torch.permute(input=v_1048, dims=(0,1,3,2,4,5))
+        v_1055 = v_1054.reshape(*v_1052)
+        v_1056 = v_1053.reshape(*v_1052)
+        v_1057 = torch.permute(input=v_1055, dims=(0,2,1))
+        v_1058 = torch.matmul(input=v_1056, other=v_1057)
+        v_1059 = (v_1058 / torch.pow(v_1038.size(2), 5.000000e-01))
+        v_1060 = torch.permute(input=v_1051, dims=(0,1,3,2,4,5))
+        v_1061 = F.softmax(input=v_1059, dim=-1)
+        v_1062 = v_1060.reshape(*v_1052)
+        v_1063 = [int(((v_1038.size(0) * 8) * 8)), int((v_779.size(2) // 8)), int((v_779.size(3) // 8)), int(v_1038.size(2))]
+        v_1064 = torch.matmul(input=v_1061, other=v_1062)
+        v_1065 = v_1064.view(*v_1063)
+        v_1066 = [int(((v_1065.size(0) // 8) // 8)), 8, 8, int(v_1065.size(1)), int(v_1065.size(2)), int(v_1065.size(3))]
+        v_1067 = v_1065.view(*v_1066)
+        v_1068 = torch.permute(input=v_1067, dims=(0,1,3,2,4,5))
+        v_1069 = [int(v_1038.size(0)), -1, int(v_1038.size(2))]
+        v_1070 = v_1068.reshape(*v_1069)
+        v_1071 = self.pnnx_unique_48(v_1070)
+        v_1072 = self.pnnx_unique_49(v_1071)
+        v_1073 = torch.cat((v_1037, v_1072), dim=-1)
+        v_1074 = self.pnnx_unique_50(v_1073)
+        v_1075 = self.pnnx_unique_51(v_1074)
+        v_1076 = self.pnnx_unique_52(v_1075)
+        v_1077 = self.pnnx_unique_53(v_1076)
+        v_1078 = (v_1037 + v_1077)
+        v_1079, v_1080 = torch.chunk(input=v_1078, chunks=2, dim=0)
+        v_1081 = self.pnnx_unique_54(v_1078)
+        v_1082 = self.pnnx_unique_55(v_1078)
+        v_1083 = self.pnnx_unique_56(v_1078)
+        v_1084 = [int(v_1081.size(0)), int(v_779.size(2)), int(v_779.size(3)), int(v_1081.size(2))]
+        v_1085 = v_1081.view(*v_1084)
+        v_1086 = torch.roll(input=v_1085, shifts=v_908, dims=(1,2))
+        v_1087 = [int(v_1086.size(0)), 8, int((v_1086.size(1) // 8)), 8, int((v_1086.size(2) // 8)), int(v_1086.size(3))]
+        v_1088 = v_1086.view(*v_1087)
+        v_1089 = v_1082.view(*v_1084)
+        v_1090 = torch.roll(input=v_1089, shifts=v_908, dims=(1,2))
+        v_1091 = [int(v_1090.size(0)), 8, int((v_1090.size(1) // 8)), 8, int((v_1090.size(2) // 8)), int(v_1090.size(3))]
+        v_1092 = v_1090.view(*v_1091)
+        v_1093 = v_1083.view(*v_1084)
+        v_1094 = torch.roll(input=v_1093, shifts=v_908, dims=(1,2))
+        v_1095 = [int(v_1094.size(0)), 8, int((v_1094.size(1) // 8)), 8, int((v_1094.size(2) // 8)), int(v_1094.size(3))]
+        v_1096 = v_1094.view(*v_1095)
+        v_1097 = [int(((v_1081.size(0) * 8) * 8)), -1, int(v_1081.size(2))]
+        v_1098 = torch.permute(input=v_1088, dims=(0,1,3,2,4,5))
+        v_1099 = torch.permute(input=v_1092, dims=(0,1,3,2,4,5))
+        v_1100 = v_1099.reshape(*v_1097)
+        v_1101 = v_1098.reshape(*v_1097)
+        v_1102 = torch.permute(input=v_1100, dims=(0,2,1))
+        v_1103 = torch.matmul(input=v_1101, other=v_1102)
+        v_1104 = [int(v_1081.size(0)), 1, 1]
+        v_1105 = v_932.repeat(*v_1104)
+        v_1106 = ((v_1103 / torch.pow(v_1081.size(2), 5.000000e-01)) + v_1105)
+        v_1107 = torch.permute(input=v_1096, dims=(0,1,3,2,4,5))
+        v_1108 = F.softmax(input=v_1106, dim=-1)
+        v_1109 = v_1107.reshape(*v_1097)
+        v_1110 = [int(((v_1081.size(0) * 8) * 8)), int((v_779.size(2) // 8)), int((v_779.size(3) // 8)), int(v_1081.size(2))]
+        v_1111 = torch.matmul(input=v_1108, other=v_1109)
+        v_1112 = v_1111.view(*v_1110)
+        v_1113 = [int(((v_1112.size(0) // 8) // 8)), 8, 8, int(v_1112.size(1)), int(v_1112.size(2)), int(v_1112.size(3))]
+        v_1114 = v_1112.view(*v_1113)
+        v_1115 = [int(((v_1112.size(0) // 8) // 8)), int((v_1112.size(1) * 8)), int((v_1112.size(2) * 8)), int(v_1112.size(3))]
+        v_1116 = torch.permute(input=v_1114, dims=(0,1,3,2,4,5))
+        v_1117 = [int(v_1081.size(0)), -1, int(v_1081.size(2))]
+        v_1118 = v_1116.reshape(*v_1115)
+        v_1119 = torch.roll(input=v_1118, shifts=v_806, dims=(1,2))
+        v_1120 = v_1119.view(*v_1117)
+        v_1121 = self.pnnx_unique_57(v_1120)
+        v_1122 = self.pnnx_unique_58(v_1121)
+        v_1123 = (v_1078 + v_1122)
+        v_1124 = self.pnnx_unique_59(v_1123)
+        v_1125 = torch.cat((v_1080, v_1079), dim=0)
+        v_1126 = self.pnnx_unique_60(v_1125)
+        v_1127 = self.pnnx_unique_61(v_1125)
+        v_1128 = [int(v_1124.size(0)), int(v_779.size(2)), int(v_779.size(3)), int(v_1124.size(2))]
+        v_1129 = v_1124.view(*v_1128)
+        v_1130 = torch.roll(input=v_1129, shifts=v_908, dims=(1,2))
+        v_1131 = [int(v_1130.size(0)), 8, int((v_1130.size(1) // 8)), 8, int((v_1130.size(2) // 8)), int(v_1130.size(3))]
+        v_1132 = v_1130.view(*v_1131)
+        v_1133 = v_1126.view(*v_1128)
+        v_1134 = torch.roll(input=v_1133, shifts=v_908, dims=(1,2))
+        v_1135 = [int(v_1134.size(0)), 8, int((v_1134.size(1) // 8)), 8, int((v_1134.size(2) // 8)), int(v_1134.size(3))]
+        v_1136 = v_1134.view(*v_1135)
+        v_1137 = v_1127.view(*v_1128)
+        v_1138 = torch.roll(input=v_1137, shifts=v_908, dims=(1,2))
+        v_1139 = [int(v_1138.size(0)), 8, int((v_1138.size(1) // 8)), 8, int((v_1138.size(2) // 8)), int(v_1138.size(3))]
+        v_1140 = v_1138.view(*v_1139)
+        v_1141 = [int(((v_1124.size(0) * 8) * 8)), -1, int(v_1124.size(2))]
+        v_1142 = torch.permute(input=v_1132, dims=(0,1,3,2,4,5))
+        v_1143 = torch.permute(input=v_1136, dims=(0,1,3,2,4,5))
+        v_1144 = v_1143.reshape(*v_1141)
+        v_1145 = v_1142.reshape(*v_1141)
+        v_1146 = torch.permute(input=v_1144, dims=(0,2,1))
+        v_1147 = torch.matmul(input=v_1145, other=v_1146)
+        v_1148 = [int(v_1124.size(0)), 1, 1]
+        v_1149 = v_932.repeat(*v_1148)
+        v_1150 = ((v_1147 / torch.pow(v_1124.size(2), 5.000000e-01)) + v_1149)
+        v_1151 = torch.permute(input=v_1140, dims=(0,1,3,2,4,5))
+        v_1152 = F.softmax(input=v_1150, dim=-1)
+        v_1153 = v_1151.reshape(*v_1141)
+        v_1154 = [int(((v_1124.size(0) * 8) * 8)), int((v_779.size(2) // 8)), int((v_779.size(3) // 8)), int(v_1124.size(2))]
+        v_1155 = torch.matmul(input=v_1152, other=v_1153)
+        v_1156 = v_1155.view(*v_1154)
+        v_1157 = [int(((v_1156.size(0) // 8) // 8)), 8, 8, int(v_1156.size(1)), int(v_1156.size(2)), int(v_1156.size(3))]
+        v_1158 = v_1156.view(*v_1157)
+        v_1159 = [int(((v_1156.size(0) // 8) // 8)), int((v_1156.size(1) * 8)), int((v_1156.size(2) * 8)), int(v_1156.size(3))]
+        v_1160 = torch.permute(input=v_1158, dims=(0,1,3,2,4,5))
+        v_1161 = [int(v_1124.size(0)), -1, int(v_1124.size(2))]
+        v_1162 = v_1160.reshape(*v_1159)
+        v_1163 = torch.roll(input=v_1162, shifts=v_806, dims=(1,2))
+        v_1164 = v_1163.view(*v_1161)
+        v_1165 = self.pnnx_unique_62(v_1164)
+        v_1166 = self.pnnx_unique_63(v_1165)
+        v_1167 = torch.cat((v_1123, v_1166), dim=-1)
+        v_1168 = self.pnnx_unique_64(v_1167)
+        v_1169 = self.pnnx_unique_65(v_1168)
+        v_1170 = self.pnnx_unique_66(v_1169)
+        v_1171 = self.pnnx_unique_67(v_1170)
+        v_1172 = (v_1123 + v_1171)
+        v_1173, v_1174 = torch.chunk(input=v_1172, chunks=2, dim=0)
+        v_1175 = self.pnnx_unique_68(v_1172)
+        v_1176 = self.pnnx_unique_69(v_1172)
+        v_1177 = self.pnnx_unique_70(v_1172)
+        v_1178 = [int(v_1175.size(0)), int(v_779.size(2)), int(v_779.size(3)), int(v_1175.size(2))]
+        v_1179 = v_1175.view(*v_1178)
+        v_1180 = [int(v_1179.size(0)), 8, int((v_1179.size(1) // 8)), 8, int((v_1179.size(2) // 8)), int(v_1179.size(3))]
+        v_1181 = v_1179.view(*v_1180)
+        v_1182 = v_1176.view(*v_1178)
+        v_1183 = [int(v_1182.size(0)), 8, int((v_1182.size(1) // 8)), 8, int((v_1182.size(2) // 8)), int(v_1182.size(3))]
+        v_1184 = v_1182.view(*v_1183)
+        v_1185 = v_1177.view(*v_1178)
+        v_1186 = [int(v_1185.size(0)), 8, int((v_1185.size(1) // 8)), 8, int((v_1185.size(2) // 8)), int(v_1185.size(3))]
+        v_1187 = v_1185.view(*v_1186)
+        v_1188 = [int(((v_1175.size(0) * 8) * 8)), -1, int(v_1175.size(2))]
+        v_1189 = torch.permute(input=v_1181, dims=(0,1,3,2,4,5))
+        v_1190 = torch.permute(input=v_1184, dims=(0,1,3,2,4,5))
+        v_1191 = v_1190.reshape(*v_1188)
+        v_1192 = v_1189.reshape(*v_1188)
+        v_1193 = torch.permute(input=v_1191, dims=(0,2,1))
+        v_1194 = torch.matmul(input=v_1192, other=v_1193)
+        v_1195 = (v_1194 / torch.pow(v_1175.size(2), 5.000000e-01))
+        v_1196 = torch.permute(input=v_1187, dims=(0,1,3,2,4,5))
+        v_1197 = F.softmax(input=v_1195, dim=-1)
+        v_1198 = v_1196.reshape(*v_1188)
+        v_1199 = [int(((v_1175.size(0) * 8) * 8)), int((v_779.size(2) // 8)), int((v_779.size(3) // 8)), int(v_1175.size(2))]
+        v_1200 = torch.matmul(input=v_1197, other=v_1198)
+        v_1201 = v_1200.view(*v_1199)
+        v_1202 = [int(((v_1201.size(0) // 8) // 8)), 8, 8, int(v_1201.size(1)), int(v_1201.size(2)), int(v_1201.size(3))]
+        v_1203 = v_1201.view(*v_1202)
+        v_1204 = torch.permute(input=v_1203, dims=(0,1,3,2,4,5))
+        v_1205 = [int(v_1175.size(0)), -1, int(v_1175.size(2))]
+        v_1206 = v_1204.reshape(*v_1205)
+        v_1207 = self.pnnx_unique_71(v_1206)
+        v_1208 = self.pnnx_unique_72(v_1207)
+        v_1209 = (v_1172 + v_1208)
+        v_1210 = self.pnnx_unique_73(v_1209)
+        v_1211 = torch.cat((v_1174, v_1173), dim=0)
+        v_1212 = self.pnnx_unique_74(v_1211)
+        v_1213 = self.pnnx_unique_75(v_1211)
+        v_1214 = [int(v_1210.size(0)), int(v_779.size(2)), int(v_779.size(3)), int(v_1210.size(2))]
+        v_1215 = v_1210.view(*v_1214)
+        v_1216 = [int(v_1215.size(0)), 8, int((v_1215.size(1) // 8)), 8, int((v_1215.size(2) // 8)), int(v_1215.size(3))]
+        v_1217 = v_1215.view(*v_1216)
+        v_1218 = v_1212.view(*v_1214)
+        v_1219 = [int(v_1218.size(0)), 8, int((v_1218.size(1) // 8)), 8, int((v_1218.size(2) // 8)), int(v_1218.size(3))]
+        v_1220 = v_1218.view(*v_1219)
+        v_1221 = v_1213.view(*v_1214)
+        v_1222 = [int(v_1221.size(0)), 8, int((v_1221.size(1) // 8)), 8, int((v_1221.size(2) // 8)), int(v_1221.size(3))]
+        v_1223 = v_1221.view(*v_1222)
+        v_1224 = [int(((v_1210.size(0) * 8) * 8)), -1, int(v_1210.size(2))]
+        v_1225 = torch.permute(input=v_1217, dims=(0,1,3,2,4,5))
+        v_1226 = torch.permute(input=v_1220, dims=(0,1,3,2,4,5))
+        v_1227 = v_1226.reshape(*v_1224)
+        v_1228 = v_1225.reshape(*v_1224)
+        v_1229 = torch.permute(input=v_1227, dims=(0,2,1))
+        v_1230 = torch.matmul(input=v_1228, other=v_1229)
+        v_1231 = (v_1230 / torch.pow(v_1210.size(2), 5.000000e-01))
+        v_1232 = torch.permute(input=v_1223, dims=(0,1,3,2,4,5))
+        v_1233 = F.softmax(input=v_1231, dim=-1)
+        v_1234 = v_1232.reshape(*v_1224)
+        v_1235 = [int(((v_1210.size(0) * 8) * 8)), int((v_779.size(2) // 8)), int((v_779.size(3) // 8)), int(v_1210.size(2))]
+        v_1236 = torch.matmul(input=v_1233, other=v_1234)
+        v_1237 = v_1236.view(*v_1235)
+        v_1238 = [int(((v_1237.size(0) // 8) // 8)), 8, 8, int(v_1237.size(1)), int(v_1237.size(2)), int(v_1237.size(3))]
+        v_1239 = v_1237.view(*v_1238)
+        v_1240 = torch.permute(input=v_1239, dims=(0,1,3,2,4,5))
+        v_1241 = [int(v_1210.size(0)), -1, int(v_1210.size(2))]
+        v_1242 = v_1240.reshape(*v_1241)
+        v_1243 = self.pnnx_unique_76(v_1242)
+        v_1244 = self.pnnx_unique_77(v_1243)
+        v_1245 = torch.cat((v_1209, v_1244), dim=-1)
+        v_1246 = self.pnnx_unique_78(v_1245)
+        v_1247 = self.pnnx_unique_79(v_1246)
+        v_1248 = self.pnnx_unique_80(v_1247)
+        v_1249 = self.pnnx_unique_81(v_1248)
+        v_1250 = (v_1209 + v_1249)
+        v_1251, v_1252 = torch.chunk(input=v_1250, chunks=2, dim=0)
+        v_1253 = self.pnnx_unique_82(v_1250)
+        v_1254 = self.pnnx_unique_83(v_1250)
+        v_1255 = self.pnnx_unique_84(v_1250)
+        v_1256 = [int(v_1253.size(0)), int(v_779.size(2)), int(v_779.size(3)), int(v_1253.size(2))]
+        v_1257 = v_1253.view(*v_1256)
+        v_1258 = torch.roll(input=v_1257, shifts=v_908, dims=(1,2))
+        v_1259 = [int(v_1258.size(0)), 8, int((v_1258.size(1) // 8)), 8, int((v_1258.size(2) // 8)), int(v_1258.size(3))]
+        v_1260 = v_1258.view(*v_1259)
+        v_1261 = v_1254.view(*v_1256)
+        v_1262 = torch.roll(input=v_1261, shifts=v_908, dims=(1,2))
+        v_1263 = [int(v_1262.size(0)), 8, int((v_1262.size(1) // 8)), 8, int((v_1262.size(2) // 8)), int(v_1262.size(3))]
+        v_1264 = v_1262.view(*v_1263)
+        v_1265 = v_1255.view(*v_1256)
+        v_1266 = torch.roll(input=v_1265, shifts=v_908, dims=(1,2))
+        v_1267 = [int(v_1266.size(0)), 8, int((v_1266.size(1) // 8)), 8, int((v_1266.size(2) // 8)), int(v_1266.size(3))]
+        v_1268 = v_1266.view(*v_1267)
+        v_1269 = [int(((v_1253.size(0) * 8) * 8)), -1, int(v_1253.size(2))]
+        v_1270 = torch.permute(input=v_1260, dims=(0,1,3,2,4,5))
+        v_1271 = torch.permute(input=v_1264, dims=(0,1,3,2,4,5))
+        v_1272 = v_1271.reshape(*v_1269)
+        v_1273 = v_1270.reshape(*v_1269)
+        v_1274 = torch.permute(input=v_1272, dims=(0,2,1))
+        v_1275 = torch.matmul(input=v_1273, other=v_1274)
+        v_1276 = [int(v_1253.size(0)), 1, 1]
+        v_1277 = v_932.repeat(*v_1276)
+        v_1278 = ((v_1275 / torch.pow(v_1253.size(2), 5.000000e-01)) + v_1277)
+        v_1279 = torch.permute(input=v_1268, dims=(0,1,3,2,4,5))
+        v_1280 = F.softmax(input=v_1278, dim=-1)
+        v_1281 = v_1279.reshape(*v_1269)
+        v_1282 = [int(((v_1253.size(0) * 8) * 8)), int((v_779.size(2) // 8)), int((v_779.size(3) // 8)), int(v_1253.size(2))]
+        v_1283 = torch.matmul(input=v_1280, other=v_1281)
+        v_1284 = v_1283.view(*v_1282)
+        v_1285 = [int(((v_1284.size(0) // 8) // 8)), 8, 8, int(v_1284.size(1)), int(v_1284.size(2)), int(v_1284.size(3))]
+        v_1286 = v_1284.view(*v_1285)
+        v_1287 = [int(((v_1284.size(0) // 8) // 8)), int((v_1284.size(1) * 8)), int((v_1284.size(2) * 8)), int(v_1284.size(3))]
+        v_1288 = torch.permute(input=v_1286, dims=(0,1,3,2,4,5))
+        v_1289 = [int(v_1253.size(0)), -1, int(v_1253.size(2))]
+        v_1290 = v_1288.reshape(*v_1287)
+        v_1291 = torch.roll(input=v_1290, shifts=v_806, dims=(1,2))
+        v_1292 = v_1291.view(*v_1289)
+        v_1293 = self.pnnx_unique_85(v_1292)
+        v_1294 = self.pnnx_unique_86(v_1293)
+        v_1295 = (v_1250 + v_1294)
+        v_1296 = self.pnnx_unique_87(v_1295)
+        v_1297 = torch.cat((v_1252, v_1251), dim=0)
+        v_1298 = self.pnnx_unique_88(v_1297)
+        v_1299 = self.pnnx_unique_89(v_1297)
+        v_1300 = [int(v_1296.size(0)), int(v_779.size(2)), int(v_779.size(3)), int(v_1296.size(2))]
+        v_1301 = v_1296.view(*v_1300)
+        v_1302 = torch.roll(input=v_1301, shifts=v_908, dims=(1,2))
+        v_1303 = [int(v_1302.size(0)), 8, int((v_1302.size(1) // 8)), 8, int((v_1302.size(2) // 8)), int(v_1302.size(3))]
+        v_1304 = v_1302.view(*v_1303)
+        v_1305 = v_1298.view(*v_1300)
+        v_1306 = torch.roll(input=v_1305, shifts=v_908, dims=(1,2))
+        v_1307 = [int(v_1306.size(0)), 8, int((v_1306.size(1) // 8)), 8, int((v_1306.size(2) // 8)), int(v_1306.size(3))]
+        v_1308 = v_1306.view(*v_1307)
+        v_1309 = v_1299.view(*v_1300)
+        v_1310 = torch.roll(input=v_1309, shifts=v_908, dims=(1,2))
+        v_1311 = [int(v_1310.size(0)), 8, int((v_1310.size(1) // 8)), 8, int((v_1310.size(2) // 8)), int(v_1310.size(3))]
+        v_1312 = v_1310.view(*v_1311)
+        v_1313 = [int(((v_1296.size(0) * 8) * 8)), -1, int(v_1296.size(2))]
+        v_1314 = torch.permute(input=v_1304, dims=(0,1,3,2,4,5))
+        v_1315 = torch.permute(input=v_1308, dims=(0,1,3,2,4,5))
+        v_1316 = v_1315.reshape(*v_1313)
+        v_1317 = v_1314.reshape(*v_1313)
+        v_1318 = torch.permute(input=v_1316, dims=(0,2,1))
+        v_1319 = torch.matmul(input=v_1317, other=v_1318)
+        v_1320 = [int(v_1296.size(0)), 1, 1]
+        v_1321 = v_932.repeat(*v_1320)
+        v_1322 = ((v_1319 / torch.pow(v_1296.size(2), 5.000000e-01)) + v_1321)
+        v_1323 = torch.permute(input=v_1312, dims=(0,1,3,2,4,5))
+        v_1324 = F.softmax(input=v_1322, dim=-1)
+        v_1325 = v_1323.reshape(*v_1313)
+        v_1326 = [int(((v_1296.size(0) * 8) * 8)), int((v_779.size(2) // 8)), int((v_779.size(3) // 8)), int(v_1296.size(2))]
+        v_1327 = torch.matmul(input=v_1324, other=v_1325)
+        v_1328 = v_1327.view(*v_1326)
+        v_1329 = [int(((v_1328.size(0) // 8) // 8)), 8, 8, int(v_1328.size(1)), int(v_1328.size(2)), int(v_1328.size(3))]
+        v_1330 = v_1328.view(*v_1329)
+        v_1331 = [int(((v_1328.size(0) // 8) // 8)), int((v_1328.size(1) * 8)), int((v_1328.size(2) * 8)), int(v_1328.size(3))]
+        v_1332 = torch.permute(input=v_1330, dims=(0,1,3,2,4,5))
+        v_1333 = [int(v_1296.size(0)), -1, int(v_1296.size(2))]
+        v_1334 = v_1332.reshape(*v_1331)
+        v_1335 = torch.roll(input=v_1334, shifts=v_806, dims=(1,2))
+        v_1336 = v_1335.view(*v_1333)
+        v_1337 = self.pnnx_unique_90(v_1336)
+        v_1338 = self.pnnx_unique_91(v_1337)
+        v_1339 = torch.cat((v_1295, v_1338), dim=-1)
+        v_1340 = self.pnnx_unique_92(v_1339)
+        v_1341 = self.pnnx_unique_93(v_1340)
+        v_1342 = self.pnnx_unique_94(v_1341)
+        v_1343 = self.pnnx_unique_95(v_1342)
+        v_1344 = (v_1295 + v_1343)
+        v_1345, v_1346 = torch.chunk(input=v_1344, chunks=2, dim=0)
+        v_1347 = [int(v_779.size(0)), int(v_779.size(2)), int(v_779.size(3)), int(v_779.size(1))]
+        v_1348 = v_1345.view(*v_1347)
+        v_1349 = v_1346.view(*v_1347)
+        v_1350 = torch.permute(input=v_1349, dims=(0,3,1,2))
+        v_1351 = v_1350.contiguous(memory_format=torch.contiguous_format)
+        v_1352 = torch.permute(input=v_1348, dims=(0,3,1,2))
+        v_1353 = v_1352.contiguous(memory_format=torch.contiguous_format)
+        v_1354 = model.gmflow.matching.local_correlation_softmax(v_1353, v_1351)
+        v_1355 = (v_715 + v_1354)
+        v_1356 = [int(v_1353.size(0)), int(v_1353.size(1)), -1]
+        v_1357 = v_1353.view(*v_1356)
+        v_1358 = torch.permute(input=v_1357, dims=(0,2,1))
+        v_1359 = self.pnnx_unique_96(v_1358)
+        v_1360 = [int(((v_1353.size(0) * v_1353.size(2)) * v_1353.size(3))), 1, int(v_1353.size(1))]
+        v_1361 = self.pnnx_unique_97(v_1358)
+        v_1362 = [int(v_1353.size(0)), int(v_1353.size(1)), int(v_1353.size(2)), int(v_1353.size(3))]
+        v_1363 = [int(v_1353.size(0)), int(v_1353.size(1)), 9, int(v_1353.size(2)), int(v_1353.size(3))]
+        v_1364 = torch.permute(input=v_1361, dims=(0,2,1))
+        v_1365 = v_1364.reshape(*v_1362)
+        v_1366 = F.unfold(input=v_1365, dilation=(1,1), kernel_size=(3,3), padding=(1,1), stride=(1,1))
+        v_1367 = v_1366.view(*v_1363)
+        v_1368 = [int(((v_1353.size(0) * v_1353.size(2)) * v_1353.size(3))), int(v_1353.size(1)), 9]
+        v_1369 = [int(v_1353.size(0)), 2, 9, int(v_1353.size(2)), int(v_1353.size(3))]
+        v_1370 = F.unfold(input=v_1355, dilation=(1,1), kernel_size=(3,3), padding=(1,1), stride=(1,1))
+        v_1371 = v_1370.view(*v_1369)
+        v_1372 = torch.permute(input=v_1367, dims=(0,3,4,1,2))
+        v_1373 = v_1372.reshape(*v_1368)
+        v_1374 = v_1359.reshape(*v_1360)
+        v_1375 = torch.matmul(input=v_1374, other=v_1373)
+        v_1376 = (v_1375 / torch.pow(v_1353.size(1), 5.000000e-01))
+        v_1377 = F.softmax(input=v_1376, dim=-1)
+        v_1378 = torch.permute(input=v_1371, dims=(0,3,4,2,1))
+        v_1379 = v_1378.reshape(-1, 9, 2)
+        v_1380 = [int(v_1353.size(0)), int(v_1353.size(2)), int(v_1353.size(3)), 2]
+        v_1381 = torch.matmul(input=v_1377, other=v_1379)
+        v_1382 = v_1381.view(*v_1380)
+        v_1383 = torch.permute(input=v_1382, dims=(0,3,1,2))
+        v_1384 = v_1383.contiguous(memory_format=torch.contiguous_format)
+        v_1385 = torch.cat((v_1384, v_1353), dim=1)
+        v_1386 = self.upsampler_0(v_1385)
+        v_1387 = self.upsampler_1(v_1386)
+        v_1388 = self.upsampler_2(v_1387)
+        v_1389 = [int(v_1384.size(0)), 1, 9, 4, 4, int(v_1384.size(2)), int(v_1384.size(3))]
+        v_1390 = (v_1384 * 4)
+        v_1391 = [int(v_1384.size(0)), int(v_1384.size(1)), 9, 1, 1, int(v_1384.size(2)), int(v_1384.size(3))]
+        v_1392 = F.unfold(input=v_1390, dilation=(1,1), kernel_size=(3,3), padding=(1,1), stride=(1,1))
+        v_1393 = v_1388.view(*v_1389)
+        v_1394 = F.softmax(input=v_1393, dim=2)
+        v_1395 = v_1392.view(*v_1391)
+        v_1396 = (v_1394 * v_1395)
+        v_1397 = torch.sum(input=v_1396, dim=(2,), keepdim=False)
+        v_1398 = [int(v_1384.size(0)), int(v_1384.size(1)), int((v_1384.size(2) * 4)), int((v_1384.size(3) * 4))]
+        v_1399 = torch.permute(input=v_1397, dims=(0,1,4,2,5,3))
+        v_1400 = v_1399.reshape(*v_1398)
+        return v_1400
 
 def export_torchscript():
     net = Model()
     net.eval()
 
     torch.manual_seed(0)
-    v_0 = torch.rand(dtype=null)
-    v_1 = torch.rand(dtype=null)
+    v_0 = torch.rand(dtype=torch.float32)
+    v_1 = torch.rand(dtype=torch.float32)
 
     mod = torch.jit.trace(net, (v_0, v_1))
     mod.save("flownet_544_pnnx.py.pt")
@@ -1955,8 +1888,8 @@ def export_onnx():
     net.eval()
 
     torch.manual_seed(0)
-    v_0 = torch.rand(dtype=null)
-    v_1 = torch.rand(dtype=null)
+    v_0 = torch.rand(dtype=torch.float32)
+    v_1 = torch.rand(dtype=torch.float32)
 
     torch.onnx._export(net, (v_0, v_1), "flownet_544_pnnx.py.onnx", export_params=True, operator_export_type=torch.onnx.OperatorExportTypes.ONNX_ATEN_FALLBACK, opset_version=13, input_names=['in0', 'in1'], output_names=['out0'])
 
@@ -1965,7 +1898,12 @@ def test_inference():
     net.eval()
 
     torch.manual_seed(0)
-    v_0 = torch.rand(dtype=null)
-    v_1 = torch.rand(dtype=null)
+    v_0 = torch.rand((1,3,544,950), dtype=torch.float32)
+    v_1 = torch.rand((1,3,544,950), dtype=torch.float32)
 
     return net(v_0, v_1)
+
+if __name__ == '__main__':
+    # export_torchscript()
+    # export_onnx()
+    test_inference()

@@ -3,7 +3,7 @@ from model.gmflow.gmflow import GMFlow
 import os
 import cv2
 
-device = torch.device("cpu")
+device = torch.device("cuda")
 
 def to_numpy(tensor):
     return tensor.detach().cpu().numpy() if tensor.requires_grad else tensor.cpu().numpy()
@@ -20,6 +20,7 @@ bs = 1
 flownet = GMFlow()
 flownet.load_state_dict(torch.load('train_log/flownet.pkl'))
 flownet = flownet.to(device)
+flownet = flownet.eval()
 
 model_input = (i0, i1)
 model = torch.jit.trace(flownet, model_input)

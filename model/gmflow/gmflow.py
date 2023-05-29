@@ -46,6 +46,9 @@ class GMFlow(nn.Module):
         self.upsampler = nn.Sequential(nn.Conv2d(2 + feature_channels, 256, 3, 1, 1),
                                        nn.ReLU(inplace=True),
                                        nn.Conv2d(256, upsample_factor ** 2 * 9, 1, 1, 0))
+        
+        self.global_correlation_softmax = global_correlation_softmax()
+        self.local_correlation_softmax = local_correlation_softmax()
 
     def extract_feature(self, img0, img1):
         concat = torch.cat((img0, img1), dim=0)  # [2B, C, H, W]
@@ -134,9 +137,9 @@ class GMFlow(nn.Module):
 
             # correlation and softmax
             if corr_radius == -1:  # global matching
-                flow_pred = global_correlation_softmax(feature0, feature1, pred_bidir_flow)[0]
+                flow_pred = self.global_correlation_softmax(feature0, feature1, pred_bidir_flow)[0]
             else:  # local matching
-                flow_pred = local_correlation_softmax(feature0, feature1, corr_radius)[0]
+                flow_pred = self.local_correlation_softmax(feature0, feature1, corr_radius)[0]
 
             # flow or residual flow
             flow = flow + flow_pred if flow is not None else flow_pred
