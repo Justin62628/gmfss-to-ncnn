@@ -3,11 +3,8 @@ import cv2
 import torch
 import argparse
 import numpy as np
-from tqdm import tqdm
 from torch.nn import functional as F
 import warnings
-import _thread
-import skvideo.io
 from queue import Queue, Empty
 
 warnings.filterwarnings("ignore")
@@ -66,8 +63,8 @@ for f in os.listdir(args.img):
         videogen.append(f)
 tot_frame = len(videogen)
 videogen.sort(key= lambda x:int(x[:-4]))
-lastframe = cv2.imread(os.path.join(args.img, videogen[0]), cv2.IMREAD_UNCHANGED)[:, :, ::-1].copy()
-nextframe = cv2.imread(os.path.join(args.img, videogen[1]), cv2.IMREAD_UNCHANGED)[:, :, ::-1].copy()
+lastframe = cv2.resize(cv2.imread(os.path.join(args.img, videogen[0]), cv2.IMREAD_UNCHANGED)[:, :, ::-1].copy(), (480, 288))
+nextframe = cv2.resize(cv2.imread(os.path.join(args.img, videogen[1]), cv2.IMREAD_UNCHANGED)[:, :, ::-1].copy(), (480, 288))
 
 videogen = videogen[1:]
 

@@ -1,3 +1,4 @@
+import numpy as np
 import torch
 from model.gmflow.gmflow import GMFlow
 import os
@@ -23,12 +24,21 @@ flownet.load_state_dict(torch.load('train_log/flownet.pkl'))
 flownet = flownet.to(device)
 flownet = flownet.eval()
 
-model_input = torch.cat((i0, i1), dim=1)
-print(model_input.shape)
+# model_input = torch.cat((i0, i1), dim=1)
+# print(model_input.shape)
+model_input = (i0, i1)
 # model = torch.jit.optimize_for_inference(torch.jit.trace(flownet, (model_input, )))
-model = torch.jit.trace(flownet, (model_input, ))
+with torch.no_grad():
+    # model = torch.jit.optimize_for_inference(torch.jit.trace(flownet, model_input, ))
+    model = torch.jit.trace(flownet, model_input)
+    torch.jit.save(model, "flownet_288.pt")
 
-torch.jit.save(model, "flownet_288.pt")
+# ref_output = flownet(*model_input)
+# print(ref_output.shape)
+# np.save('ref_output.npy', to_numpy(ref_output))
+# ref_pt_output = model(*model_input)
+# print(ref_pt_output.shape)
+# np.save('ref_pt_output.npy', to_numpy(ref_pt_output))
 
 # onnx_path = f"flownet_op16_{shape_t[0]}x{shape_t[1]}.onnx"
 # with torch.no_grad():

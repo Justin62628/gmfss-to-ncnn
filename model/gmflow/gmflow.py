@@ -100,6 +100,8 @@ class GMFlow(nn.Module):
                 **kwargs,
                 ):
 
+        # img0 = imgs[:, 0:3, :, :]  # [B, 3, H, W]
+        # img1 = imgs[:, 3:6, :, :]  # [B, 3, H, W]
         img0, img1 = normalize_img(img0, img1)  # [B, 3, H, W]
 
         # resolution low to high
