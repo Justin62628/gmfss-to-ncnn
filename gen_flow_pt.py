@@ -3,13 +3,14 @@ from model.gmflow.gmflow import GMFlow
 import os
 import cv2
 
-device = torch.device("cuda")
+device = torch.device("cpu")
 
 def to_numpy(tensor):
     return tensor.detach().cpu().numpy() if tensor.requires_grad else tensor.cpu().numpy()
 
 _image_path = r'input'
-shape = (960, 544)  # override the shape variable above, indent if necessary
+# shape = (960, 544)  # override the shape variable above, indent if necessary
+shape = (480, 288)  # override the shape variable above, indent if necessary
 shape_t = (shape[1], shape[0])
 _i0 = cv2.resize(cv2.imread(os.path.join(_image_path, r'0022.jpg')), shape)
 _i1 = cv2.resize(cv2.imread(os.path.join(_image_path, r'0023.jpg')), shape)
@@ -22,9 +23,12 @@ flownet.load_state_dict(torch.load('train_log/flownet.pkl'))
 flownet = flownet.to(device)
 flownet = flownet.eval()
 
-model_input = (i0, i1)
-model = torch.jit.trace(flownet, model_input)
-torch.jit.save(model, "flownet_544.pt")
+model_input = torch.cat((i0, i1), dim=1)
+print(model_input.shape)
+# model = torch.jit.optimize_for_inference(torch.jit.trace(flownet, (model_input, )))
+model = torch.jit.trace(flownet, (model_input, ))
+
+torch.jit.save(model, "flownet_288.pt")
 
 # onnx_path = f"flownet_op16_{shape_t[0]}x{shape_t[1]}.onnx"
 # with torch.no_grad():
