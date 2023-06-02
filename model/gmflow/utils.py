@@ -1,6 +1,8 @@
 import torch
 from torch import nn
 import torch.nn.functional as F
+
+from model.log import print_mat
 from .position import PositionEmbeddingSine
 
 
@@ -30,6 +32,7 @@ class split_feature(nn.Module):
                 num_splits=2,
                 channel_last=False,
                 ):
+        print_mat(feature, 'split_feature')
         b, c, h, w = feature.size()
         assert h % num_splits == 0 and w % num_splits == 0
 
@@ -47,29 +50,12 @@ class split_feature(nn.Module):
         return feature
 
 
-# class split_feature_c_last(nn.Module):
-#     def forward(self, feature,
-#                 num_splits=2,
-#                 channel_last=False,
-#                 ):
-#         b, h, w, c = feature.size()
-#         assert h % num_splits == 0 and w % num_splits == 0
-#
-#         b_new = num_splits * num_splits
-#         h_new = h // num_splits
-#         w_new = w // num_splits
-#
-#         feature = feature.view(b, num_splits, h // num_splits, num_splits, w // num_splits, c
-#                                ).permute(0, 1, 3, 2, 4, 5).reshape(b, b_new, h_new, w_new, c)  # [B*K*K, H/K, W/K, C]
-#
-#         return feature
-
-
 class merge_splits(nn.Module):
     def forward(self, splits,
                 num_splits=2,
                 channel_last=False,
                 ):
+        print_mat(splits, 'merge_splits')
         b0, b, c, h, w = splits.size()
         new_b = (b0 * b) // num_splits // num_splits
 
@@ -81,20 +67,6 @@ class merge_splits(nn.Module):
             new_b, c, num_splits * h, num_splits * w)  # [B, C, H, W]
 
         return merge
-
-
-# class merge_splits_c_last(nn.Module):
-#     def forward(self, splits,
-#                 num_splits=2,
-#                 channel_last=False,
-#                 ):
-#         b0, b, h, w, c = splits.size()
-#         new_b = (b0 * b) // num_splits // num_splits
-#
-#         splits = splits.view(new_b, num_splits, num_splits, h, w, c)
-#         merge = splits.permute(0, 1, 3, 2, 4, 5).contiguous().view(
-#             new_b, num_splits * h, num_splits * w, c)  # [B, H, W, C]
-#         return merge
 
 
 def normalize_img(img0, img1):

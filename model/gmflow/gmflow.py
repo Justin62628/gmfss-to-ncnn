@@ -8,7 +8,7 @@ from .transformer import FeatureTransformer, FeatureFlowAttention
 from .matching import global_correlation_softmax, local_correlation_softmax
 from .geometry import flow_warp
 from .utils import normalize_img, merge_splits, split_feature, convex_upsampling
-
+from ..log import LOG_STATE, print_mat
 
 class GMFlow(nn.Module):
     def __init__(self,
@@ -126,7 +126,7 @@ class GMFlow(nn.Module):
         # img0 = imgs[:, 0:3, :, :]  # [B, 3, H, W]
         # img1 = imgs[:, 3:6, :, :]  # [B, 3, H, W]
         # img0, img1 = normalize_img(img0, img1)  # [B, 3, H, W]
-
+        print_mat(img0, 'in0_padded')
         # resolution low to high
         feature0_list, feature1_list = self.extract_feature(img0, img1)  # list of features, f0: [1, 128,20,32] [1,128,40,64]
 

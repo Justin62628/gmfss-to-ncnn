@@ -38,8 +38,10 @@ if not args.img is None:
     args.png = True
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+# device = torch.device("cpu")
+
 torch.set_grad_enabled(False)
-if torch.cuda.is_available():
+if torch.cuda.is_available() and not "cpu" in str(device):
     torch.backends.cudnn.enabled = True
     torch.backends.cudnn.benchmark = True
     if(args.fp16):
@@ -53,7 +55,7 @@ if not hasattr(model, 'version'):
 model.load_model(args.modelDir, -1)
 print("Loaded model")
 model.eval()
-model.device()
+model.device(device)
 
 videogen = []
 for f in os.listdir(args.img):
@@ -61,8 +63,8 @@ for f in os.listdir(args.img):
         videogen.append(f)
 tot_frame = len(videogen)
 videogen.sort(key= lambda x:int(x[:-4]))
-lastframe = cv2.resize(cv2.imread(os.path.join(args.img, videogen[0]), cv2.IMREAD_UNCHANGED)[:, :, ::-1].copy(), (480, 288))
-nextframe = cv2.resize(cv2.imread(os.path.join(args.img, videogen[1]), cv2.IMREAD_UNCHANGED)[:, :, ::-1].copy(), (480, 288))
+lastframe = cv2.resize(cv2.imread(os.path.join(args.img, videogen[0]), cv2.IMREAD_UNCHANGED)[:, :, ::-1].copy(), (960, 540))
+nextframe = cv2.resize(cv2.imread(os.path.join(args.img, videogen[1]), cv2.IMREAD_UNCHANGED)[:, :, ::-1].copy(), (960, 540))
 
 videogen = videogen[1:]
 

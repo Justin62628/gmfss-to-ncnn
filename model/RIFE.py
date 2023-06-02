@@ -11,7 +11,7 @@ from model.FusionNet import GridNet
 from model.gmflow.utils import normalize_img
 from model.softsplat import softsplat as warp
 
-device = torch.device("cuda")
+# device = torch.device("cuda")
     
 class Model:
     def __init__(self):
@@ -29,7 +29,7 @@ class Model:
         self.feat_ext.eval()
         self.fusionnet.eval()
 
-    def device(self):
+    def device(self, device='cuda'):
         self.flownet.to(device)
         self.ifnet.to(device)
         self.metricnet.to(device)
