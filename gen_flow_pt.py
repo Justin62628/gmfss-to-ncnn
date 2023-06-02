@@ -4,6 +4,8 @@ from model.gmflow.gmflow import GMFlow
 import os
 import cv2
 
+from model.gmflow.utils import normalize_img
+
 device = torch.device("cpu")
 
 def to_numpy(tensor):
@@ -26,7 +28,7 @@ flownet = flownet.eval()
 
 # model_input = torch.cat((i0, i1), dim=1)
 # print(model_input.shape)
-model_input = (i0, i1)
+model_input = normalize_img(i0, i1)
 # model = torch.jit.optimize_for_inference(torch.jit.trace(flownet, (model_input, )))
 with torch.no_grad():
     # model = torch.jit.optimize_for_inference(torch.jit.trace(flownet, model_input, ))

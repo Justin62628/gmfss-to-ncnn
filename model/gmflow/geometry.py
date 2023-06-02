@@ -24,7 +24,7 @@ def generate_window_grid(h_min, h_max, w_min, w_max, len_h, len_w, device=None):
     x = x_values.view(1, -1).expand(len_h, -1)
     y = y_values.view(-1, 1).expand(-1, len_w)
 
-    grid = torch.stack((x, y), -1).float()  # [H, W, 2]
+    grid = torch.stack((x, y), 2).float()  # [H, W, 2]
 
     return grid
 
@@ -47,7 +47,10 @@ def bilinear_sample(img, sample_coords, mode='bilinear', padding_mode='zeros', r
     x_grid = 2 * sample_coords[:, 0] / (w - 1) - 1
     y_grid = 2 * sample_coords[:, 1] / (h - 1) - 1
 
-    grid = torch.stack([x_grid, y_grid], dim=-1)  # [B, H, W, 2]
+    x_grid = x_grid.unsqueeze(3)  # [B, H, W, 1]
+    y_grid = y_grid.unsqueeze(3)  # [B, H, W, 1]
+    grid = torch.cat([x_grid, y_grid], dim=3)  # [B, H, W, 2]
+    # grid = torch.stack([x_grid, y_grid], 3)  # [B, H, W, 2]
 
     img = F.grid_sample(img, grid, mode=mode, padding_mode=padding_mode, align_corners=True)
 

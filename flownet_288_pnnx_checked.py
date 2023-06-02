@@ -896,6 +896,7 @@ class Model(nn.Module):
         v_5 = self.pnnx_fold_std_1_1_pnnx_fold_std_1
         v_6 = ((v_0 - v_2) / v_4)
         v_7 = ((v_1 - v_3) / v_5)
+        # region CNNEncoder
         v_8 = torch.cat((v_6, v_7), dim=0)
         v_9 = self.backbone_conv1(v_8)
         v_10 = self.backbone_norm1(v_9)
@@ -953,29 +954,35 @@ class Model(nn.Module):
         v_62 = (v_55 + v_61)
         v_63 = self.pnnx_unique_11(v_62)
         v_64 = self.backbone_conv2(v_63)
+        # endregion
         v_65 = self.conv2d_0(v_64)
-        v_66, v_67 = torch.chunk(input=v_65, chunks=2, dim=0)
+        v_66, v_67 = torch.chunk(input=v_65, chunks=2, dim=0)  # v_66: 1,128,36,60
         v_68 = self.conv2d_1(v_64)
-        v_69, v_70 = torch.chunk(input=v_68, chunks=2, dim=0)
-        v_71 = v_66.view(1, 128, 2, 18, 2, 30)
-        v_72 = v_67.view(1, 128, 2, 18, 2, 30)
-        v_73 = torch.permute(input=v_71, dims=(0, 2, 4, 1, 3, 5))
-        v_74 = v_73.reshape(4, 128, 18, 30)
-        v_75 = self.pnnx_fold_position_1_pnnx_fold_position_1
+        v_69, v_70 = torch.chunk(input=v_68, chunks=2, dim=0)  # v_69: 1,128,72,120
+
+        pixel_unshuffle = nn.PixelUnshuffle(2)  # The upscale factor is 2 because you're splitting each dimension by 2
+        v_71 = pixel_unshuffle(v_66)
+        v_72 = pixel_unshuffle(v_67)
+
+        # v_71 = v_66.view(1, 128, 2, 18, 2, 30)
+        # v_72 = v_67.view(1, 128, 2, 18, 2, 30)
+        # v_73 = torch.permute(input=v_71, dims=(0, 2, 4, 1, 3, 5))   # split feature
+        v_74 = v_71.reshape(4, 128, 18, 30)  # split feature
+        v_75 = self.pnnx_fold_position_1_pnnx_fold_position_1  # pos_enc position
         v_76 = self.pnnx_fold_position_1_1_pnnx_fold_position_1
         v_77 = (v_74 + v_75)
-        v_78 = torch.permute(input=v_72, dims=(0, 2, 4, 1, 3, 5))
-        v_79 = v_78.reshape(4, 128, 18, 30)
+        # v_78 = torch.permute(input=v_72, dims=(0, 2, 4, 1, 3, 5))
+        v_79 = v_72.reshape(4, 128, 18, 30)
         v_80 = (v_79 + v_76)
         v_81 = v_77.view(1, 2, 2, 128, 18, 30)
         v_82 = torch.permute(input=v_81, dims=(0, 3, 1, 4, 2, 5))
         v_83 = v_80.view(1, 2, 2, 128, 18, 30)
         v_84 = torch.permute(input=v_83, dims=(0, 3, 1, 4, 2, 5))
         v_85 = v_82.reshape(1, 128, 36, 60)
-        v_86 = torch.flatten(input=v_85, end_dim=-1, start_dim=-2)
+        v_86 = torch.flatten(input=v_85, end_dim=-1, start_dim=-2)  # transformer, FeatureTransformer
         v_87 = v_84.reshape(1, 128, 36, 60)
         v_88 = torch.flatten(input=v_87, end_dim=-1, start_dim=-2)
-        v_89 = torch.permute(input=v_88, dims=(0, 2, 1))
+        v_89 = torch.permute(input=v_88, dims=(0, 2, 1))  # global_correlation_softmax
         v_90 = torch.permute(input=v_86, dims=(0, 2, 1))
         v_91 = torch.cat((v_90, v_89), dim=0)
         v_92 = self.transformer_layers_0_self_attn_q_proj(v_91)
@@ -1874,8 +1881,6 @@ def test_inference():
     net.eval()
 
     torch.manual_seed(0)
-    v_0 = torch.rand(1, 3, 288, 480, dtype=torch.float)
-    v_1 = torch.rand(1, 3, 288, 480, dtype=torch.float)
     device = torch.device("cpu")
 
     import cv2
@@ -1896,6 +1901,7 @@ if __name__ == '__main__':
     # export_torchscript()
     # export_onnx()
     import numpy as np
+
     output = test_inference()
     np.save("output.npy", output.detach().numpy())
     print(output.shape)

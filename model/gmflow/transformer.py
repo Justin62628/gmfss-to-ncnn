@@ -16,95 +16,116 @@ def single_head_full_attention(q, k, v):
     return out
 
 
-def generate_shift_window_attn_mask(input_resolution, window_size_h, window_size_w,
-                                    shift_size_h, shift_size_w, device=torch.device('cuda')):
-    h, w = input_resolution
-    # Create masks for each block
-    mask1 = torch.ones((h - window_size_h, w - window_size_w)).to(device)   # mask for block 1
-    mask2 = torch.ones((h - window_size_h, window_size_w - shift_size_w)).to(device) * 2   # mask for block 2
-    mask3 = torch.ones((h - window_size_h, shift_size_w)).to(device) * 3   # mask for block 3
-    mask4 = torch.ones((window_size_h - shift_size_h, w - window_size_w)).to(device) * 4   # mask for block 4
-    mask5 = torch.ones((window_size_h - shift_size_h, window_size_w - shift_size_w)).to(device) * 5   # mask for block 5
-    mask6 = torch.ones((window_size_h - shift_size_h, shift_size_w)).to(device) * 6   # mask for block 6
-    mask7 = torch.ones((shift_size_h, w - window_size_w)).to(device) * 7   # mask for block 7
-    mask8 = torch.ones((shift_size_h, window_size_w - shift_size_w)).to(device) * 8   # mask for block 8
-    mask9 = torch.ones((shift_size_h, shift_size_w)).to(device) * 9   # mask for block 9
+class generate_shift_window_attn_mask(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.split_feature = split_feature()
 
-    # Concatenate the masks to create the full mask
-    upper_mask = torch.cat([mask1, mask2, mask3], dim=1)
-    middle_mask = torch.cat([mask4, mask5, mask6], dim=1)
-    lower_mask = torch.cat([mask7, mask8, mask9], dim=1)
-    full_mask = torch.cat([upper_mask, middle_mask, lower_mask], dim=0).unsqueeze(0).unsqueeze(-1)  # Add extra dimensions for batch size and channels
+    def forward(self, input_resolution, window_size_h, window_size_w,
+                shift_size_h, shift_size_w, device=torch.device('cuda')):
+        h, w = input_resolution
+        # Create masks for each block
+        mask1 = torch.ones((h - window_size_h, w - window_size_w)).to(device)  # mask for block 1
+        mask2 = torch.ones((h - window_size_h, window_size_w - shift_size_w)).to(device) * 2  # mask for block 2
+        mask3 = torch.ones((h - window_size_h, shift_size_w)).to(device) * 3  # mask for block 3
+        mask4 = torch.ones((window_size_h - shift_size_h, w - window_size_w)).to(device) * 4  # mask for block 4
+        mask5 = torch.ones((window_size_h - shift_size_h, window_size_w - shift_size_w)).to(
+            device) * 5  # mask for block 5
+        mask6 = torch.ones((window_size_h - shift_size_h, shift_size_w)).to(device) * 6  # mask for block 6
+        mask7 = torch.ones((shift_size_h, w - window_size_w)).to(device) * 7  # mask for block 7
+        mask8 = torch.ones((shift_size_h, window_size_w - shift_size_w)).to(device) * 8  # mask for block 8
+        mask9 = torch.ones((shift_size_h, shift_size_w)).to(device) * 9  # mask for block 9
 
-    mask_windows = split_feature(full_mask, num_splits=input_resolution[-1] // window_size_w, channel_last=True)
-    mask_windows = mask_windows.view(-1, window_size_h * window_size_w)
-    attn_mask = mask_windows.unsqueeze(1) - mask_windows.unsqueeze(2)
-    attn_mask = attn_mask.masked_fill(attn_mask != 0, float(-100.0)).masked_fill(attn_mask == 0, float(0.0))
+        # Concatenate the masks to create the full mask
+        upper_mask = torch.cat([mask1, mask2, mask3], dim=1)
+        middle_mask = torch.cat([mask4, mask5, mask6], dim=1)
+        lower_mask = torch.cat([mask7, mask8, mask9], dim=1)
+        full_mask = torch.cat([upper_mask, middle_mask, lower_mask], dim=0).unsqueeze(0).unsqueeze(
+            -1)  # Add extra dimensions for batch size and channels
+        full_mask = full_mask.permute(0, 3, 1, 2)  # [B, 1, H, W]
+        mask_windows = self.split_feature(full_mask, num_splits=input_resolution[-1] // window_size_w, )  # [B, 9, 1, H, W]
+        mask_windows = mask_windows.permute(0, 1, 3, 4, 2)  # [B, 9, H, W, 1]
+        mask_windows = mask_windows.view(-1, window_size_h * window_size_w)
+        attn_mask = mask_windows.unsqueeze(1) - mask_windows.unsqueeze(2)
+        attn_mask = attn_mask.masked_fill(attn_mask != 0, float(-100.0)).masked_fill(attn_mask == 0, float(0.0))
 
-    return attn_mask
+        return attn_mask
 
 
+class single_head_split_window_attention(nn.Module):
+    def __init__(self):
+        super().__init__()
+        self.split_feature = split_feature()
+        self.merge_splits = merge_splits()
 
-def single_head_split_window_attention(q, k, v,
-                                       num_splits=1,
-                                       with_shift=False,
-                                       h=None,
-                                       w=None,
-                                       attn_mask=None,
-                                       ):
-    # Ref: https://github.com/microsoft/Swin-Transformer/blob/main/models/swin_transformer.py
-    # q, k, v: [B, L, C]
-    assert q.dim() == k.dim() == v.dim() == 3
+    def forward(self, q, k, v,
+                num_splits=1,
+                with_shift=False,
+                h=None,
+                w=None,
+                attn_mask=None,
+                ):
+        # Ref: https://github.com/microsoft/Swin-Transformer/blob/main/models/swin_transformer.py
+        # q, k, v: [B, L, C]
+        assert q.dim() == k.dim() == v.dim() == 3
 
-    assert h is not None and w is not None
-    assert q.size(1) == h * w
+        assert h is not None and w is not None
+        assert q.size(1) == h * w
 
-    b, _, c = q.size()
+        b, _, c = q.size()
 
-    b_new = b * num_splits * num_splits
+        b_new = num_splits * num_splits
 
-    window_size_h = h // num_splits
-    window_size_w = w // num_splits
+        window_size_h = h // num_splits
+        window_size_w = w // num_splits
 
-    q = q.view(b, h, w, c)  # [B, H, W, C]
-    k = k.view(b, h, w, c)
-    v = v.view(b, h, w, c)
+        q = q.view(b, h, w, c)  # [B, H, W, C], [2, 20, 32, 128]
+        k = k.view(b, h, w, c)
+        v = v.view(b, h, w, c)
 
-    scale_factor = c ** 0.5
+        scale_factor = c ** 0.5
 
-    if with_shift:
-        assert attn_mask is not None  # compute once
-        shift_size_h = window_size_h // 2
-        shift_size_w = window_size_w // 2
+        if with_shift:
+            assert attn_mask is not None  # compute once
+            shift_size_h = window_size_h // 2
+            shift_size_w = window_size_w // 2
 
-        q = torch.roll(q, shifts=(-shift_size_h, -shift_size_w), dims=(1, 2))
-        k = torch.roll(k, shifts=(-shift_size_h, -shift_size_w), dims=(1, 2))
-        v = torch.roll(v, shifts=(-shift_size_h, -shift_size_w), dims=(1, 2))
+            q = torch.roll(q, shifts=(-shift_size_h, -shift_size_w), dims=(1, 2))
+            k = torch.roll(k, shifts=(-shift_size_h, -shift_size_w), dims=(1, 2))
+            v = torch.roll(v, shifts=(-shift_size_h, -shift_size_w), dims=(1, 2))
 
-    q = split_feature(q, num_splits=num_splits, channel_last=True)  # [B*K*K, H/K, W/K, C]
-    k = split_feature(k, num_splits=num_splits, channel_last=True)
-    v = split_feature(v, num_splits=num_splits, channel_last=True)
+        q = q.permute(0, 3, 1, 2)  # [B, C, H, W]
+        k = k.permute(0, 3, 1, 2)
+        v = v.permute(0, 3, 1, 2)
 
-    scores = torch.matmul(q.view(b_new, -1, c), k.view(b_new, -1, c).permute(0, 2, 1)
-                          ) / scale_factor  # [B*K*K, H/K*W/K, H/K*W/K]
+        q = self.split_feature(q, num_splits=num_splits)  # [B0, B*K*K, C, H/K, W/K]
+        k = self.split_feature(k, num_splits=num_splits)
+        v = self.split_feature(v, num_splits=num_splits)
+        q = q.permute(0, 1, 3, 4, 2)  # [B0, B*K*K, H/K, W/K, C]
+        k = k.permute(0, 1, 3, 4, 2)
+        v = v.permute(0, 1, 3, 4, 2)
 
-    if with_shift:
-        scores += attn_mask.repeat(b, 1, 1)
+        scores = torch.matmul(q.view(b_new, -1, c), k.view(b_new, -1, c).permute(0, 2, 1)
+                              ) / scale_factor  # [B*K*K, H/K*W/K, H/K*W/K]
 
-    attn = torch.softmax(scores, dim=-1)
+        if with_shift:
+            scores += attn_mask.repeat(b, 1, 1)
 
-    out = torch.matmul(attn, v.view(b_new, -1, c))  # [B*K*K, H/K*W/K, C]
+        attn = torch.softmax(scores, dim=-1)
 
-    out = merge_splits(out.view(b_new, h // num_splits, w // num_splits, c),
-                       num_splits=num_splits, channel_last=True)  # [B, H, W, C]
+        out = torch.matmul(attn, v.view(b_new, -1, c))  # [B*K*K, H/K*W/K, C]
+        out = out.view(b, b_new, h // num_splits, w // num_splits, c)
+        out = out.permute(0, 1, 4, 2, 3)  # [B, K*K, C, H/K, W/K]
+        out = self.merge_splits(out, num_splits=num_splits)  # [B, C, H, W]
+        out = out.permute(0, 2, 3, 1)  # [B, H, W, C]
 
-    # shift back
-    if with_shift:
-        out = torch.roll(out, shifts=(shift_size_h, shift_size_w), dims=(1, 2))
+        # shift back
+        if with_shift:
+            out = torch.roll(out, shifts=(shift_size_h, shift_size_w), dims=(1, 2))
 
-    out = out.view(b, -1, c)
+        out = out.view(b, -1, c)
 
-    return out
+        return out
 
 
 class TransformerLayer(nn.Module):
@@ -145,6 +166,7 @@ class TransformerLayer(nn.Module):
             )
 
             self.norm2 = nn.LayerNorm(d_model)
+        self.single_head_split_window_attention = single_head_split_window_attention()
 
     def forward(self, source, target,
                 height=None,
@@ -167,13 +189,13 @@ class TransformerLayer(nn.Module):
                 # without bringing obvious performance gains and thus the implementation is removed
                 raise NotImplementedError
             else:
-                message = single_head_split_window_attention(query, key, value,
-                                                             num_splits=attn_num_splits,
-                                                             with_shift=self.with_shift,
-                                                             h=height,
-                                                             w=width,
-                                                             attn_mask=shifted_window_attn_mask,
-                                                             )
+                message = self.single_head_split_window_attention(query, key, value,
+                                                                  num_splits=attn_num_splits,
+                                                                  with_shift=self.with_shift,
+                                                                  h=height,
+                                                                  w=width,
+                                                                  attn_mask=shifted_window_attn_mask,
+                                                                  )
         else:
             message = single_head_full_attention(query, key, value)  # [B, L, C]
 
@@ -264,9 +286,12 @@ class FeatureTransformer(nn.Module):
                              nhead=nhead,
                              attention_type=attention_type,
                              ffn_dim_expansion=ffn_dim_expansion,
-                             with_shift=True if attention_type == 'swin' and i % 2 == 1 else False,
+                            #  with_shift=True if attention_type == 'swin' and i % 2 == 1 else False,
+                             with_shift=False
                              )
             for i in range(num_layers)])
+
+        self.generate_shift_window_attn_mask = generate_shift_window_attn_mask()
 
         for p in self.parameters():
             if p.dim() > 1:
@@ -280,8 +305,8 @@ class FeatureTransformer(nn.Module):
         b, c, h, w = feature0.shape
         assert self.d_model == c
 
-        feature0 = feature0.flatten(-2).permute(0, 2, 1)  # [B, H*W, C]
-        feature1 = feature1.flatten(-2).permute(0, 2, 1)  # [B, H*W, C]
+        feature0 = feature0.flatten(2).permute(0, 2, 1)  # [B, H*W, C]
+        feature1 = feature1.flatten(2).permute(0, 2, 1)  # [B, H*W, C]
 
         if self.attention_type == 'swin' and attn_num_splits > 1:
             # global and refine use different number of splits
@@ -289,33 +314,31 @@ class FeatureTransformer(nn.Module):
             window_size_w = w // attn_num_splits
 
             # compute attn mask once
-            shifted_window_attn_mask = generate_shift_window_attn_mask(
+            shifted_window_attn_mask = self.generate_shift_window_attn_mask(
                 input_resolution=(h, w),
                 window_size_h=window_size_h,
                 window_size_w=window_size_w,
                 shift_size_h=window_size_h // 2,
                 shift_size_w=window_size_w // 2,
                 device=feature0.device,
-            )  # [K*K, H/K*W/K, H/K*W/K]
+            )  # [K*K, H/K*W/K, H/K*W/K] 4,160,160
         else:
             shifted_window_attn_mask = None
 
-        # concat feature0 and feature1 in batch dimension to compute in parallel
-        concat0 = torch.cat((feature0, feature1), dim=0)  # [2B, H*W, C]
-        concat1 = torch.cat((feature1, feature0), dim=0)  # [2B, H*W, C]
-
         for layer in self.layers:
-            concat0 = layer(concat0, concat1,
-                            height=h,
-                            width=w,
-                            shifted_window_attn_mask=shifted_window_attn_mask,
-                            attn_num_splits=attn_num_splits,
-                            )
-
-            # update feature1
-            concat1 = torch.cat(concat0.chunk(chunks=2, dim=0)[::-1], dim=0)
-
-        feature0, feature1 = concat0.chunk(chunks=2, dim=0)  # [B, H*W, C]
+            feature0_ = layer(feature0, feature1,
+                             height=h,
+                             width=w,
+                             shifted_window_attn_mask=shifted_window_attn_mask,
+                             attn_num_splits=attn_num_splits,
+                             )
+            feature1_ = layer(feature1, feature0,
+                             height=h,
+                             width=w,
+                             shifted_window_attn_mask=shifted_window_attn_mask,
+                             attn_num_splits=attn_num_splits,
+                             )
+            feature0, feature1 = feature0_, feature1_
 
         # reshape back
         feature0 = feature0.view(b, h, w, c).permute(0, 3, 1, 2).contiguous()  # [B, C, H, W]

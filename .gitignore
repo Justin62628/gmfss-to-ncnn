@@ -5,3 +5,5 @@ __pycache__
 *.pt
 *.exe
 *.pkl
+tmp
+.idea

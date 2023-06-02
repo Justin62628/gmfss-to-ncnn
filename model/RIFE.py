@@ -8,6 +8,7 @@ from model.IFNet_HDv3 import IFNet
 from model.MetricNet import MetricNet
 from model.FeatureNet import FeatureNet
 from model.FusionNet import GridNet
+from model.gmflow.utils import normalize_img
 from model.softsplat import softsplat as warp
 
 device = torch.device("cuda")
@@ -64,6 +65,9 @@ class Model:
         else:
             imgf0 = img0
             imgf1 = img1
+
+        imgf0, imgf1 = normalize_img(imgf0, imgf1)
+
         flow01 = self.flownet(imgf0, imgf1)
         flow10 = self.flownet(imgf1, imgf0)
         if scale != 1.0:
