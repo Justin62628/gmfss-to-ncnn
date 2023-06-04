@@ -6,6 +6,8 @@ import numpy as np
 from torch.nn import functional as F
 import warnings
 from queue import Queue, Empty
+from model.log import LOG_STATE
+LOG_STATE.is_log = False
 
 warnings.filterwarnings("ignore")
 
@@ -65,7 +67,8 @@ tot_frame = len(videogen)
 videogen.sort(key= lambda x:int(x[:-4]))
 lastframe = cv2.resize(cv2.imread(os.path.join(args.img, videogen[0]), cv2.IMREAD_UNCHANGED)[:, :, ::-1].copy(), (960, 540))
 nextframe = cv2.resize(cv2.imread(os.path.join(args.img, videogen[1]), cv2.IMREAD_UNCHANGED)[:, :, ::-1].copy(), (960, 540))
-
+# lastframe = cv2.imread(os.path.join(args.img, videogen[0]), cv2.IMREAD_UNCHANGED)[:, :, ::-1].copy()
+# nextframe = cv2.imread(os.path.join(args.img, videogen[1]), cv2.IMREAD_UNCHANGED)[:, :, ::-1].copy()
 videogen = videogen[1:]
 
 h, w, _ = lastframe.shape

@@ -137,7 +137,7 @@ class GMFlow(nn.Module):
         for scale_idx in range(self.num_scales):
             feature0, feature1 = feature0_list[scale_idx], feature1_list[scale_idx]
 
-            upsample_factor = self.upsample_factor * (2 ** (self.num_scales - 1 - scale_idx))
+            # upsample_factor = self.upsample_factor * (2 ** (self.num_scales - 1 - scale_idx))
 
             if scale_idx > 0:
                 flow = F.interpolate(flow, scale_factor=2, mode='bilinear', align_corners=True) * 2
@@ -152,13 +152,15 @@ class GMFlow(nn.Module):
 
             # add position to features
             feature0, feature1 = self.feature_add_position(feature0, feature1, attn_splits, self.feature_channels)  # 6dim, f0: [1, 128,20,32]
-
+            # print_mat(feature0, 'add_pos_t0')
+            # print_mat(feature1, 'add_pos_t1')
             # Transformer
             feature0, feature1 = self.transformer(feature0, feature1, attn_num_splits=attn_splits)
 
             # correlation and softmax
             if corr_radius == -1:  # global matching
                 flow_pred = self.global_correlation_softmax(feature0, feature1, pred_bidir_flow)[0]  # 1,2,20,32
+
             else:  # local matching
                 flow_pred = self.local_correlation_softmax(feature0, feature1, corr_radius)[0]  # 1,2,40,64
 
@@ -166,18 +168,19 @@ class GMFlow(nn.Module):
             flow = flow + flow_pred if flow is not None else flow_pred
 
             # upsample to the original resolution for supervison
-            if self.training:  # only need to upsample intermediate flow predictions at training time
-                flow_bilinear = self.upsample_flow(flow, None, bilinear=True, upsample_factor=upsample_factor)
+            # if self.training:  # only need to upsample intermediate flow predictions at training time
+            #     flow_bilinear = self.upsample_flow(flow, None, bilinear=True, upsample_factor=upsample_factor)
 
             flow = self.feature_flow_attn(feature0, flow.detach(),
                                           local_window_attn=prop_radius > 0,
                                           local_window_radius=prop_radius)  # 1,2,20,32
 
             # bilinear upsampling at training time except the last one
-            if self.training and scale_idx < self.num_scales - 1:
-                flow_up = self.upsample_flow(flow, feature0, bilinear=True, upsample_factor=upsample_factor)
+            # if self.training and scale_idx < self.num_scales - 1:
+            #     flow_up = self.upsample_flow(flow, feature0, bilinear=True, upsample_factor=upsample_factor)
 
             if scale_idx == self.num_scales - 1:
                 flow_up = self.upsample_flow(flow, feature0)
-        flow_up = flow_up + 0.0001
+        # flow_up = flow_up + 0.0001
+        print_mat(flow_up, 'flow_up')
         return flow_up

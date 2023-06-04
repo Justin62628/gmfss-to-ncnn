@@ -13,12 +13,12 @@ device = torch.device("cpu")
 def to_numpy(tensor):
     return tensor.detach().cpu().numpy() if tensor.requires_grad else tensor.cpu().numpy()
 
-_image_path = r'input'
+_image_path = r'input2'
 # shape = (960, 544)  # override the shape variable above, indent if necessary
 shape = (480, 288)  # override the shape variable above, indent if necessary
 shape_t = (shape[1], shape[0])
-_i0 =cv2.cvtColor(cv2.imread(os.path.join(_image_path, r'0022.jpg.png')), cv2.COLOR_BGR2RGB)
-_i1 =cv2.cvtColor(cv2.imread(os.path.join(_image_path, r'0023.jpg.png')), cv2.COLOR_BGR2RGB)
+_i0 =cv2.cvtColor(cv2.imread(os.path.join(_image_path, r'0022.png')), cv2.COLOR_BGR2RGB)
+_i1 =cv2.cvtColor(cv2.imread(os.path.join(_image_path, r'0023.png')), cv2.COLOR_BGR2RGB)
 i0 = torch.from_numpy(_i0).to(device).unsqueeze(0).permute(0,3,1,2) / 255.
 i1 = torch.from_numpy(_i1).to(device).unsqueeze(0).permute(0,3,1,2) / 255.
 bs = 1
@@ -33,13 +33,15 @@ flownet = flownet.eval()
 model_input = normalize_img(i0, i1)
 # model = torch.jit.optimize_for_inference(torch.jit.trace(flownet, (model_input, )))
 
-LOG_STATE.is_log = True
-flownet(*model_input)
+# debug below, for comparison between ncnn and gt
+# LOG_STATE.is_log = True
+# flownet(*model_input)
 
-# with torch.no_grad():
-#     # model = torch.jit.optimize_for_inference(torch.jit.trace(flownet, model_input, ))
-#     model = torch.jit.trace(flownet, model_input)
-#     torch.jit.save(model, "flownet_288.pt")
+# gen pt
+with torch.no_grad():
+    # model = torch.jit.optimize_for_inference(torch.jit.trace(flownet, model_input, ))
+    model = torch.jit.trace(flownet, model_input)
+    torch.jit.save(model, "flownet_288.pt")
 
 # ref_output = flownet(*model_input)
 # print(ref_output.shape)

@@ -13,6 +13,9 @@ class convex_upsampling(nn.Module):
 
     def forward(self, flow, up_flow):
         b, flow_channel, h, w = flow.shape
+        # print_mat(flow, 'convex_upsampling_bottom0')
+        # print_mat(up_flow, 'convex_upsampling_bottom1')
+        
         # mask = mask.view(b, 1, 9, self.upsample_factor, self.upsample_factor, h, w)  # [B, 1, 9, K, K, H, W]
         # # mask = torch.softmax(mask, dim=2)
         #
@@ -24,6 +27,7 @@ class convex_upsampling(nn.Module):
         up_flow = up_flow.permute(0, 1, 4, 2, 5, 3)  # [B, 2, K, H, K, W]
         up_flow = up_flow.reshape(b, flow_channel, self.upsample_factor * h,
                                   self.upsample_factor * w)  # [B, 2, K*H, K*W]
+        # print_mat(up_flow, 'convex_upsampling_top')
         return up_flow
 
 
@@ -32,7 +36,7 @@ class split_feature(nn.Module):
                 num_splits=2,
                 channel_last=False,
                 ):
-        print_mat(feature, 'split_feature')
+        # print_mat(feature, 'split_feature_bottom')
         b, c, h, w = feature.size()
         assert h % num_splits == 0 and w % num_splits == 0
 
@@ -46,6 +50,7 @@ class split_feature(nn.Module):
 
         feature = feature.view(b, c, num_splits, h // num_splits, num_splits, w // num_splits
                                ).permute(0, 2, 4, 1, 3, 5).reshape(b, b_new, c, h_new, w_new)  # [B*K*K, C, H/K, W/K]
+        # print_mat(feature, 'split_feature_top')
 
         return feature
 
@@ -55,7 +60,8 @@ class merge_splits(nn.Module):
                 num_splits=2,
                 channel_last=False,
                 ):
-        print_mat(splits, 'merge_splits')
+        # if num_splits > 2:
+        #     print_mat(splits, 'merge_splits_bottom')
         b0, b, c, h, w = splits.size()
         new_b = (b0 * b) // num_splits // num_splits
 
@@ -65,9 +71,9 @@ class merge_splits(nn.Module):
         splits = splits.view(new_b, num_splits, num_splits, c, h, w)  # 1,2,2,128,10,16
         merge = splits.permute(0, 3, 1, 4, 2, 5).contiguous().view(
             new_b, c, num_splits * h, num_splits * w)  # [B, C, H, W]
-
+        # if num_splits > 2:
+        #     print_mat(merge, 'merge_splits_top')
         return merge
-
 
 def normalize_img(img0, img1):
     # loaded images are in [0, 255]

@@ -9,8 +9,8 @@ def test_inference():
     out = []
 
     with ncnn.Net() as net:
-         net.load_param("d:\60-fps-Project\VFI\GMFSS2NCNN\flownet_288.ncnn.param")
-         net.load_model("d:\60-fps-Project\VFI\GMFSS2NCNN\flownet_288.ncnn.bin")
+         net.load_param("D:/60-fps-Project/VFI/GMFSS2NCNN/flownet_288.ncnn.param")
+         net.load_model("D:/60-fps-Project/VFI/GMFSS2NCNN/flownet_288.ncnn.bin")
 
          with net.create_extractor() as ex:
             ex.input("in0", ncnn.Mat(in0.squeeze(0).numpy()).clone())

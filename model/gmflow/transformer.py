@@ -2,6 +2,8 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+from model.log import print_mat
+
 from .utils import split_feature, merge_splits
 
 
@@ -74,7 +76,7 @@ class single_head_split_window_attention(nn.Module):
 
         b, _, c = q.size()
 
-        b_new = num_splits * num_splits
+        b_new = num_splits * num_splits  # B0
 
         window_size_h = h // num_splits
         window_size_w = w // num_splits
@@ -90,30 +92,30 @@ class single_head_split_window_attention(nn.Module):
             shift_size_h = window_size_h // 2
             shift_size_w = window_size_w // 2
 
-            q = torch.roll(q, shifts=(-shift_size_h, -shift_size_w), dims=(1, 2))
-            k = torch.roll(k, shifts=(-shift_size_h, -shift_size_w), dims=(1, 2))
-            v = torch.roll(v, shifts=(-shift_size_h, -shift_size_w), dims=(1, 2))
+            q = torch.roll(q, shifts=(-shift_size_h, -shift_size_w), dims=(2, 3))
+            k = torch.roll(k, shifts=(-shift_size_h, -shift_size_w), dims=(2, 3))
+            v = torch.roll(v, shifts=(-shift_size_h, -shift_size_w), dims=(2, 3))
 
         q = q.permute(0, 3, 1, 2)  # [B, C, H, W]
         k = k.permute(0, 3, 1, 2)
         v = v.permute(0, 3, 1, 2)
 
-        q = self.split_feature(q, num_splits=num_splits)  # [B0, B*K*K, C, H/K, W/K]
+        q = self.split_feature(q, num_splits=num_splits)  # [B, B0*K*K, C, H/K, W/K]
         k = self.split_feature(k, num_splits=num_splits)
         v = self.split_feature(v, num_splits=num_splits)
-        q = q.permute(0, 1, 3, 4, 2)  # [B0, B*K*K, H/K, W/K, C]
+        q = q.permute(0, 1, 3, 4, 2)  # [B, B0*K*K, H/K, W/K, C]
         k = k.permute(0, 1, 3, 4, 2)
         v = v.permute(0, 1, 3, 4, 2)
 
-        scores = torch.matmul(q.view(b_new, -1, c), k.view(b_new, -1, c).permute(0, 2, 1)
-                              ) / scale_factor  # [B*K*K, H/K*W/K, H/K*W/K]
+        scores = torch.matmul(q.view(b, b_new, -1, c), k.view(b, b_new, -1, c).permute(0, 1, 3, 2)
+                              ) / scale_factor  # [B, K*K, H/K*W/K, H/K*W/K]
 
         if with_shift:
-            scores += attn_mask.repeat(b, 1, 1)
+            scores += attn_mask.repeat(b, 1, 1)  # TODO: check
 
         attn = torch.softmax(scores, dim=-1)
 
-        out = torch.matmul(attn, v.view(b_new, -1, c))  # [B*K*K, H/K*W/K, C]
+        out = torch.matmul(attn, v.view(b, b_new, -1, c))  # [B, K*K, H/K*W/K, C]
         out = out.view(b, b_new, h // num_splits, w // num_splits, c)
         out = out.permute(0, 1, 4, 2, 3)  # [B, K*K, C, H/K, W/K]
         out = self.merge_splits(out, num_splits=num_splits)  # [B, C, H, W]
@@ -121,7 +123,7 @@ class single_head_split_window_attention(nn.Module):
 
         # shift back
         if with_shift:
-            out = torch.roll(out, shifts=(shift_size_h, shift_size_w), dims=(1, 2))
+            out = torch.roll(out, shifts=(shift_size_h, shift_size_w), dims=(2, 3))
 
         out = out.view(b, -1, c)
 
@@ -403,11 +405,11 @@ class FeatureFlowAttention(nn.Module):
                                   ):
         assert flow.size(1) == 2
         assert local_window_radius > 0
-
+        # This method is not reached, checked
         b, c, h, w = feature0.size()
 
         feature0_reshape = self.q_proj(feature0.view(b, c, -1).permute(0, 2, 1)
-                                       ).reshape(b * h * w, 1, c)  # [B*H*W, 1, C]
+                                       ).reshape(b, h * w, 1, c)  # [B, H*W, 1, C]
 
         kernel_size = 2 * local_window_radius + 1
 
@@ -417,18 +419,23 @@ class FeatureFlowAttention(nn.Module):
                                    padding=local_window_radius)  # [B, C*(2R+1)^2), H*W]
 
         feature0_window = feature0_window.view(b, c, kernel_size ** 2, h, w).permute(
-            0, 3, 4, 1, 2).reshape(b * h * w, c, kernel_size ** 2)  # [B*H*W, C, (2R+1)^2]
+            0, 3, 4, 1, 2).reshape(b, h * w, c, kernel_size ** 2)  # [B, H*W, C, (2R+1)^2]
 
         flow_window = F.unfold(flow, kernel_size=kernel_size,
                                padding=local_window_radius)  # [B, 2*(2R+1)^2), H*W]
 
         flow_window = flow_window.view(b, 2, kernel_size ** 2, h, w).permute(
-            0, 3, 4, 2, 1).reshape(b * h * w, kernel_size ** 2, 2)  # [B*H*W, (2R+1)^2, 2]
+            0, 3, 4, 2, 1).reshape(b, h * w, kernel_size ** 2, 2)  # [B, H*W, (2R+1)^2, 2]
 
-        scores = torch.matmul(feature0_reshape, feature0_window) / (c ** 0.5)  # [B*H*W, 1, (2R+1)^2]
-
+        # print_mat(feature0_reshape, 'flow_local_attn_b0')
+        # print_mat(feature0_window, 'flow_local_attn_b1')
+        scores = torch.matmul(feature0_reshape, feature0_window) / (c ** 0.5)  # [B, H*W, 1, (2R+1)^2]
+        # print_mat(scores, 'flow_local_attn_t0')
+        
         prob = torch.softmax(scores, dim=-1)
 
-        out = torch.matmul(prob, flow_window).view(b, h, w, 2).permute(0, 3, 1, 2).contiguous()  # [B, 2, H, W]
+        out = torch.matmul(prob, flow_window)
+        
+        out = out.view(b, h, w, 2).permute(0, 3, 1, 2).contiguous()  # [B, 2, H, W]
 
         return out

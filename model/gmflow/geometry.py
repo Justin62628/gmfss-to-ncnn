@@ -1,6 +1,8 @@
 import torch
 import torch.nn.functional as F
 
+from model.log import print_mat
+
 
 def coords_grid(b, h, w, homogeneous=False, device=None):
     x = torch.arange(w, dtype=torch.float32).view(1, 1, 1, -1)
@@ -51,8 +53,10 @@ def bilinear_sample(img, sample_coords, mode='bilinear', padding_mode='zeros', r
     y_grid = y_grid.unsqueeze(3)  # [B, H, W, 1]
     grid = torch.cat([x_grid, y_grid], dim=3)  # [B, H, W, 2]
     # grid = torch.stack([x_grid, y_grid], 3)  # [B, H, W, 2]
-
+    # print_mat(img, 'grid_sample_bottom0')
+    # print_mat(grid, 'grid_sample_bottom1')
     img = F.grid_sample(img, grid, mode=mode, padding_mode=padding_mode, align_corners=True)
+    # print_mat(img, 'grid_sample_top0')
 
     if return_mask:
         mask = (x_grid >= -1) & (y_grid >= -1) & (x_grid <= 1) & (y_grid <= 1)  # [B, H, W]
@@ -67,6 +71,9 @@ def flow_warp(feature, flow, mask=False, padding_mode='zeros'):
     assert flow.size(1) == 2
 
     grid = coords_grid(b, h, w).to(flow.device) + flow  # [B, 2, H, W]
+    # print_mat(coords_grid(b, h, w), 'add_66_bottom0')
+    # print_mat(flow, 'add_66_bottom1')
+    # print_mat(grid, 'add_66_top0')
 
     return bilinear_sample(feature, grid, padding_mode=padding_mode,
                            return_mask=mask)
