@@ -230,44 +230,47 @@ def cuda_launch(strKey:str):
 
 
 def softsplat(tenIn:torch.Tensor, tenFlow:torch.Tensor, tenMetric:torch.Tensor, strMode:str):
-    assert(strMode.split('-')[0] in ['sum', 'avg', 'linear', 'soft'])
+    # assert(strMode.split('-')[0] in ['sum', 'avg', 'linear', 'soft'])
 
-    if strMode == 'sum': assert(tenMetric is None)
-    if strMode == 'avg': assert(tenMetric is None)
-    if strMode.split('-')[0] == 'linear': assert(tenMetric is not None)
-    if strMode.split('-')[0] == 'soft': assert(tenMetric is not None)
+    # if strMode == 'sum': assert(tenMetric is None)
+    # if strMode == 'avg': assert(tenMetric is None)
+    # if strMode.split('-')[0] == 'linear': assert(tenMetric is not None)
+    # if strMode.split('-')[0] == 'soft': assert(tenMetric is not None)
 
-    if strMode == 'avg':
-        tenIn = torch.cat([tenIn, tenIn.new_ones([tenIn.shape[0], 1, tenIn.shape[2], tenIn.shape[3]])], 1)
+    # if strMode == 'avg':
+    #     tenIn = torch.cat([tenIn, tenIn.new_ones([tenIn.shape[0], 1, tenIn.shape[2], tenIn.shape[3]])], 1)
 
-    elif strMode.split('-')[0] == 'linear':
-        tenIn = torch.cat([tenIn * tenMetric, tenMetric], 1)
+    # elif strMode.split('-')[0] == 'linear':
+    #     tenIn = torch.cat([tenIn * tenMetric, tenMetric], 1)
 
-    elif strMode.split('-')[0] == 'soft':
-        tenIn = torch.cat([tenIn * tenMetric.exp(), tenMetric.exp()], 1)
+    # elif strMode.split('-')[0] == 'soft':
+    tenIn = torch.cat([tenIn * tenMetric.exp(), tenMetric.exp()], 1)
 
     # end
 
     tenOut = softsplat_func.apply(tenIn, tenFlow)
+    tenNormalize = tenOut[:, -1:, :, :]
+    tenNormalize = tenNormalize + 0.0000001
+    tenOut = tenOut[:, :-1, :, :] / tenNormalize
 
-    if strMode.split('-')[0] in ['avg', 'linear', 'soft']:
-        tenNormalize = tenOut[:, -1:, :, :]
+    # if strMode.split('-')[0] in ['avg', 'linear', 'soft']:
+    #     tenNormalize = tenOut[:, -1:, :, :]
+        
+    #     if len(strMode.split('-')) == 1:
+    #         tenNormalize = tenNormalize + 0.0000001
 
-        if len(strMode.split('-')) == 1:
-            tenNormalize = tenNormalize + 0.0000001
+    #     elif strMode.split('-')[1] == 'addeps':
+    #         tenNormalize = tenNormalize + 0.0000001
 
-        elif strMode.split('-')[1] == 'addeps':
-            tenNormalize = tenNormalize + 0.0000001
+    #     elif strMode.split('-')[1] == 'zeroeps':
+    #         tenNormalize[tenNormalize == 0.0] = 1.0
 
-        elif strMode.split('-')[1] == 'zeroeps':
-            tenNormalize[tenNormalize == 0.0] = 1.0
+    #     elif strMode.split('-')[1] == 'clipeps':
+    #         tenNormalize = tenNormalize.clip(0.0000001, None)
 
-        elif strMode.split('-')[1] == 'clipeps':
-            tenNormalize = tenNormalize.clip(0.0000001, None)
+    #     # end
 
-        # end
-
-        tenOut = tenOut[:, :-1, :, :] / tenNormalize
+    #     tenOut = tenOut[:, :-1, :, :] / tenNormalize
     # end
 
     return tenOut

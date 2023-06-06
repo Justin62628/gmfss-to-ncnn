@@ -126,7 +126,7 @@ class GMFlow(nn.Module):
         # img0 = imgs[:, 0:3, :, :]  # [B, 3, H, W]
         # img1 = imgs[:, 3:6, :, :]  # [B, 3, H, W]
         # img0, img1 = normalize_img(img0, img1)  # [B, 3, H, W]
-        print_mat(img0, 'in0_padded')
+        # print_mat(img0, 'in0_padded')
         # resolution low to high
         feature0_list, feature1_list = self.extract_feature(img0, img1)  # list of features, f0: [1, 128,20,32] [1,128,40,64]
 
@@ -182,5 +182,5 @@ class GMFlow(nn.Module):
             if scale_idx == self.num_scales - 1:
                 flow_up = self.upsample_flow(flow, feature0)
         # flow_up = flow_up + 0.0001
-        print_mat(flow_up, 'flow_up')
+        # print_mat(flow_up, 'flow_up')
         return flow_up

@@ -96,8 +96,13 @@ def forward_backward_consistency_check(fwd_flow, bwd_flow,
     diff_bwd = torch.norm(bwd_flow + warped_fwd_flow, dim=1)
 
     threshold = alpha * flow_mag + beta
-
+    # print_mat(diff_fwd, 'gt_b0')
+    # print_mat(threshold, 'gt_b1')
+    # print_mat(diff_bwd, 'gt_b0')
+    # print_mat(threshold, 'gt_b1')
     fwd_occ = (diff_fwd > threshold).float()  # [B, H, W]
     bwd_occ = (diff_bwd > threshold).float()
+    # print_mat(diff_fwd, 'gt_t0')
+    # print_mat(diff_bwd, 'gt_t0')
 
     return fwd_occ, bwd_occ

@@ -83,7 +83,8 @@ def make_inference(I0, I1, reuse_things, n):
     if model.version >= 3.9:
         res = []
         for i in range(n):
-            res.append(model.inference(I0, I1, reuse_things, (i+1) * 1. / (n+1)))
+            t = torch.full((1, 1, 1, 1),  (i+1) * 1. / (n+1)).to(device)
+            res.append(model.inference(I0, I1, t, *reuse_things))
         return res
     else:
         middle = model.inference(I0, I1, args.scale)
@@ -111,7 +112,7 @@ I0 = torch.from_numpy(np.transpose(lastframe, (2,0,1))).to(device, non_blocking=
 I0 = F.interpolate(I0, (ph, pw), mode='bilinear', align_corners=False)
 I1 = torch.from_numpy(np.transpose(nextframe, (2,0,1))).to(device, non_blocking=True).unsqueeze(0).float() / 255.
 I1 = F.interpolate(I1, (ph, pw), mode='bilinear', align_corners=False)
-    
 reuse_things = model.reuse(I0, I1, args.scale)
-output = make_inference(I0, I1, reuse_things, args.multi-1)
+with torch.no_grad():
+    output = make_inference(I0, I1, reuse_things, args.multi-1)
 cv2.imwrite('check.png', (output[0] * 255.).squeeze(0).permute(1, 2, 0).cpu().numpy().astype(np.uint8)[:, :, ::-1])
