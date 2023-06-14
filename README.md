@@ -34,5 +34,5 @@ cmake --build . --config Release --target install
   - Input Resolution
 
 - Currently, only static input shape is tested, welcome to contribute dynamic input shape support!
-- If lucky, you'll get reuse_xxx.ncnn.param and infer_xxx.ncnn.bin for inference, the demo locates at https://github.com/Justin62628/gmfss-ncnn-vulkan-demo
+- If lucky, you'll get reuse_xxx.ncnn.param and infer_xxx.ncnn.bin for inference, the demo locates at https://github.com/Justin62628/gmfss-ncnn-vulkan
 
